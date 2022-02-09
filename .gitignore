@@ -1,0 +1,6 @@
+# Unity meta files
+*.meta
+
+# Sublime text project files
+*.sublime-project
+*.sublime-workspace
