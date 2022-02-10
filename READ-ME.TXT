@@ -1,0 +1,14 @@
+Set of C# utility classes, interfaces, and extension methods for UnityEngine
+Created and used by PHATASS Studios
+
+Authored by Héctor Colás Valtueña, PHATASS Studios.
+
+Released under CC-BY-SA
+
+		==== IMPORTANT NOTES ====
+
+Never include *.meta files in this repository.
+Never include MonoBehaviours, ScriptableObjects or UnityEngine.Objects in this repository.
+Lack of *.meta files would break their behaviour and containing projects.
+
+Only utily classes, interfaces, and extension methods must be included.
