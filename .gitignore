@@ -1,6 +1,5 @@
 # Unity meta files
 *.meta
 
-# Sublime text project files
-*.sublime-project
+# Sublime text project superfluous/individual files
 *.sublime-workspace
