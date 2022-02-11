@@ -24,8 +24,11 @@ namespace PHATASS.Utils.Math.Ranges
 		TRangeType ILimitedRange.maximum
 		{ get { return this.maximum; }}
 
-		//gets value within defined range currently represented by this object
+		//get value currently represented by this range
 		TRangeType ILimitedRange.value { get { return this.value; }}
+
+		//get a random value within this range
+		TRangeType ILimitedRange.random { get { return this.random; }}
 
 		//difference between maximum and minimum values
 		TRangeType ILimitedRange.difference { get { return this.difference; }}
@@ -70,15 +73,20 @@ namespace PHATASS.Utils.Math.Ranges
 		}
 	//ENDOF constructor
 
-	//abstract properties
+	//overridable properties
+		//get a random value within this range
+		//simply generates a value from a random 0.0 - 1.0 floating value
+		protected virtual TRangeType random
+		{ get { return this.FromNormal(UnityEngine.Random.value); }}
+
 		//gets value within defined range currently represented by this object
 		protected abstract TRangeType value { get; }
 
 		//difference between maximum and minimum values
 		protected abstract TRangeType difference { get; }
-	//ENDOF abstract properties
+	//ENDOF overridable properties
 
-	//abstract methods
+	//overridable methods
 		//returns value within the range from a 0 to 1 value
 		//needs not have any consideration for value clamping, this is handled by base class
 		protected abstract TRangeType FromNormal (float normal); //return minimum + (difference * normalized);
@@ -86,6 +94,6 @@ namespace PHATASS.Utils.Math.Ranges
 		//returns a normalized (0 to 1) from a value within the range
 		//needs not have any consideration for value clamping, this is handled by base class
 		protected abstract float ToNormal (TRangeType value);
-	//ENDOF abstract methods
+	//ENDOF overridable methods
 	}
 }

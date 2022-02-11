@@ -8,8 +8,11 @@ namespace PHATASS.Utils.Math.Ranges
 		TRangeType minimum { get; }
 		TRangeType maximum { get; }
 
-		//get value within defined range
+		//get value currently represented by this range
 		TRangeType value { get; }
+
+		//get a random value within this range
+		TRangeType random { get; }
 
 		//difference between maximum and minimum values
 		TRangeType difference { get; }
