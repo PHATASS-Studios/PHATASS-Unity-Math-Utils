@@ -10,32 +10,32 @@ namespace PHATASS.Utils.Math.Ranges
 	{
 	//serialized fields
 		[SerializeField]
-		private TRangeType minimum;
+		protected TRangeType minimum;
 
 		[SerializeField]
-		private TRangeType maximum;
+		protected TRangeType maximum;
 	//ENDOF serialized fields
 
-	//ILimitedRange implementation
+	//ILimitedRange<TRangeType> implementation
 		//min and max values of the range
-		TRangeType ILimitedRange.minimum
+		TRangeType ILimitedRange<TRangeType>.minimum
 		{ get { return this.minimum; }}
 
-		TRangeType ILimitedRange.maximum
+		TRangeType ILimitedRange<TRangeType>.maximum
 		{ get { return this.maximum; }}
 
 		//get value currently represented by this range
-		TRangeType ILimitedRange.value { get { return this.value; }}
+		TRangeType ILimitedRange<TRangeType>.value { get { return this.value; }}
 
 		//get a random value within this range
-		TRangeType ILimitedRange.random { get { return this.random; }}
+		TRangeType ILimitedRange<TRangeType>.random { get { return this.random; }}
 
 		//difference between maximum and minimum values
-		TRangeType ILimitedRange.difference { get { return this.difference; }}
+		TRangeType ILimitedRange<TRangeType>.difference { get { return this.difference; }}
 
 		//generate a number within the range from a normalized (0 to 1) value.
 		//value will be clamped within minimum and maximum unless clamped = false
-		TRangeType ILimitedRange.FromNormalized (float normalized, bool clamped = true)
+		TRangeType ILimitedRange<TRangeType>.FromNormalized (float normalized, bool clamped = true)
 		{
 			if (clamped)
 			{ normalized = UnityEngine.Mathf.Clamp(value: normalized, min: 0f, max: 1f); }
@@ -45,7 +45,7 @@ namespace PHATASS.Utils.Math.Ranges
 
 		//get a normalized value (0 to 1) from a numeric value within the range.
 		//value will be clamped within minimum and maximum unless clamped = false
-		float ILimitedRange.ToNormalized (TRangeType value, bool clamped = true)
+		float ILimitedRange<TRangeType>.ToNormalized (TRangeType value, bool clamped = true)
 		{
 			float normal = this.ToNormal(value);
 
@@ -58,10 +58,10 @@ namespace PHATASS.Utils.Math.Ranges
 
 	//ILimitedRangeMutable implementation
 		//setters for min and max values of the range
-		TRangeType ILimitedRangeMutable.minimum
+		TRangeType ILimitedRangeMutable<TRangeType>.minimum
 		{ set { this.minimum = value; }}
 
-		TRangeType ILimitedRangeMutable.maximum
+		TRangeType ILimitedRangeMutable<TRangeType>.maximum
 		{ set { this.maximum = value; }}
 	//ENDOF ILimitedRangeMutable 
 

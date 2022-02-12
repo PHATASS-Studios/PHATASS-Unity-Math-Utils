@@ -1,31 +1,31 @@
-using TRangeType = System.Int32;
+using TInt = System.Int32;
 
 namespace PHATASS.Utils.Math.Ranges
 {
 	//floating point numeric range subclass
 	[System.Serializable]
-	public class RandomIntRange : BaseNumericRange<TRangeType>
+	public class RandomIntRange : BaseNumericRange<TInt>
 	{
 	//constructor
-		public RandomIntRange (TRangeType minimum, TRangeType maximum) : base(minimum, maximum) {}
+		public RandomIntRange (TInt minimum, TInt maximum) : base(minimum, maximum) {}
 	//ENDOF constructor
 
 	//property overrides
-		protected override TRangeType value
+		protected override TInt value
 		{ get { return this.random; }}
 
-		public override TRangeType difference
+		protected override TInt difference
 		{ get { return this.maximum - this.minimum; }}
 	//ENDOF property overrides
 
 	//method overrides
-		protected override TRangeType FromNormal (float normal)
+		protected override TInt FromNormal (float normal)
 		{
-			return this.minimum + (TRangeType) (this.difference * normal);
+			return this.minimum + (TInt) (this.difference * normal);
 		}
 
 		//returns a normalized (0 to 1) from a value within the range, without any consideration for value clamping
-		protected override float ToNormal (TRangeType value)
+		protected override float ToNormal (TInt value)
 		{
 			return ((float) (value - this.minimum)) / this.difference;
 		}
