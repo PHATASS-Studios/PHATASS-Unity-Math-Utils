@@ -20,7 +20,7 @@ namespace PHATASS.Utils.Math
 		//returns the absolute difference between two floats
 		public static float EDifference (this float a, float b)
 		{
-			return Math.Abs(a - b);
+			return System.Math.Abs(a - b);
 		}
 	}
 }
