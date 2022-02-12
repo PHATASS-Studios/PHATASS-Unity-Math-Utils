@@ -87,7 +87,7 @@ namespace PHATASS.Utils.Math
 		//fits a rect within another, trimming its size 
 		public static Rect TrimAndClampRectWithinRect (Rect innerRect, Rect outerRect)
 		{
-			return ClampRectPositionWithinRect(
+			return EClampWithinRect(
 				innerRect: TrimRectSizeToRect(innerRect, outerRect),
 				outerRect: outerRect
 			);
