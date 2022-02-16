@@ -16,6 +16,11 @@ namespace PHATASS.Utils.Math.Ranges
 		protected TRangeType maximum;
 	//ENDOF serialized fields
 
+	//IValue<TRangeType>
+		//value currently represented by this range
+		TRangeType IValue<TRangeType>.value { get { return this.GetValue(); }}
+	//ENDOF IValue<TRangeType>
+
 	//ILimitedRange<TRangeType> implementation
 		//min and max values of the range
 		TRangeType ILimitedRange<TRangeType>.minimum
@@ -23,9 +28,6 @@ namespace PHATASS.Utils.Math.Ranges
 
 		TRangeType ILimitedRange<TRangeType>.maximum
 		{ get { return this.maximum; }}
-
-		//get value currently represented by this range
-		TRangeType ILimitedRange<TRangeType>.value { get { return this.value; }}
 
 		//get a random value within this range
 		TRangeType ILimitedRange<TRangeType>.random { get { return this.random; }}
@@ -81,14 +83,14 @@ namespace PHATASS.Utils.Math.Ranges
 		protected virtual TRangeType random
 		{ get { return this.FromNormal(UnityEngine.Random.value); }}
 
-		//gets value within defined range currently represented by this object
-		protected abstract TRangeType value { get; }
-
 		//difference between maximum and minimum values
 		protected abstract TRangeType difference { get; }
 	//ENDOF overridable properties
 
 	//overridable methods
+		//gets value within defined range currently represented by this object
+		protected abstract TRangeType GetValue ();
+
 		//returns value within the range from a 0 to 1 value
 		//needs not have any consideration for value clamping, this is handled by base class
 		protected abstract TRangeType FromNormal (float normal); //return minimum + (difference * normalized);

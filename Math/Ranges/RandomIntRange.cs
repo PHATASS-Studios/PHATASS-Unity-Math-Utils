@@ -11,14 +11,14 @@ namespace PHATASS.Utils.Math.Ranges
 	//ENDOF constructor
 
 	//property overrides
-		protected override TInt value
-		{ get { return this.random; }}
-
 		protected override TInt difference
 		{ get { return this.maximum - this.minimum; }}
 	//ENDOF property overrides
 
 	//method overrides
+		protected override TInt GetValue ()
+		{ return this.random; }
+
 		protected override TInt FromNormal (float normal)
 		{
 			return this.minimum + (TInt) (this.difference * normal);

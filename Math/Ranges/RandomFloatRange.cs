@@ -11,17 +11,14 @@ namespace PHATASS.Utils.Math.Ranges
 	//ENDOF constructor
 
 	//property overrides
-		protected override TFloat value
-		{
-			get { return this.random; }
-			set { /*intentionally left empty*/ }
-		}
-
 		protected override TFloat difference
 		{ get { return this.maximum - this.minimum; }}
 	//ENDOF property overrides
 
 	//method overrides
+		protected override TFloat GetValue ()
+		{ return this.random; }
+
 		protected override TFloat FromNormal (float normal)
 		{
 			return this.minimum + (this.difference * normal);
