@@ -35,7 +35,7 @@ namespace PHATASS.Utils.Math.Ranges
 
 		//generate a number within the range from a normalized (0 to 1) value.
 		//value will be clamped within minimum and maximum unless clamped = false
-		TRangeType ILimitedRange<TRangeType>.FromNormalized (float normalized, bool clamped = true)
+		TRangeType ILimitedRange<TRangeType>.FromNormalized (float normalized, bool clamped)
 		{
 			if (clamped)
 			{ normalized = UnityEngine.Mathf.Clamp(value: normalized, min: 0f, max: 1f); }
@@ -45,7 +45,7 @@ namespace PHATASS.Utils.Math.Ranges
 
 		//get a normalized value (0 to 1) from a numeric value within the range.
 		//value will be clamped within minimum and maximum unless clamped = false
-		float ILimitedRange<TRangeType>.ToNormalized (TRangeType value, bool clamped = true)
+		float ILimitedRange<TRangeType>.ToNormalized (TRangeType value, bool clamped)
 		{
 			float normal = this.ToNormal(value);
 
