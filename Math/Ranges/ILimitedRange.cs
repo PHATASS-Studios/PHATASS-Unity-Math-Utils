@@ -2,14 +2,12 @@ namespace PHATASS.Utils.Math.Ranges
 {
 	//Interface defining a limited range of values of any abstract type
 	//has a minimum, maximum, and interpolated values
-	public interface ILimitedRange <TRangeType>
+	public interface ILimitedRange <TRangeType> :
+		PHATASS.Utils.Math.IValue <TRangeType>
 	{
 		//min and max values of the range
 		TRangeType minimum { get; }
 		TRangeType maximum { get; }
-
-		//get value currently represented by this range
-		TRangeType value { get; }
 
 		//get a random value within this range
 		TRangeType random { get; }
@@ -25,12 +23,12 @@ namespace PHATASS.Utils.Math.Ranges
 	}
 
 	//Mutable variation of ILimitedRange interface
-	public interface ILimitedRangeMutable <TRangeType> : ILimitedRange <TRangeType>
+	public interface ILimitedRangeMutable <TRangeType> :
+		ILimitedRange <TRangeType>,
+		PHATASS.Utils.Math.IValueMutable <TRangeType>
 	{
 		//setters for min and max values of the range
 		new TRangeType minimum { set; }
 		new TRangeType maximum { set; }
-
-		new TRangeType value { set; }
 	}
 }
