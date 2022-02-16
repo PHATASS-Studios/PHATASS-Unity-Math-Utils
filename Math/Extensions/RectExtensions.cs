@@ -3,7 +3,7 @@
 namespace PHATASS.Utils.Math
 {
 	//methods for Rect manipulation
-	public static class RectUtils
+	public static class RectExtensions
 	{
 	//Rect creation methods
 		//Creates a new rect with given dimensions at target position
