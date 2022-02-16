@@ -30,5 +30,7 @@ namespace PHATASS.Utils.Math.Ranges
 		//setters for min and max values of the range
 		new TRangeType minimum { set; }
 		new TRangeType maximum { set; }
+
+		new TRangeType value { set; }
 	}
 }
