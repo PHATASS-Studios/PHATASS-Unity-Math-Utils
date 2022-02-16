@@ -12,7 +12,10 @@ namespace PHATASS.Utils.Math.Ranges
 
 	//property overrides
 		protected override TFloat value
-		{ get { return this.random; }}
+		{
+			get { return this.random; }
+			set { /*intentionally left empty*/ }
+		}
 
 		protected override TFloat difference
 		{ get { return this.maximum - this.minimum; }}
