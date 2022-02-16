@@ -6,7 +6,7 @@ namespace PHATASS.Utils.Math.Ranges
 	//includes a minimum, maximum, and interpolated values
 	[System.Serializable]
 	public abstract class BaseNumericRange <TRangeType>
-		: ILimitedRangeMutable<TRangeType>
+		: ILimitedRange<TRangeType>
 	{
 	//serialized fields
 		[SerializeField]
@@ -56,6 +56,7 @@ namespace PHATASS.Utils.Math.Ranges
 		}
 	//ENDOF ILimitedRange
 
+	/*
 	//ILimitedRangeMutable implementation
 		//setters for min and max values of the range
 		TRangeType ILimitedRangeMutable<TRangeType>.minimum
@@ -64,6 +65,7 @@ namespace PHATASS.Utils.Math.Ranges
 		TRangeType ILimitedRangeMutable<TRangeType>.maximum
 		{ set { this.maximum = value; }}
 	//ENDOF ILimitedRangeMutable 
+	*/
 
 	//constructor
 		public BaseNumericRange (TRangeType minimum, TRangeType maximum)
