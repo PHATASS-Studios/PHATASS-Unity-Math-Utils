@@ -22,5 +22,11 @@ namespace PHATASS.Utils.Math
 		{
 			return System.Math.Abs(a - b);
 		}
+
+		//returns the sign of this number (1 for positive, -1 for negative, 0 for zero)
+		public static int ESign (this int number)
+		{
+			return System.Math.Sign(number);
+		}
 	}
 }
