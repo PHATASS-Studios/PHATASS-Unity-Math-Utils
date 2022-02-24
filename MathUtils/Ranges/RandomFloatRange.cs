@@ -1,6 +1,6 @@
 using TFloat = System.Single;
 
-namespace PHATASS.Utils.Math.Ranges
+namespace PHATASS.Utils.MathUtils.Ranges
 {
 	//floating point numeric range subclass
 	[System.Serializable]

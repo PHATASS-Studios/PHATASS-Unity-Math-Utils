@@ -1,4 +1,4 @@
-namespace PHATASS.Utils.Math
+namespace PHATASS.Utils.MathUtils
 {
 	//simple mathematics on int elements
 	public static class IntExtensions

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PHATASS.Utils.Math
+namespace PHATASS.Utils.MathUtils
 {
 	//methods for Rect manipulation
 	public static class RectExtensions

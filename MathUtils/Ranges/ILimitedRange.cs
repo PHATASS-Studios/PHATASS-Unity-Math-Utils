@@ -1,9 +1,9 @@
-namespace PHATASS.Utils.Math.Ranges
+namespace PHATASS.Utils.MathUtils.Ranges
 {
 	//Interface defining a limited range of values of any abstract type
 	//has a minimum, maximum, and interpolated values
 	public interface ILimitedRange <TRangeType> :
-		PHATASS.Utils.Math.IValue <TRangeType>
+		PHATASS.Utils.MathUtils.IValue <TRangeType>
 	{
 		//min and max values of the range
 		TRangeType minimum { get; }
@@ -25,7 +25,7 @@ namespace PHATASS.Utils.Math.Ranges
 	//Mutable variation of ILimitedRange interface
 	public interface ILimitedRangeMutable <TRangeType> :
 		ILimitedRange <TRangeType>,
-		PHATASS.Utils.Math.IValueMutable <TRangeType>
+		PHATASS.Utils.MathUtils.IValueMutable <TRangeType>
 	{
 		//setters for min and max values of the range
 		new TRangeType minimum { set; }
