@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace PHATASS.Utils.MathUtils
 {
 	//simple mathematics on floats
@@ -28,5 +31,17 @@ namespace PHATASS.Utils.MathUtils
 		{
 			return System.Math.Sign(number);
 		}
+
+	//comparison methods
+		//returns the SMALLEST from an enumerable of float values
+		//implementation provided by PHATASS.Utils.MathUtils.IComparableExtensions
+		public static float EMinimum (this IEnumerable<float> floatList)
+		{ return (float) ((IEnumerable<IComparable<float>>) floatList).EMinimum(); }
+
+		//returns the LARGEST from an enumerable of float values
+		//implementation provided by PHATASS.Utils.MathUtils.IComparableExtensions
+		public static float EMaximum (this IEnumerable<float> floatList)
+		{ return (float) ((IEnumerable<IComparable<float>>) floatList).EMaximum(); }
+	//ENDOF comparison methods
 	}
 }
