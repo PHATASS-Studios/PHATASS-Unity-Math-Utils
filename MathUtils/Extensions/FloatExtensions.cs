@@ -35,13 +35,25 @@ namespace PHATASS.Utils.MathUtils
 	//comparison methods
 		//returns the SMALLEST from an enumerable of float values
 		//implementation provided by PHATASS.Utils.MathUtils.IComparableExtensions
-		public static float EMinimum (this IEnumerable<float> floatList)
-		{ return (float) ((IEnumerable<IComparable<float>>) floatList).EMinimum(); }
+		public static float EMinimum (this float[] floatArray)
+		{
+			IComparable<float>[] comparableArray = Array.ConvertAll<float, IComparable<float>>(
+				array: floatArray,
+				converter: item => (IComparable<float>)item
+			);
+			return (float) ((IEnumerable<IComparable<float>>) comparableArray).EMinimum();
+		}
 
 		//returns the LARGEST from an enumerable of float values
 		//implementation provided by PHATASS.Utils.MathUtils.IComparableExtensions
-		public static float EMaximum (this IEnumerable<float> floatList)
-		{ return (float) ((IEnumerable<IComparable<float>>) floatList).EMaximum(); }
+		public static float EMaximum (this float[] floatArray)
+		{
+			IComparable<float>[] comparableArray = Array.ConvertAll<float, IComparable<float>>(
+				array: floatArray,
+				converter: item => (IComparable<float>)item
+			);
+			return (float) ((IEnumerable<IComparable<float>>) comparableArray).EMaximum();
+		}
 	//ENDOF comparison methods
 	}
 }
