@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+using static PHATASS.Utils.MathUtils.IComparableExtensions;
+
 namespace PHATASS.Utils.MathUtils
 {
 	//methods for Rect manipulation
@@ -18,6 +20,33 @@ namespace PHATASS.Utils.MathUtils
 				y: position.y - (height / 2),
 				width: width,
 				height: height
+			);
+		}
+
+		//Creates the smallest rect possible that contains given list of points
+		public static Rect RectFromPoints (Vector2[] points)
+		{
+			//prepare given coordinates for sorting
+			float[] xPositions = new float[points.Length];
+			float[] yPositions = new float[points.Length];
+			for (int i = 0, iLimit = points.Length; i < iLimit; i++)
+			{
+				xPositions[i] = points[i].x;
+				yPositions[i] = points[i].y;
+			}
+
+			//determine the corners of the rect from the minimum and maximum values
+			float xMin = xPositions.EMinimum();
+			float xMax = xPositions.EMaximum();
+			float yMin = yPositions.EMinimum();
+			float yMax = yPositions.EMaximum();
+
+			//create a Rect from its corners
+			return Rect.MinMaxRect(
+				xmin: xMin,
+				xmax: xMax,
+				ymin: yMin,
+				ymax: yMax
 			);
 		}
 	//ENDOF Rect creation methods
