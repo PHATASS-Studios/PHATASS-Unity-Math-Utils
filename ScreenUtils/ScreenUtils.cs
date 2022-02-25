@@ -1,7 +1,7 @@
 using Screen = UnityEngine.Screen;
 using Vector2 = UnityEngine.Vector2;
 
-namespace CatAttack.Utils
+namespace PHATASS.Utils
 {
 	public static class ScreenUtils
 	{
