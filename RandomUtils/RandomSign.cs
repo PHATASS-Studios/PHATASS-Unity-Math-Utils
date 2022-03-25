@@ -7,10 +7,10 @@ namespace PHATASS.Utils.RandomUtils
 	{
 		//returns 1 or -1, randomly
 		public static int Int ()
-		{ return ((Random.Range(0, 2) * 2) - 1); }
+		{ return ((UnityEngine.Random.Range(0, 2) * 2) - 1); }
 
 		//returns 1 or -1, randomly
-		public static int Float ()
+		public static float Float ()
 		{ return (float) RandomSign.Int(); }
 	}
 }
