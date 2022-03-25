@@ -1,4 +1,4 @@
-using UnityEngine.Random;
+using static UnityEngine.Random;
 
 namespace PHATASS.Utils.RandomUtils
 {
