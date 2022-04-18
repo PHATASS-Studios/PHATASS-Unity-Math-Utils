@@ -21,7 +21,7 @@ namespace PHATASS.Utils.MathUtils
 				out value
 			);
 
-			Debug.Log("In hue: " + hue);
+			//Debug.Log("In hue: " + hue);
 
 			//alter desired HSV properties
 			hue += step;
@@ -30,7 +30,7 @@ namespace PHATASS.Utils.MathUtils
 				hue = hue % 1.0f;
 			}
 
-			Debug.Log("Out hue: " + hue);
+			//Debug.Log("Out hue: " + hue);
 
 			//re-store altered color as RGB
 			Color updatedColor = Color.HSVToRGB(
