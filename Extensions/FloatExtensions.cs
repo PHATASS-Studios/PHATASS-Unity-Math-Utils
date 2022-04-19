@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace PHATASS.Utils.MathUtils
+namespace PHATASS.Utils.Extensions
 {
 	//simple mathematics on floats
 	public static class FloatExtensions

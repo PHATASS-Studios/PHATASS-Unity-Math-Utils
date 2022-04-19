@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 #nullable disable
-namespace PHATASS.Utils.MathUtils
+namespace PHATASS.Utils.Extensions
 {
 	//Utility methods for IComparable<T> implementing classes
 	public static class IComparableExtensions

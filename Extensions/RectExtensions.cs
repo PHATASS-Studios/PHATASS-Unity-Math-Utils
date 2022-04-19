@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-using static PHATASS.Utils.MathUtils.IComparableExtensions;
+using static PHATASS.Utils.Extensions.IComparableExtensions;
 
-namespace PHATASS.Utils.MathUtils
+namespace PHATASS.Utils.Extensions
 {
 	//methods for Rect manipulation
 	public static class RectExtensions

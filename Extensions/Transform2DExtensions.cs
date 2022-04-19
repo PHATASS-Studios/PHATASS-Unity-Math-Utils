@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PHATASS.Utils
+namespace PHATASS.Utils.Extensions
 {
 	public static class Transform2DExtensions
 	{

@@ -2,7 +2,7 @@ using Color = UnityEngine.Color;
 
 using Debug = UnityEngine.Debug;
 
-namespace PHATASS.Utils.MathUtils
+namespace PHATASS.Utils.Extensions
 {
 	public static class ColorExtensions
 	{
