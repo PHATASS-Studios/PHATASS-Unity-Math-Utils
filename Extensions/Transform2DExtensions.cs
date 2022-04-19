@@ -5,7 +5,7 @@ namespace PHATASS.Utils.Extensions
 	public static class Transform2DExtensions
 	{
 	//ELookAt2D
-	//rotates this transform so the +X axis is looking towards the target
+	// Rotates this transform so the +X axis is looking towards the target
 		public static void ELookAt2D (this Transform transform, Transform targetTransform)
 		{ transform.ELookAt2D(targetTransform.position); }
 		public static void ELookAt2D (this Transform transform, Vector3 target)
@@ -18,7 +18,7 @@ namespace PHATASS.Utils.Extensions
 	//ENDOF ELookAt2D
 
 	//EMoveTowards2D
-	//moves this transform in WORLD SPACE, towards target, by a maximum of distance units
+	// Moves this transform in WORLD SPACE, towards target, by a maximum of distance units
 		public static void EMoveTowards2D (this Transform transform, Transform targetTransform, float distance)
 		{ transform.EMoveTowards2D(targetTransform.position, distance); }
 		public static void EMoveTowards2D (this Transform transform, Vector3 target, float distance)
