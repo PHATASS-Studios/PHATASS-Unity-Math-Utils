@@ -1,5 +1,7 @@
 using UnityEngine;
 
+using static PHATASS.Utils.Extensions.Vector2Extensions;
+
 namespace PHATASS.Utils.Extensions
 {
 	public static class Transform2DExtensions
@@ -27,7 +29,7 @@ namespace PHATASS.Utils.Extensions
 		{
 			//translation vector is the difference between positions, scaled to be the length given by distance
 			transform.Translate(
-				translation: (target - ((Vector2) transform.position)).normalized * distance,
+				translation: transform.position.EFromToVector2Normalized(target) * distance,
 				relativeTo: Space.World
 			);
 		}
