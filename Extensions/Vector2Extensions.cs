@@ -5,7 +5,7 @@ namespace PHATASS.Utils.Extensions
 	public static class Vector2Extensions
 	{
 	//EDistanceTo2D
-	//returns the distance to another point in a 2D X,Y plane
+	// Returns the distance to another point in a 2D X,Y plane
 		public static float EDistanceTo2D (this Vector2 originVector, Transform destinationTransform)
 		{ return originVector.EDistanceTo2D((Vector2) destinationTransform.position); }
 		public static float EDistanceTo2D (this Vector2 originVector, Vector3 destinationVector)
