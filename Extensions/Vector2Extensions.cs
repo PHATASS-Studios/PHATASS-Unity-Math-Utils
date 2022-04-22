@@ -25,6 +25,7 @@ namespace PHATASS.Utils.Extensions
 	//ENDOF EDistanceTo2D
 
 	//EFromToVector2
+	// Returns a vector which added to fromVector results in toVector
 		public static Vector2 EFromToVector2 (this Vector2 fromVector, Vector2 toVector)
 		{
 			return toVector - fromVector;
@@ -38,6 +39,7 @@ namespace PHATASS.Utils.Extensions
 	//ENDOF EFromToVector2
 
 	//EFromToVector2Normalized
+	// Normalized (length 1) version of EFromToVector2()
 		public static Vector2 EFromToVector2Normalized (this Vector2 fromVector, Vector2 toVector)
 		{
 			return fromVector.EFromToVector2(toVector).normalized;
@@ -49,5 +51,20 @@ namespace PHATASS.Utils.Extensions
 			return ((Vector2) fromVector).EFromToVector2Normalized(toVector);
 		}
 	//ENDOF EFromToVector2Normalized
+
+	//EAngleToVector2
+	// Returns a normalized (length 1) Vector2 representing the direction given in degrees
+		public static UnityEngine.Vector2 EDegreesToVector2 (this float degrees)
+		{ 
+			Vector2 vector = new Vector2(
+				x: Mathf.Cos(degrees * Mathf.Deg2Rad),
+				y: Mathf.Sin(degrees * Mathf.Deg2Rad)
+			);
+
+			Debug.Log("EDegreesToVector2(" + degrees + ") vector: " + vector + " length: " + vector.magnitude);
+			return vector;
+			//return new Vector2(Mathf.Cos(degrees * Mathf.Deg2Rad), Mathf.Sin(degrees * Mathf.Deg2Rad));
+		}
+	//ENDOF EAngleToVector2
 	}
 }
