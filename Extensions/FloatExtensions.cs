@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using Mathf = UnityEngine.Mathf;
+
 namespace PHATASS.Utils.Extensions
 {
 	//simple mathematics on floats
@@ -55,5 +57,16 @@ namespace PHATASS.Utils.Extensions
 			return (float) ((IEnumerable<IComparable<float>>) comparableArray).EMaximum();
 		}
 	//ENDOF comparison methods
+
+	//EAngleToVector2
+	// Returns a normalized (length 1) Vector2 representing the direction given in degrees
+		public static UnityEngine.Vector2 EDegreesToVector2 (this float degrees)
+		{ 
+			Vector2 vector = new Vector2(Mathf.Cos(degrees * Mathf.Degree2Rad), Mathf.Sin(degrees * Mathf.Degree2Rad));
+			Debug.Log("EDegreesToVector2(" + degrees ") length: " + vector.magnitude);
+			return vector;
+			//return new Vector2(Mathf.Cos(degrees * Mathf.Degree2Rad), Mathf.Sin(degrees * Mathf.Degree2Rad));
+		}
+	//ENDOF EAngleToVector2
 	}
 }
