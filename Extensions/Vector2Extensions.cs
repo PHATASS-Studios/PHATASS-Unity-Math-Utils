@@ -67,14 +67,16 @@ namespace PHATASS.Utils.Extensions
 	// Returns a normalized (length 1) Vector2 representing the direction given in degrees
 		public static Vector2 EDegreesToVector2 (this float degrees)
 		{ 
-			Vector2 vector = new Vector2(
+			return new Vector2(
 				x: Mathf.Cos(degrees * Mathf.Deg2Rad),
 				y: Mathf.Sin(degrees * Mathf.Deg2Rad)
 			);
 
+			/*
 			Debug.Log("EDegreesToVector2(" + degrees + ") vector: " + vector + " length: " + vector.magnitude);
 			return vector;
 			//return new Vector2(Mathf.Cos(degrees * Mathf.Deg2Rad), Mathf.Sin(degrees * Mathf.Deg2Rad));
+			*/
 		}
 	//ENDOF EDegreesToVector2
 
