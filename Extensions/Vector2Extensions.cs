@@ -4,6 +4,14 @@ namespace PHATASS.Utils.Extensions
 {
 	public static class Vector2Extensions
 	{
+	//Vector2 creation methods
+		//Creates a Vector2 of length 1 from given angle
+		public static Vector2 EAngleToVector2 (this float angle)
+		{
+			return new Vector2 (Mathf.Sin(angle), Mathf.Cos(angle));
+		}
+	//ENDOF Vector2 creation methods
+
 	//EDistanceTo2D
 	// Returns the distance to another point in a 2D X,Y plane
 		public static float EDistanceTo2D (this Vector2 originVector, Transform destinationTransform)
