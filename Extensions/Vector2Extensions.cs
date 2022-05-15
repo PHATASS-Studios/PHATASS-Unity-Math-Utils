@@ -8,7 +8,7 @@ namespace PHATASS.Utils.Extensions
 		//Creates a Vector2 of length 1 from given angle
 		public static Vector2 EAngleToVector2 (this float angle)
 		{
-			return new Vector2 (Mathf.Sin(angle), Mathf.Cos(angle));
+			return new Vector2 (Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle));
 		}
 	//ENDOF Vector2 creation methods
 
