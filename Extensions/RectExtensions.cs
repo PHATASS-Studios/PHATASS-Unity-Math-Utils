@@ -9,11 +9,11 @@ namespace PHATASS.Utils.Extensions
 	{
 	//Rect creation methods
 		//Creates a new rect with given dimensions at target position
-		public static Rect RectFromCenterAndSize (Vector2 position, Vector3 size)
+		public static Rect ERectFromCenterAndSize (this Vector2 position, Vector3 size)
 		{ return RectFromCenterAndSize(position, size.x, size.y); }
-		public static Rect RectFromCenterAndSize (Vector2 position, Vector2 size)
+		public static Rect ERectFromCenterAndSize (this Vector2 position, Vector2 size)
 		{ return RectFromCenterAndSize(position, size.x, size.y); }
-		public static Rect RectFromCenterAndSize (Vector2 position, float width, float height)
+		public static Rect ERectFromCenterAndSize (this Vector2 position, float width, float height)
 		{
 			return new Rect(
 				x: position.x - (width / 2),
@@ -24,7 +24,7 @@ namespace PHATASS.Utils.Extensions
 		}
 
 		//Creates the smallest rect possible that contains given list of points
-		public static Rect RectFromPoints (Vector2[] points)
+		public static Rect ERectFromPoints (this Vector2[] points)
 		{
 			//prepare given coordinates for sorting
 			float[] xPositions = new float[points.Length];
@@ -101,7 +101,7 @@ namespace PHATASS.Utils.Extensions
 
 		//truncates innerRect dimensions to fit outerRect. may return the same rect if already small enough.
 		//only alters size, returned rect's position will be the same as innerRect's
-		public static Rect TrimRectSizeToRect (Rect innerRect, Rect outerRect)
+		public static Rect ETrimRectSizeToRect (this Rect innerRect, Rect outerRect)
 		{
 			if (innerRect.width <= outerRect.width && innerRect.height <= outerRect.height)
 			{ return innerRect; }
@@ -114,7 +114,7 @@ namespace PHATASS.Utils.Extensions
 		}
 
 		//fits a rect within another, trimming its size 
-		public static Rect TrimAndClampRectWithinRect (Rect innerRect, Rect outerRect)
+		public static Rect ETrimAndClampRectWithinRect (this Rect innerRect, Rect outerRect)
 		{
 			return EClampWithinRect(
 				innerRect: TrimRectSizeToRect(innerRect, outerRect),
@@ -125,16 +125,16 @@ namespace PHATASS.Utils.Extensions
 
 	//Rect interpolation and movement
 		//moves a rect
-		public static Rect MoveRect (this Rect rect, Vector3 movement)
+		public static Rect EMoveRect (this Rect rect, Vector3 movement)
 		{ return MoveRect(rect: rect, movement: (Vector2) movement); }
-		public static Rect MoveRect (this Rect rect, Vector2 movement)
+		public static Rect EMoveRect (this Rect rect, Vector2 movement)
 		{
 			rect.position = rect.position + movement;
 			return rect;
 		}
 		
 		//interpolates position and size
-		public static Rect LerpRect (Rect from, Rect to, float positionLerpRate, float sizeLerpRate)
+		public static Rect ELerpRect (this Rect from, Rect to, float positionLerpRate, float sizeLerpRate)
 		{
 			return RectFromCenterAndSize(
 				position: Vector2.Lerp(from.center, to.center, positionLerpRate),
