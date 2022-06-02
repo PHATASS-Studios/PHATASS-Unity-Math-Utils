@@ -22,6 +22,13 @@ namespace PHATASS.Utils.Extensions
 				height: height
 			);
 		}
+		// Vector3 variants
+		public static Rect ERectFromCenterAndSize (this Vector3 position, Vector3 size)
+		{ return ((Vector2) position).ERectFromCenterAndSize(size.x, size.y); }
+		public static Rect ERectFromCenterAndSize (this Vector3 position, Vector2 size)
+		{ return ((Vector2) position).ERectFromCenterAndSize(size.x, size.y); }
+		public static Rect ERectFromCenterAndSize (this Vector3 position, float width, float height)
+		{ return ((Vector2) position).ERectFromCenterAndSize(width, height); }
 
 		//Creates the smallest rect possible that contains given list of points
 		public static Rect ERectFromPoints (this Vector2[] points)
