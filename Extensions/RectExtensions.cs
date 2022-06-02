@@ -117,7 +117,7 @@ namespace PHATASS.Utils.Extensions
 		public static Rect ETrimAndClampRectWithinRect (this Rect innerRect, Rect outerRect)
 		{
 			return RectExtensions.EClampWithinRect(
-				innerRect: TrimRectSizeToRect(innerRect, outerRect),
+				innerRect: innerRect.ETrimRectSizeToRect(outerRect),
 				outerRect: outerRect
 			);
 		}
