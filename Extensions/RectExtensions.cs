@@ -10,9 +10,9 @@ namespace PHATASS.Utils.Extensions
 	//Rect creation methods
 		//Creates a new rect with given dimensions at target position
 		public static Rect ERectFromCenterAndSize (this Vector2 position, Vector3 size)
-		{ return RectFromCenterAndSize(position, size.x, size.y); }
+		{ return RectExtensions.ERectFromCenterAndSize(position, size.x, size.y); }
 		public static Rect ERectFromCenterAndSize (this Vector2 position, Vector2 size)
-		{ return RectFromCenterAndSize(position, size.x, size.y); }
+		{ return RectExtensions.ERectFromCenterAndSize(position, size.x, size.y); }
 		public static Rect ERectFromCenterAndSize (this Vector2 position, float width, float height)
 		{
 			return new Rect(
@@ -116,7 +116,7 @@ namespace PHATASS.Utils.Extensions
 		//fits a rect within another, trimming its size 
 		public static Rect ETrimAndClampRectWithinRect (this Rect innerRect, Rect outerRect)
 		{
-			return EClampWithinRect(
+			return RectExtensions.EClampWithinRect(
 				innerRect: TrimRectSizeToRect(innerRect, outerRect),
 				outerRect: outerRect
 			);
@@ -126,7 +126,7 @@ namespace PHATASS.Utils.Extensions
 	//Rect interpolation and movement
 		//moves a rect
 		public static Rect EMoveRect (this Rect rect, Vector3 movement)
-		{ return MoveRect(rect: rect, movement: (Vector2) movement); }
+		{ return RectExtensions.EMoveRect(rect: rect, movement: (Vector2) movement); }
 		public static Rect EMoveRect (this Rect rect, Vector2 movement)
 		{
 			rect.position = rect.position + movement;
@@ -136,7 +136,7 @@ namespace PHATASS.Utils.Extensions
 		//interpolates position and size
 		public static Rect ELerpRect (this Rect from, Rect to, float positionLerpRate, float sizeLerpRate)
 		{
-			return RectFromCenterAndSize(
+			return RectExtensions.ERectFromCenterAndSize(
 				position: Vector2.Lerp(from.center, to.center, positionLerpRate),
 				width: Mathf.Lerp(from.width, to.width, sizeLerpRate),
 				height: Mathf.Lerp(from.height, to.height, sizeLerpRate)
