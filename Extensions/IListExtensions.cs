@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-using Random = UnityEngine.Random;
 
 namespace PHATASS.Utils.Extensions
 {
+	using Random = UnityEngine.Random;
+	
 	public static class IListExtensions
 	{
 	//Search methods
