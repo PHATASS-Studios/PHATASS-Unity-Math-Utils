@@ -56,7 +56,7 @@ namespace PHATASS.Utils.ScreenUtils
 		//	takes a callback method that will be invoked passing the color data
 		public delegate void DScreenPixelColorCallback (Color color);
 		public static IEnumerator GetScreenPixelColorAsync (Vector2 pixelPosition, DScreenPixelColorCallback callback)
-		{ return GetScreenPixelColorAsync((int) pixelPos.x, (int) pixelPos.y, callback); }
+		{ return GetScreenPixelColorAsync((int) pixelPosition.x, (int) pixelPosition.y, callback); }
 		public static IEnumerator GetScreenPixelColorAsync (int x, int y, DScreenPixelColorCallback callback)
 		{
 			yield return CaptureScreenAsync(GetScreenPixelColorAsyncDoneCallback);
