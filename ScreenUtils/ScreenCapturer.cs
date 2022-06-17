@@ -55,7 +55,7 @@ namespace PHATASS.Utils.ScreenUtils
 		//	Must be invoked through MonoBehaviour.StartCoroutine(), as it needs to yield until WaitForEndOfFrame
 		//	takes a callback method that will be invoked passing the color data
 		public delegate void DScreenPixelColorCallback (Color color);
-		public static IEnumerator GetScreenPixelColorAsync (Vector2 pixelPos, DScreenPixelColorCallback callback)
+		public static IEnumerator GetScreenPixelColorAsync (Vector2 pixelPosition, DScreenPixelColorCallback callback)
 		{ return GetScreenPixelColorAsync((int) pixelPos.x, (int) pixelPos.y, callback); }
 		public static IEnumerator GetScreenPixelColorAsync (int x, int y, DScreenPixelColorCallback callback)
 		{
