@@ -86,7 +86,7 @@ namespace PHATASS.Utils.ScreenUtils
 				UnityEngine.Object.Destroy(renderTexture);
 
 				//now we can fetch the color at desired position, and pass it to the callback
-				callback(texture2d.GetPixel(x,y));
+				callback(texture2d.GetPixel(x, texture2d.height - y));
 				UnityEngine.Object.Destroy(texture2d);
 			}
 		}
