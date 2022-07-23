@@ -47,6 +47,7 @@ namespace PHATASS.Utils.MathUtils
 		}
 	//ENDOF Constructor
 
+
 	//private properties
 		private float degrees
 		{
@@ -73,5 +74,53 @@ namespace PHATASS.Utils.MathUtils
 			return clampedDegrees;
 		}
 	//ENDOF private methods
+
+	//Operator overrides
+		public override string ToString () { return $"{this.degrees}°"; }
+
+		// Negation operator
+		public static Angle2D operator - (Angle2D angle)
+		{ return Angle2D.FromDegrees(360 - angle.degrees); }
+
+		// Addition operator
+		public static Angle2D operator + (Angle2D a, Angle2D b)
+		{ return Angle2D.FromDegrees(a.degrees + b.degrees); }
+		public static Angle2D operator + (float a, Angle2D b)
+		{ return Angle2D.FromDegrees(a + b.degrees); }
+		public static Angle2D operator + (Angle2D a, float b)
+		{ return Angle2D.FromDegrees(a.degrees + b); }
+
+		// Subtraction operator
+		public static Angle2D operator - (Angle2D a, Angle2D b)
+		{ return Angle2D.FromDegrees(a.degrees - b.degrees); }
+		public static Angle2D operator - (float a, Angle2D b)
+		{ return Angle2D.FromDegrees(a - b.degrees); }
+		public static Angle2D operator - (Angle2D a, float b)
+		{ return Angle2D.FromDegrees(a.degrees - b); }
+
+		// Multiplication operator
+		public static Angle2D operator * (Angle2D a, Angle2D b)
+		{ return Angle2D.FromDegrees(a.degrees * b.degrees); }
+		public static Angle2D operator * (float a, Angle2D b)
+		{ return Angle2D.FromDegrees(a * b.degrees); }
+		public static Angle2D operator * (Angle2D a, float b)
+		{ return Angle2D.FromDegrees(a.degrees * b); }
+
+		// Division operator
+		public static Angle2D operator / (Angle2D a, Angle2D b)
+		{ return Angle2D.FromDegrees(a.degrees / b.degrees); }
+		public static Angle2D operator / (float a, Angle2D b)
+		{ return Angle2D.FromDegrees(a / b.degrees); }
+		public static Angle2D operator / (Angle2D a, float b)
+		{ return Angle2D.FromDegrees(a.degrees / b); }
+
+		// Modulus operator
+		public static Angle2D operator % (Angle2D a, Angle2D b)
+		{ return Angle2D.FromDegrees(a.degrees % b.degrees); }
+		public static Angle2D operator % (float a, Angle2D b)
+		{ return Angle2D.FromDegrees(a % b.degrees); }
+		public static Angle2D operator % (Angle2D a, float b)
+		{ return Angle2D.FromDegrees(a.degrees % b); }
+	//ENDOF Operators
 	}
 }
