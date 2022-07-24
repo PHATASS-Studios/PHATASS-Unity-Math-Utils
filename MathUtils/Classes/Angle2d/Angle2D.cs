@@ -68,42 +68,25 @@ namespace PHATASS.Utils.MathUtils
 		// Addition operator
 		public static Angle2D operator + (Angle2D a, Angle2D b)
 		{ return Angle2D.FromDegrees(a.degrees + b.degrees); }
-		public static Angle2D operator + (float a, Angle2D b)
-		{ return Angle2D.FromDegrees(a + b.degrees); }
-		public static Angle2D operator + (Angle2D a, float b)
-		{ return Angle2D.FromDegrees(a.degrees + b); }
 
 		// Subtraction operator
 		public static Angle2D operator - (Angle2D a, Angle2D b)
 		{ return Angle2D.FromDegrees(a.degrees - b.degrees); }
-		public static Angle2D operator - (float a, Angle2D b)
-		{ return Angle2D.FromDegrees(a - b.degrees); }
-		public static Angle2D operator - (Angle2D a, float b)
-		{ return Angle2D.FromDegrees(a.degrees - b); }
 
 		// Multiplication operator
-		public static Angle2D operator * (Angle2D a, Angle2D b)
-		{ return Angle2D.FromDegrees(a.degrees * b.degrees); }
 		public static Angle2D operator * (float a, Angle2D b)
 		{ return Angle2D.FromDegrees(a * b.degrees); }
 		public static Angle2D operator * (Angle2D a, float b)
 		{ return Angle2D.FromDegrees(a.degrees * b); }
 
 		// Division operator
-		public static Angle2D operator / (Angle2D a, Angle2D b)
-		{ return Angle2D.FromDegrees(a.degrees / b.degrees); }
-		public static Angle2D operator / (float a, Angle2D b)
-		{ return Angle2D.FromDegrees(a / b.degrees); }
 		public static Angle2D operator / (Angle2D a, float b)
 		{ return Angle2D.FromDegrees(a.degrees / b); }
+
 
 		// Modulus operator
 		public static Angle2D operator % (Angle2D a, Angle2D b)
 		{ return Angle2D.FromDegrees(a.degrees % b.degrees); }
-		public static Angle2D operator % (float a, Angle2D b)
-		{ return Angle2D.FromDegrees(a % b.degrees); }
-		public static Angle2D operator % (Angle2D a, float b)
-		{ return Angle2D.FromDegrees(a.degrees % b); }
 	//ENDOF Operators
 	}
 }
