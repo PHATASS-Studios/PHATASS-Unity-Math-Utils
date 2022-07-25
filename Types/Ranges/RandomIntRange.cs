@@ -1,6 +1,6 @@
 using TInt = System.Int32;
 
-namespace PHATASS.Utils.MathUtils.Ranges
+namespace PHATASS.Utils.Types.Ranges
 {
 	//floating point numeric range subclass
 	[System.Serializable]

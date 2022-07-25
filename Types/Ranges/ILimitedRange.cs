@@ -1,4 +1,4 @@
-namespace PHATASS.Utils.MathUtils.Ranges
+namespace PHATASS.Utils.Types.Ranges
 {
 	//Interface defining a limited range of values of any abstract type
 	//has a minimum, maximum, and interpolated values

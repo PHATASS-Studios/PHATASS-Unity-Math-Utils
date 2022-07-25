@@ -1,6 +1,6 @@
 using Mathf = UnityEngine.Mathf;
 
-namespace PHATASS.Utils.MathUtils
+namespace PHATASS.Utils.Types
 {
 	// Represents an angle, both accessible as degrees or radians
 	// value is automatically clamped to 0-360 degrees (0 - 2pi rads)

@@ -1,6 +1,6 @@
 using SerializeField = UnityEngine.SerializeField;
 
-namespace PHATASS.Utils.MathUtils.Ranges
+namespace PHATASS.Utils.Types.Ranges
 {
 	//Base class defining a range of values of any abstract type
 	//includes a minimum, maximum, and interpolated values
