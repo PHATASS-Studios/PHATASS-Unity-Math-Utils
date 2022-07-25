@@ -1,6 +1,7 @@
 using UnityEngine;
 
-using Angle2D = PHATASS.Utils.MathUtils.Angle2D;
+using IAngle2D = PHATASS.Utils.Types.IAngle2D;
+using static PHATASS.Utils.Types.IAngle2DFactory;
 
 namespace PHATASS.Utils.Extensions
 {
@@ -8,7 +9,7 @@ namespace PHATASS.Utils.Extensions
 	{
 	//Vector2 creation methods
 		//Creates a Vector2 of length 1 representing given angle
-		public static Vector2 EAngle2DToVector2 (this Angle2D angle)
+		public static Vector2 EAngle2DToVector2 (this IAngle2D angle)
 		{ return angle.degrees.EDegreesToVector2(); }
 		//Creates a Vector2 of length 1 from given angle in degrees
 		public static Vector2 EDegreesToVector2 (this float degrees)
@@ -78,9 +79,9 @@ namespace PHATASS.Utils.Extensions
 
 	//EFromToAngle2D
 	// Returns the angular directiom from fromVector to toVector
-		public static Angle2D EFromToAngle2D (this Vector2 fromVector, Vector2 toVector)
+		public static IAngle2D EFromToAngle2D (this Vector2 fromVector, Vector2 toVector)
 		{
-			return Angle2D.FromDegrees(fromVector.EFromToDegrees(toVector));
+			return fromVector.EFromToDegrees(toVector).AsDegrees();
 		}
 	//ENDOF EFromToAngle2D
 
