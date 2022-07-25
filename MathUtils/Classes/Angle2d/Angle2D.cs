@@ -36,12 +36,12 @@ namespace PHATASS.Utils.MathUtils
 	//ENDOF Constructor
 
 
-	//private properties
-		private readonly float _degrees;
+	//public properties
+		public float degrees { get { return this._degrees; }}
+		public float radians {	get { return this.degrees * Mathf.Deg2Rad; }}
 
-		private float degrees { get { return this._degrees; }}
-		private float radians {	get { return this.degrees * Mathf.Deg2Rad; }}
-	//ENDOF private properties
+		private readonly float _degrees;
+	//ENDOF public properties
 
 	//private fields
 	//private fields
