@@ -1,6 +1,6 @@
 namespace PHATASS.Utils.Types
 {
-	public static class IIAngle2DFactory
+	public static class IAngle2DFactory
 	{
 	// Factory static methods
 		public static IAngle2D FromDegrees (float degrees)
@@ -18,11 +18,11 @@ namespace PHATASS.Utils.Types
 		public static IAngle2D AsDegrees (this float degrees)
 		{ return Angle2D.FromDegrees(degrees); }
 		public static IAngle2D AsDegrees (this double degrees)
-		{ return Angle2D.FromDegrees(degrees); }
+		{ return Angle2D.FromDegrees((float) degrees); }
 
 		public static IAngle2D AsRadians (this float radians)
 		{ return Angle2D.FromRadians(radians); }
 		public static IAngle2D AsRadians (this double radians)
-		{ return Angle2D.FromRadians(radians); }
+		{ return Angle2D.FromRadians((float) radians); }
 	}
 }
