@@ -7,10 +7,13 @@ namespace PHATASS.Utils.Extensions
 	public static class Vector2Extensions
 	{
 	//Vector2 creation methods
-		//Creates a Vector2 of length 1 from given angle
-		public static Vector2 EAngleToVector2 (this float angle)
+		//Creates a Vector2 of length 1 representing given angle
+		public static Vector2 EAngle2DToVector2 (this Angle2D angle)
+		{ return angle.degrees.EDegreesToVector2(); }
+		//Creates a Vector2 of length 1 from given angle in degrees
+		public static Vector2 EDegreesToVector2 (this float degrees)
 		{
-			return new Vector2 (Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle));
+			return new Vector2 (Mathf.Cos(Mathf.Deg2Rad * degrees), Mathf.Sin(Mathf.Deg2Rad * degrees));
 		}
 	//ENDOF Vector2 creation methods
 
@@ -64,7 +67,7 @@ namespace PHATASS.Utils.Extensions
 	
 	//EFromToDegrees2D
 	// Returns the angular directiom from fromVector to toVector, in degrees
-		public static float EFromToDegrees2D (this Vector2 fromVector, Vector2 toVector)
+		public static float EFromToDegrees (this Vector2 fromVector, Vector2 toVector)
 		{
 			return Vector2.SignedAngle( //transform directional vector into a degrees value
 				from: Vector2.right,
@@ -77,35 +80,9 @@ namespace PHATASS.Utils.Extensions
 	// Returns the angular directiom from fromVector to toVector
 		public static Angle2D EFromToAngle2D (this Vector2 fromVector, Vector2 toVector)
 		{
-			return Angle2D.FromDegrees(fromVector.EFromToDegrees2D(toVector));
+			return Angle2D.FromDegrees(fromVector.EFromToDegrees(toVector));
 		}
 	//ENDOF EFromToAngle2D
-
-
-	//EDegreesToVector2
-	// Returns a normalized (length 1) Vector2 representing the direction given in degrees
-		public static Vector2 EDegreesToVector2 (this float degrees)
-		{ 
-			return new Vector2(
-				x: Mathf.Cos(degrees * Mathf.Deg2Rad),
-				y: Mathf.Sin(degrees * Mathf.Deg2Rad)
-			);
-
-			/*
-			Debug.Log("EDegreesToVector2(" + degrees + ") vector: " + vector + " length: " + vector.magnitude);
-			return vector;
-			//return new Vector2(Mathf.Cos(degrees * Mathf.Deg2Rad), Mathf.Sin(degrees * Mathf.Deg2Rad));
-			*/
-		}
-	//ENDOF EDegreesToVector2
-
-	//EAngle2DToVector2
-	// Returns a normalized (length 1) Vector2 representing the direction given in degrees
-		public static Vector2 EAngle2DToVector2 (this Angle2D angle)
-		{
-			return angle.degrees.EDegreesToVector2();
-		}
-	//ENDOF EAngle2DToVector2
 
 	//ESignedAngle
 	// Returns Vector2.SignedAngle(a, b) but accessible as an extension method
