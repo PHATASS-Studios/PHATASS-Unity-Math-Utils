@@ -7,8 +7,19 @@ namespace PHATASS.Utils.Types
 	public readonly struct Angle2D : IAngle2D
 	{
 	//IAngle2D Implementation
+		//value accessors
 		float IAngle2D.degrees { get { return this.degrees; }}
 		float IAngle2D.radians { get { return this.radians; }}
+
+		IAngle2D IAngle2D.Invert () { return this.Invert(); }
+
+		IAngle2D IAngle2D.Add (IAngle2D angle) { return this.Add(angle); }
+		IAngle2D IAngle2D.Subtract (IAngle2D angle) { return this.Subtract(angle); }
+
+		IAngle2D IAngle2D.Multiply (float multiplier) { return this.Multiply(multiplier); }
+		IAngle2D IAngle2D.Divide (float divisor) { return this.Divide(divisor); }
+
+		IAngle2D IAngle2D.Modulus (IAngle2D divisor) { return this.Modulus(divisor); }
 	//ENDOF IAngle2D
 
 	//Constructor
@@ -36,9 +47,9 @@ namespace PHATASS.Utils.Types
 	//ENDOF Constructor
 
 
-	//public properties
-		public float degrees { get { return this._degrees; }}
-		public float radians {	get { return this.degrees * Mathf.Deg2Rad; }}
+	//private properties
+		private float degrees { get { return this._degrees; }}
+		private float radians {	get { return this.degrees * Mathf.Deg2Rad; }}
 
 		private readonly float _degrees;
 	//ENDOF public properties
@@ -56,37 +67,29 @@ namespace PHATASS.Utils.Types
 
 			return clampedDegrees;
 		}
+
+		//Mathematical operations
+		private IAngle2D Invert ()
+		{ return Angle2D.FromDegrees(360 - this.degrees); }
+
+		private IAngle2D Add (IAngle2D other)
+		{ return Angle2D.FromDegrees(this.degrees + other.degrees); }
+
+		private IAngle2D Subtract (IAngle2D other)
+		{ return Angle2D.FromDegrees(this.degrees - other.degrees); }
+
+		private IAngle2D Multiply (float multiplier)
+		{ return Angle2D.FromDegrees(this.degrees * multiplier); }
+
+		private IAngle2D Divide (float divisor)
+		{ return Angle2D.FromDegrees(this.degrees / divisor); }
+			
+		private IAngle2D Modulus (IAngle2D divisor)
+		{ return Angle2D.FromDegrees(this.degrees % divisor.degrees); }
 	//ENDOF private methods
 
-	//Operator overrides
+	//System overrides
 		public override string ToString () { return $"{this.degrees}°"; }
-
-		// Negation operator
-		public static Angle2D operator - (Angle2D angle)
-		{ return Angle2D.FromDegrees(360 - angle.degrees); }
-
-		// Addition operator
-		public static Angle2D operator + (Angle2D a, Angle2D b)
-		{ return Angle2D.FromDegrees(a.degrees + b.degrees); }
-
-		// Subtraction operator
-		public static Angle2D operator - (Angle2D a, Angle2D b)
-		{ return Angle2D.FromDegrees(a.degrees - b.degrees); }
-
-		// Multiplication operator
-		public static Angle2D operator * (float a, Angle2D b)
-		{ return Angle2D.FromDegrees(a * b.degrees); }
-		public static Angle2D operator * (Angle2D a, float b)
-		{ return Angle2D.FromDegrees(a.degrees * b); }
-
-		// Division operator
-		public static Angle2D operator / (Angle2D a, float b)
-		{ return Angle2D.FromDegrees(a.degrees / b); }
-
-
-		// Modulus operator
-		public static Angle2D operator % (Angle2D a, Angle2D b)
-		{ return Angle2D.FromDegrees(a.degrees % b.degrees); }
-	//ENDOF Operators
+	//ENDOF System overrides
 	}
 }
