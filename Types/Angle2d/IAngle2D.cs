@@ -15,8 +15,8 @@ namespace PHATASS.Utils.Types
 		IAngle2D Subtract (IAngle2D angle);
 
 		IAngle2D Multiply (float multiplier);
-		IAngle2D Divide (float divider);
+		IAngle2D Divide (float divisor);
 
-		IAngle2D Modulus (IAngle2D divider);
+		IAngle2D Modulus (IAngle2D divisor);
 	}
 }
