@@ -20,6 +20,11 @@ namespace PHATASS.Utils.Types
 		IAngle2D IAngle2D.Divide (float divisor) { return this.Divide(divisor); }
 
 		IAngle2D IAngle2D.Modulus (IAngle2D divisor) { return this.Modulus(divisor); }
+
+		IAngle2D IAngle2D.ShortestDistance (IAngle2D other) { return this.ShortestDistance(other); }
+
+		IAngle2D IAngle2D.RotateTowardsByShortestDirection (IAngle2D destination, IAngle2D maxDelta)
+		{ return this.RotateTowardsByShortestDirection(destination, maxDelta); }
 	//ENDOF IAngle2D
 
 	//Constructor
@@ -86,6 +91,27 @@ namespace PHATASS.Utils.Types
 			
 		private IAngle2D Modulus (IAngle2D divisor)
 		{ return Angle2D.FromDegrees(this.degrees % divisor.degrees); }
+
+		private IAngle2D ShortestDistance (IAngle2D other)
+		{
+			IAngle2D difference = this.Subtract(other);
+			if (difference.degrees > 180) { difference = difference - Angle2D.FromDegrees(180); }
+			return difference;
+		}
+
+		//Other manipulation methods
+		private IAngle2D RotateTowardsByShortestDirection (IAngle2D destination, IAngle2D maxDelta)
+		{
+			IAngle2D difference = this.Subtract(destination);
+
+			float sign = 1f;
+			if (difference.degrees < 180){ sign = -1f; }
+
+			IAngle2D shortestDistance = this.ShortestDistance(destination);
+			if (maxDelta.degrees > shortestDistance.degrees) { maxDelta = shortestDistance; }
+
+			return this.Add(maxDelta * sign);
+		}
 	//ENDOF private methods
 
 	//System overrides
