@@ -19,7 +19,6 @@ namespace PHATASS.Utils.Types
 
 		IAngle2D Modulus (IAngle2D divisor);
 
-
 	//Other manipulation operations
 		IAngle2D ShortestDistance (IAngle2D other); //returns the shortest angular distance between both angles from either direction, always with positive sign
 
@@ -44,23 +43,6 @@ namespace PHATASS.Utils.Types
 
 		public static IAngle2D operator % (IAngle2D a, IAngle2D b)
 		{ return a.Modulus(b); }
-
-		// Comparison operators
-		public static bool operator == (IAngle2d a, IAngle2D b)
-		{ return a.degrees == b.degrees; }
-		public static bool operator != (IAngle2d a, IAngle2D b)
-		{ return a.degrees != b.degrees; }
-
-		public static bool operator < (IAngle2d a, IAngle2D b)
-		{ return a.degrees < b.degrees; }
-		public static bool operator <= (IAngle2d a, IAngle2D b)
-		{ return a.degrees <= b.degrees; }
-
-		public static bool operator > (IAngle2d a, IAngle2D b)
-		{ return a.degrees > b.degrees; }
-		public static bool operator >= (IAngle2d a, IAngle2D b)
-		{ return a.degrees >= b.degrees; }
-
 	//ENDOF Operator overrides
 	}
 }
