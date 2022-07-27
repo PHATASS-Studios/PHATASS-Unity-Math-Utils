@@ -4,11 +4,11 @@ namespace PHATASS.Utils.Types
 	// Degrees/radians must always be wrapped around the 0-360 degrees range
 	public interface IAngle2D
 	{
-	//value accessors
+	// Value accessors
 		float degrees { get; }
 		float radians { get; }
 
-	//Mathematical operations
+	// Mathematical operations
 		IAngle2D Invert ();	//inverts the sign of the angle
 
 		IAngle2D Add (IAngle2D angle);
@@ -20,31 +20,47 @@ namespace PHATASS.Utils.Types
 		IAngle2D Modulus (IAngle2D divisor);
 
 
+	//Other manipulation operations
+		IAngle2D ShortestDistance (IAngle2D other); //returns the shortest angular distance between both angles from either direction, always with positive sign
+
+		IAngle2D RotateTowardsByShortestDirection (IAngle2D destination, IAngle2D maxDelta); //rotates towards desired angle at a maximum step of maxDelta, in the direction (sign) that is shortest
 
 	// Operator overrides
-		// Negation operator
+		// Mathematical operations
 		public static IAngle2D operator - (IAngle2D angle)
 		{ return angle.Invert(); }
 
-		// Addition operator
 		public static IAngle2D operator + (IAngle2D a, IAngle2D b)
 		{ return a.Add(b); }
 
-		// Subtraction operator
 		public static IAngle2D operator - (IAngle2D a, IAngle2D b)
 		{ return a.Subtract(b); }
 
-		// Multiplication operator
 		public static IAngle2D operator * (IAngle2D a, float b)
 		{ return a.Multiply(b); }
 
-		// Division operator
 		public static IAngle2D operator / (IAngle2D a, float b)
 		{ return a.Divide(b); }
 
-		// Modulus operator
 		public static IAngle2D operator % (IAngle2D a, IAngle2D b)
 		{ return a.Modulus(b); }
+
+		// Comparison operators
+		public static bool operator == (IAngle2d a, IAngle2D b)
+		{ return a.degrees == b.degrees; }
+		public static bool operator != (IAngle2d a, IAngle2D b)
+		{ return a.degrees != b.degrees; }
+
+		public static bool operator < (IAngle2d a, IAngle2D b)
+		{ return a.degrees < b.degrees; }
+		public static bool operator <= (IAngle2d a, IAngle2D b)
+		{ return a.degrees <= b.degrees; }
+
+		public static bool operator > (IAngle2d a, IAngle2D b)
+		{ return a.degrees > b.degrees; }
+		public static bool operator >= (IAngle2d a, IAngle2D b)
+		{ return a.degrees >= b.degrees; }
+
 	//ENDOF Operator overrides
 	}
 }
