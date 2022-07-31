@@ -1,5 +1,7 @@
 using Mathf = UnityEngine.Mathf;
 
+using static PHATASS.Utils.Extensions.FloatExtensions;
+
 namespace PHATASS.Utils.Types
 {
 	// Represents an angle, both accessible as degrees or radians
@@ -7,7 +9,6 @@ namespace PHATASS.Utils.Types
 	public readonly struct Angle2D : IAngle2D
 	{
 	//IAngle2D Implementation
-		//value accessors
 		float IAngle2D.degrees { get { return this.degrees; }}
 		float IAngle2D.radians { get { return this.radians; }}
 
@@ -20,6 +21,8 @@ namespace PHATASS.Utils.Types
 		IAngle2D IAngle2D.Divide (float divisor) { return this.Divide(divisor); }
 
 		IAngle2D IAngle2D.Modulus (IAngle2D divisor) { return this.Modulus(divisor); }
+
+		IAngle2D IAngle2D.Lerp (IAngle2D destination, float step, bool clamped) { return this.Lerp(destination, step, clamped); }
 
 		IAngle2D IAngle2D.ShortestDistance (IAngle2D other) { return this.ShortestDistance(other); }
 
@@ -91,6 +94,16 @@ namespace PHATASS.Utils.Types
 			
 		private IAngle2D Modulus (IAngle2D divisor)
 		{ return Angle2D.FromDegrees(this.degrees % divisor.degrees); }
+
+		IAngle2D Lerp (IAngle2D destination, float step, bool clamped)
+		{
+			if (clamped) { step = step.EClamp(0f, 1f); }
+			IAngle2D change = this.ShortestDistance(destination) * step;
+			if ((this - destination).degrees < 180)
+			{ return this - change; }
+			else
+			{ return this + change; }
+		}
 
 		private IAngle2D ShortestDistance (IAngle2D other)
 		{
