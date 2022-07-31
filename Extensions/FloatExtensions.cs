@@ -34,6 +34,12 @@ namespace PHATASS.Utils.Extensions
 			return System.Math.Sign(number);
 		}
 
+		//clamps the number between minimum and maximum
+		public static float EClamp (this float number, float minimum, float maximum)
+		{
+			return Mathf.Clamp(number, minimum, maximum);
+		}
+
 	//comparison methods
 		//returns the SMALLEST from an enumerable of float values
 		//implementation provided by PHATASS.Utils.Types.IComparableExtensions

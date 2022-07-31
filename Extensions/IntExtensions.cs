@@ -28,5 +28,11 @@ namespace PHATASS.Utils.Extensions
 		{
 			return System.Math.Sign(number);
 		}
+
+		//clamps the number between minimum and maximum
+		public static int EClamp (this int number, int minimum, int maximum)
+		{
+			return UnityEngine.Mathf.Clamp(number, minimum, maximum);
+		}
 	}
 }
