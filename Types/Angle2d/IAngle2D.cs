@@ -20,7 +20,9 @@ namespace PHATASS.Utils.Types
 		IAngle2D Modulus (IAngle2D divisor);
 
 	//Other manipulation operations
-		IAngle2D Lerp (IAngle2D destination, float step);	//Lerps the angle from current to destination, by a proportion of the distance given by step (0.0f no movement - 1.0f destination)
+		//Lerps the angle from current to destination, by a proportion of the distance given by step (0.0f no movement - 1.0f destination)
+		//if clamped = false, step value won't be restricted between 0 and 1
+		IAngle2D Lerp (IAngle2D destination, float step, bool clamped = true);
 
 		IAngle2D ShortestDistance (IAngle2D other); //returns the shortest angular distance between both angles from either direction, always with positive sign
 
