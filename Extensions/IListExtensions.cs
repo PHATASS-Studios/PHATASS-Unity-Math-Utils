@@ -38,6 +38,8 @@ namespace PHATASS.Utils.Extensions
 		public static List<TOut> EMListCastToList <TIn, TOut> (this IList<TIn> list)
 			where TOut : class
 		{
+			//[TO-DO] this process could be made more memory-efficient by creating the new list
+				//from a casted enumerator instead of a pre-casted array
 			return new List<TOut>(list.EMListCastToArray<TIn, TOut>());
 		}
 	//ENDOF Casting methods
