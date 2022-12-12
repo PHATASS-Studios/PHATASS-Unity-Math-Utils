@@ -85,8 +85,15 @@ namespace PHATASS.Utils.ScreenUtils
 				renderTexture.Release();
 				UnityEngine.Object.Destroy(renderTexture);
 
+				//vertical position depends on platform
+				#if UNITY_WEBGL
+					int yPosition = y;
+				#else
+					int yPosition = texture2d.height - y;
+				#endif
+
 				//now we can fetch the color at desired position, and pass it to the callback
-				callback(texture2d.GetPixel(x, texture2d.height - y));
+				callback(texture2d.GetPixel(x, yPosition));
 				UnityEngine.Object.Destroy(texture2d);
 			}
 		}
