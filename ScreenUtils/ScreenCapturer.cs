@@ -42,7 +42,7 @@ namespace PHATASS.Utils.ScreenUtils
 				callback: CaptureScreenAsyncDoneCallback
 			);
 
-			Debug.Log("Started screen capture asynchronous process");
+			//Debug.Log("Started screen capture asynchronous process");
 
 			void CaptureScreenAsyncDoneCallback (AsyncGPUReadbackRequest request)
 			{
