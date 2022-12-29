@@ -5,7 +5,7 @@ namespace PHATASS.Utils.Types
 	//Class handling the (de)serialization of the identifier for a UnityEngine.Animator variable name
 	//this serializes the variable name as a string for editor purposes, then exposes the identifier as the more efficient hash
 	[System.Serializable]
-	public readonly struct SerializableAnimatorVariableIdentifier :
+	public struct SerializableAnimatorVariableIdentifier :
 		IAnimatorVariableIdentifier,
 		ISerializationCallbackReceiver
 	{
@@ -34,9 +34,10 @@ namespace PHATASS.Utils.Types
 		public SerializableAnimatorVariableIdentifier (string name)
 		{	
 			this.variableName = name;
+			this.variableID = 0;
 			this.Init(name);
 		}
-		private Init (string name)
+		private void Init (string name)
 		{ this.variableID = Animator.StringToHash(name); }
 	//ENDOF Constructor
 
