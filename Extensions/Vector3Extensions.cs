@@ -11,5 +11,12 @@ namespace PHATASS.Utils.Extensions
 			return new Vector3 (Mathf.Sin(Mathf.Deg2Rad * angle), Mathf.Cos(Mathf.Deg2Rad * angle), 0);
 		}
 	//ENDOF Vector3 creation methods
+
+	//Vector3 information methods
+		public static float EComponentSum (this Vector3 vector)
+		{
+			return vector.x + vector.y + vector.z;
+		}
+	//ENDOF Vector3 information methods
 	}
 }
