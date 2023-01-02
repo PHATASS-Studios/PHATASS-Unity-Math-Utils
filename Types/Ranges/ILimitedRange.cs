@@ -20,6 +20,9 @@ namespace PHATASS.Utils.Types.Ranges
 
 		//get a normalized value (0 to 1) from a numeric value within the range. value will be clamped within minimum and maximum unless clamped = false
 		float ToNormalized (TRangeType value, bool clamped = true);
+
+		//clamps a value between minimum and maximum, inclusive
+		TRangeType Clamp (TRangeType value);
 	}
 
 	//Mutable variation of ILimitedRange interface

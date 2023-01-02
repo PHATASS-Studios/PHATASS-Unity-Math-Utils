@@ -56,6 +56,9 @@ namespace PHATASS.Utils.Types.Ranges
 
 			return normal;
 		}
+
+		//clamps a value between minimum and maximum, inclusive
+		TRangeType ILimitedRange<TRangeType>.Clamp (TRangeType value) { return this.Clamp(value); }
 	//ENDOF ILimitedRange
 
 	/*
@@ -98,6 +101,9 @@ namespace PHATASS.Utils.Types.Ranges
 		//returns a normalized (0 to 1) from a value within the range
 		//needs not have any consideration for value clamping, this is handled by base class
 		protected abstract float ToNormal (TRangeType value);
+
+		//clamps a value between minimum and maximum, inclusive
+		protected abstract TRangeType Clamp (TRangeType value);
 	//ENDOF overridable methods
 	}
 }

@@ -29,6 +29,10 @@ namespace PHATASS.Utils.Types.Ranges
 		{
 			return (value - this.minimum) / this.difference;
 		}
+
+		//clamps a value between minimum and maximum, inclusive
+		protected override TFloat Clamp (TFloat value)
+		{ return UnityEngine.Mathf.Clamp(value: value, min: this.minimum, max: this.maximum);	}
 	//ENDOF method overrides
 	}
 }
