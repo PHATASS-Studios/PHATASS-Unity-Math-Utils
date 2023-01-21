@@ -71,32 +71,67 @@ namespace PHATASS.Utils.Extensions
 
 	//Joint creation methods
 		//Creates a joint from this transform to target transform/rigidbody, and applies sample settings
-		public static TJoint ECreateJointConnectingTo <TJoint> (this Transform transform, Transform target, TJoint sample)
+		public static TJoint ESetupJointConnectingTo <TJoint> (this Transform transform, Transform target, TJoint sample)
 			where TJoint: Joint
 		{
-			return transform.ECreateJointConnectingTo<TJoint>(target?.gameObject.GetComponent<Rigidbody>(), sample);
+			if (target == null) { return transform.ESetupJointConnectingTo(targetRigidbody: null, sample); }
+			Rigidbody rigidbody = target.GetComponent<Rigidbody>();
+
+			if (rigidbody != null)
+			{
+				return transform.ESetupJointConnectingTo<TJoint>(rigidbody, sample);
+			}
+			else
+			{
+				return transform.ESetupJointConnectingTo(target.GetComponent<ArticulationBody>(), sample);
+			}
 		}
-		public static TJoint ECreateJointConnectingTo <TJoint> (this Transform transform, Rigidbody targetRigidbody, TJoint sample)
+		public static TJoint ESetupJointConnectingTo <TJoint> (this Transform transform, Rigidbody targetRigidbody, TJoint sample)
 			where TJoint: Joint
 		{
 			//validate input data and abort if necessary
-			if (transform == null) { Debug.LogWarning("ECreateJointConnectingTo(): received null transform, can't create joint"); return null;}
-			if (transform == targetRigidbody.transform) { Debug.LogWarning("ECreateJointConnectingTo(): Can't create a joint between an object and itself."); return null; }
+			if (transform == null) { Debug.LogWarning("ESetupJointConnectingTo(): received null transform, can't create joint"); return null;}
+			if (transform == targetRigidbody.transform) { Debug.LogWarning("ESetupJointConnectingTo(): Can't create a joint between an object and itself."); return null; }
 
 			//first try to find a pre-existing joint of adequate type and connected target
 			TJoint joint = transform.EFindJointConnectingTo<TJoint>(targetRigidbody);
 
 			//if desired joint did not exist, create a new joint
 			if (joint == null)
-			{
-				joint = transform.ECreateComponent<TJoint>();
-			}
+			{ joint = transform.ECreateComponent<TJoint>(); }
 
-			//copy public properties from sample object, connect the joint to the target, and return it. Try to use the more efficient ConfigurableJoint concretion if opossible
+			//copy public properties from sample object. Try to use the more efficient ConfigurableJoint concretion if opossible
 			if (typeof(TJoint) == typeof(ConfigurableJoint)) { (joint as ConfigurableJoint).EApplySettings(sample as ConfigurableJoint); }
 			else { joint.EApplySettingsGeneric<TJoint>(sample); }
 
+			//Connect the joint to the target
 			joint.connectedBody = targetRigidbody;
+			joint.connectedArticulationBody = null;
+
+			return joint;
+		}
+		public static TJoint ESetupJointConnectingTo <TJoint> (this Transform transform, ArticulationBody targetArticulationBody, TJoint sample)
+			where TJoint: Joint
+		{
+			//validate input data and abort if necessary
+			if (transform == null) { Debug.LogWarning("ESetupJointConnectingTo(): received null transform, can't create joint"); return null;}
+			if (transform == targetArticulationBody.transform) { Debug.LogWarning("ESetupJointConnectingTo(): Can't create a joint between an object and itself."); return null; }
+
+			//first try to find a pre-existing joint of adequate type and connected target
+			TJoint joint = transform.EFindJointConnectingTo<TJoint>(targetArticulationBody);
+
+			//if desired joint did not exist, create a new joint
+			if (joint == null)
+			{ joint = transform.ECreateComponent<TJoint>(); }
+
+			//copy public properties from sample object. Try to use the more efficient ConfigurableJoint concretion if opossible
+			if (typeof(TJoint) == typeof(ConfigurableJoint)) { (joint as ConfigurableJoint).EApplySettings(sample as ConfigurableJoint); }
+			else { joint.EApplySettingsGeneric<TJoint>(sample); }
+
+			//Connect the joint to the target
+			joint.connectedArticulationBody = targetArticulationBody;
+			joint.connectedBody = null;
+
 			return joint;
 		}
 
@@ -107,10 +142,10 @@ namespace PHATASS.Utils.Extensions
 		{
 			if (transform1 == transform2) { return; }
 
-			transform1.ECreateJointConnectingTo<TJoint>(transform2, sample);
+			transform1.ESetupJointConnectingTo<TJoint>(transform2, sample);
 
 			//if connection is mutual create the opposite joint. if not, ensure there is no opposite joint
-			if (mutual) { transform2.ECreateJointConnectingTo<TJoint>(transform1, sample); }
+			if (mutual) { transform2.ESetupJointConnectingTo<TJoint>(transform1, sample); }
 			else { transform2.ERemoveJointConnectingTo<TJoint>(transform1); }
 		}
 	//ENDOF Joint creation methods
