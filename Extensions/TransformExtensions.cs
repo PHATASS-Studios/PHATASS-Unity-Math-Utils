@@ -52,7 +52,8 @@ namespace PHATASS.Utils.Extensions
 			where TComponent: Component
 		{
 			#if UNITY_EDITOR
-				return UnityEditor.ObjectFactory.AddComponent<TComponent>(transform.gameObject);
+				if (UnityEditor.EditorApplication.isPlaying) { return transform.gameObject.AddComponent<TComponent>(); }
+				else { return UnityEditor.ObjectFactory.AddComponent<TComponent>(transform.gameObject); }
 			#else
 				return transform.gameObject.AddComponent<TComponent>();
 			#endif
