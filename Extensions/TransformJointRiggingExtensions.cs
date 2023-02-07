@@ -70,7 +70,7 @@ namespace PHATASS.Utils.Extensions
 	//ENDOF Joint search methods
 
 	//Joint creation methods
-		//Creates a joint from this transform to target transform/rigidbody, and applies sample settings
+		//Finds or creates a joint from this transform to target transform/rigidbody, and applies sample settings
 		public static TJoint ESetupJointConnectingTo <TJoint> (this Transform transform, Transform target, TJoint sample)
 			where TJoint: Joint
 		{
