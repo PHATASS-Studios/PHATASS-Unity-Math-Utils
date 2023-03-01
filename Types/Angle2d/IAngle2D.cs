@@ -1,4 +1,4 @@
-namespace PHATASS.Utils.Types
+namespace PHATASS.Utils.Types.Angles
 {
 	// Exposes properties and ways to manage a single angle
 	// Degrees/radians must always be wrapped around the 0-360 degrees range

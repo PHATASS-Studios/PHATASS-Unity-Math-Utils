@@ -1,4 +1,4 @@
-namespace PHATASS.Utils.Types
+namespace PHATASS.Utils.Types.Angles
 {
 	public static class IAngle2DFactory
 	{

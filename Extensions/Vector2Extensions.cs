@@ -1,7 +1,7 @@
 using UnityEngine;
 
-using IAngle2D = PHATASS.Utils.Types.IAngle2D;
-using static PHATASS.Utils.Types.IAngle2DFactory;
+using IAngle2D = PHATASS.Utils.Types.Angles.IAngle2D;
+using static PHATASS.Utils.Types.Angles.IAngle2DFactory;
 
 namespace PHATASS.Utils.Extensions
 {

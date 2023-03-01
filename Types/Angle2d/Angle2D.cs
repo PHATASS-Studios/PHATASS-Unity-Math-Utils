@@ -2,7 +2,7 @@ using Mathf = UnityEngine.Mathf;
 
 using static PHATASS.Utils.Extensions.FloatExtensions;
 
-namespace PHATASS.Utils.Types
+namespace PHATASS.Utils.Types.Angles
 {
 	// Represents an angle, both accessible as degrees or radians
 	// value is automatically clamped to 0-360 degrees (0 - 2pi rads)
