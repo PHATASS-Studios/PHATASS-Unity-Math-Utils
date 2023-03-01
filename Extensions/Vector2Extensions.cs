@@ -81,7 +81,7 @@ namespace PHATASS.Utils.Extensions
 	// Returns the angular directiom from fromVector to toVector
 		public static IAngle2D EFromToAngle2D (this Vector2 fromVector, Vector2 toVector)
 		{
-			return fromVector.EFromToDegrees(toVector).AsDegrees();
+			return fromVector.EFromToDegrees(toVector).EDegreesToAngle2D();
 		}
 	//ENDOF EFromToAngle2D
 

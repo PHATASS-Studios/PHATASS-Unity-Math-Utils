@@ -15,14 +15,14 @@ namespace PHATASS.Utils.Types
 		}
 
 	// Extensions designed to transform floats into angle objects
-		public static IAngle2D AsDegrees (this float degrees)
+		public static IAngle2D EDegreesToAngle2D (this float degrees)
 		{ return Angle2D.FromDegrees(degrees); }
-		public static IAngle2D AsDegrees (this double degrees)
+		public static IAngle2D EDegreesToAngle2D (this double degrees)
 		{ return Angle2D.FromDegrees((float) degrees); }
 
-		public static IAngle2D AsRadians (this float radians)
+		public static IAngle2D ERadiansToAngle2D (this float radians)
 		{ return Angle2D.FromRadians(radians); }
-		public static IAngle2D AsRadians (this double radians)
+		public static IAngle2D ERadiansToAngle2D (this double radians)
 		{ return Angle2D.FromRadians((float) radians); }
 	}
 }
