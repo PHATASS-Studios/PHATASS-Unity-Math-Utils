@@ -89,12 +89,6 @@ namespace PHATASS.Utils.Types.Boundaries
 		private Vector2 center { get { return this.centerTransform.position; }}
 
 		private IAngle2D boundaryRotation { get { return this.transform.rotation.eulerAngles.z.EDegreesToAngle2D(); }}
-		/*
-		private float xUpperRadius { get { return this.xUpperRadiusReference.position.x - this.center.x; }}
-		private float xLowerRadius { get { return this.xLowerRadiusReference.position.x - this.center.x * -1; }}
-		private float yUpperRadius { get { return this.yUpperRadiusReference.position.y - this.center.y; }}
-		private float yLowerRadius { get { return this.yLowerRadiusReference.position.y - this.center.y * -1; }}
-		*/
 	//ENDOF private properties
 
 	//private methods
@@ -132,38 +126,6 @@ namespace PHATASS.Utils.Types.Boundaries
 				);
 		}
 
-/* old implementation
-		//calculates the position of the boundary at given angle from the center
-		private Vector2 BoundsPositionAtAngleFromCenter (IAngle2D angle)
-		{
-			float cosine = angle.ECosine();
-			float sine = angle.ESine();
-
-			float horizontalApex = (cosine >= 0)
-				?	this.xUpperRadius
-				:	this.xLowerRadius;
-
-			float verticalApex = (sine >= 0)
-				?	this.yUpperRadius
-				:	this.yLowerRadius;
-
-			//calculate the angular point in the curvature of each apex, then factor them by the sine/cosine of the angle
-			Vector2 horizontalFactor = new Vector2 (x: horizontalApex * cosine, y: horizontalApex * sine);
-			Vector2 verticalFactor = new Vector2 (x: verticalApex * cosine, y: verticalApex * sine);
-
-			return Averages.Vector2WeightedArithmeticAverage(new (Vector2 value, float weight)[2]{
-				(value: horizontalFactor, weight: cosine * cosine),
-				(value: verticalFactor, weight: sine * sine)								
-			});
-			//return (horizontalFactor * cosine.EAbs()) + (verticalFactor * sine.EAbs());
-		}
-
-		//returns the distance from center to the boundaries in target direction
-		private float RadiusAtAngleFromCenter (IAngle2D angle)
-		{
-			return this.BoundsPositionAtAngleFromCenter(angle).magnitude;
-		}
-//*/
 		//returns a point between the center (distance 0) and boundaries (distance 1). point is projected in angle direction from bounds center
 		//world space version - converts to local space and calls local space version
 		private Vector2 PointAtAngleFromCenterWorldSpace (float normalizedDistance, IAngle2D angle)
