@@ -1,16 +1,14 @@
 using System.Collections.Generic;
-using IEnumerable = System.Collections.IEnumerable;
-using IEnumerator = System.Collections.IEnumerator;
-using IDisposable = System.IDisposable;
 
 using UnityEngine;
 
+using static PHATASS.Utils.Types.Boundaries.Boundary2DEnumerators;
+
 using IAngle2D = PHATASS.Utils.Types.Angles.IAngle2D;
 using static PHATASS.Utils.Types.Angles.IAngle2DExtensions;
-using static PHATASS.Utils.Types.Angles.IAngle2DFactory;
+//using static PHATASS.Utils.Types.Angles.IAngle2DFactory;
 
 using static PHATASS.Utils.Extensions.Vector2Extensions;
-
 
 namespace PHATASS.Utils.Types.Boundaries
 {
@@ -70,7 +68,7 @@ namespace PHATASS.Utils.Types.Boundaries
 
 		//Iterates over points of the boundary. gives exactly totalPoints points, which are meant to be equidistant around the shape
 		IEnumerable<Vector2> IBoundary2D.EnumerateBoundaryPoints (ushort totalPoints)
-		{ return new OvoidBoundary2DBoundaryPointsEnumerable(this, totalPoints); }
+		{ return new Boundary2DPerimeterEnumerable(this, totalPoints); }
 	//ENDOF IBoundary2D
 
 	//MonoBehaviour
@@ -142,6 +140,8 @@ namespace PHATASS.Utils.Types.Boundaries
 		//returns the closest point to target that is in or on bounds
 		private Vector2 Clamp (Vector2 point)
 		{
+			return this.BoundsPositionAtAngleFromCenter(this.AngleFromCenterToPoint(point)); 
+			//
 			if (this.Contains(point)) //if the point is contained return it as is
 			{ return point; }
 			else //otherwise clamp the position to a point over the boundary
@@ -156,76 +156,5 @@ namespace PHATASS.Utils.Types.Boundaries
 		private float DistanceToCenter (Vector2 point)
 		{ return (point - this.center).magnitude; }
 	//ENDOF private methods
-
-	//Boundary points Enumerator<Vector2> 
-		private struct OvoidBoundary2DBoundaryPointsEnumerable : IEnumerable<Vector2>
-		{
-			private ushort totalPoints;
-			private OvoidBoundary2DBehaviour boundary;
-			public OvoidBoundary2DBoundaryPointsEnumerable (OvoidBoundary2DBehaviour boundary, ushort totalPoints)
-			{
-				this.boundary = boundary;
-				this.totalPoints = totalPoints;
-			}
-
-			IEnumerator<Vector2> IEnumerable<Vector2>.GetEnumerator()
-			{ return new OvoidBoundary2DBoundaryPointsEnumerator(this.boundary, this.totalPoints); }
-
-			IEnumerator IEnumerable.GetEnumerator()
-			{ return new OvoidBoundary2DBoundaryPointsEnumerator(this.boundary, this.totalPoints); }
-		}
-
-		private class OvoidBoundary2DBoundaryPointsEnumerator : IEnumerator<Vector2>
-		{
-		//Constructor
-			public OvoidBoundary2DBoundaryPointsEnumerator (OvoidBoundary2DBehaviour boundary, ushort totalPoints)
-			{
-				this.boundary = boundary;
-				this.totalPoints = totalPoints;
-				this.stepCount = -1;
-				this.stepAngle = (360f/totalPoints).EDegreesToAngle2D();
-			}
-		//ENDOF Constructor
-
-		//IEnumerator<Vector2>
-			Vector2 IEnumerator<Vector2>.Current { get { return this.current; }}
-			System.Object IEnumerator.Current { get { return this.current; }}
-
-			bool IEnumerator.MoveNext ()
-			{
-				this.stepCount++;
-				Debug.Log(this.currentAngle + "º > " + this.current);
-				return (this.stepCount < this.totalPoints);
-			}
-
-			void IEnumerator.Reset ()
-			{
-				this.stepCount = -1;
-			}
-
-			void IDisposable.Dispose () {}
-		//ENDOF IEnumerator<Vector2>
-
-		//privates
-			private ushort totalPoints;
-			private IBoundary2D boundary;
-
-			private int stepCount;
-			private IAngle2D stepAngle;
-
-			private IAngle2D currentAngle
-			{ get { return this.stepAngle * this.stepCount; }}
-			private Vector2 current
-			{
-				get
-				{
-					return this.boundary.PointAtAngleFromCenter(
-						normalizedDistance: 1f,
-						angle: this.currentAngle);
-				}
-			}
-		//ENDOF privates
-		}
-	//ENDOF Boundary Enumerator
 	}
 }
