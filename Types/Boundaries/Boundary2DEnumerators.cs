@@ -52,8 +52,9 @@ namespace PHATASS.Utils.Types.Boundaries
 			bool IEnumerator.MoveNext ()
 			{
 				this.stepCount++;
-				Debug.Log(this.currentAngle + "º > " + this.current);
-				return (this.stepCount < this.totalPoints);
+
+				//Debug.Log(this.currentAngle + "º > " + this.current);
+				return (this.stepCount <= this.totalPoints);
 			}
 
 			void IEnumerator.Reset ()
@@ -72,7 +73,7 @@ namespace PHATASS.Utils.Types.Boundaries
 			private IAngle2D stepAngle;
 
 			private IAngle2D currentAngle
-			{ get { return this.stepAngle * this.stepCount; }}
+			{ get { return this.boundary.rotation + (this.stepAngle * this.stepCount); }}
 			private Vector2 current
 			{
 				get

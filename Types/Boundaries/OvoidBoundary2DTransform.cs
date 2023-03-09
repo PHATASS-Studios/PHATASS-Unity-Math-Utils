@@ -28,6 +28,7 @@ namespace PHATASS.Utils.Types.Boundaries
 
 	//Overrides
 		protected override Vector2 publicCenter { get { return base.publicCenter + (Vector2) this.transform.position; }}
+		protected override IAngle2D publicRotation { get { return this.boundaryRotation; }}
 
 		protected override bool PublicContains (Vector2 point)
 		{ return base.PublicContains(this.WorldToLocal(point)); }
@@ -35,11 +36,11 @@ namespace PHATASS.Utils.Types.Boundaries
 		protected override Vector2 PublicClamp (Vector2 point)
 		{ return this.LocalToWorld(base.PublicClamp(this.WorldToLocal(point))); }
 
-		protected override Vector2 PublicPointAtAngleFromCenter (float normalizedDistance, IAngle2D angle)
-		{ return this.LocalToWorld(base.PublicPointAtAngleFromCenter(normalizedDistance, this.WorldToLocal(angle))); }
-
 		protected override float PublicPointToNormalizedDistanceFromCenter (Vector2 point)
 		{ return base.PublicPointToNormalizedDistanceFromCenter(this.WorldToLocal(point)); }
+
+		protected override Vector2 PublicPointAtAngleFromCenter (float normalizedDistance, IAngle2D angle)
+		{ return this.LocalToWorld(base.PublicPointAtAngleFromCenter(normalizedDistance, this.WorldToLocal(angle))); }
 
 		protected override float PublicRadiusAtAngleFromCenter (IAngle2D angle)
 		{ return base.PublicRadiusAtAngleFromCenter(this.WorldToLocal(angle)); }

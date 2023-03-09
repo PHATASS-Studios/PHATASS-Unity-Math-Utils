@@ -8,8 +8,8 @@ namespace PHATASS.Utils.Types.Boundaries
 {
 	public interface IBoundary2D
 	{
-		//position of the center of the boundaries
-		Vector2 center { get; }
+		Vector2 center { get; }	//position of the center of the boundaries
+		IAngle2D rotation { get; }	//boundary rotation
 
 		//returns true if point is in or on the boundaries defined
 		bool Contains (Vector2 point);

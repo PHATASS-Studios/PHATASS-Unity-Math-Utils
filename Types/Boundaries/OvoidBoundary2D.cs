@@ -45,6 +45,10 @@ namespace PHATASS.Utils.Types.Boundaries
 		Vector2 IBoundary2D.center { get { return this.publicCenter; }}
 		protected virtual Vector2 publicCenter { get { return this.center; }}
 
+		//rotation of the  boundaries
+		IAngle2D IBoundary2D.rotation { get { return this.publicRotation; }}
+		protected virtual IAngle2D publicRotation { get { return 0f.EDegreesToAngle2D(); }}
+
 		//returns true if point is in or on the boundaries defined
 		bool IBoundary2D.Contains (Vector2 point) { return this.PublicContains(point); }
 		protected virtual bool PublicContains (Vector2 point) { return this.Contains(point); }
