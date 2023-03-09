@@ -18,5 +18,20 @@ namespace PHATASS.Utils.Extensions
 			return vector.x + vector.y + vector.z;
 		}
 	//ENDOF Vector3 information methods
+
+	//EDistanceTo3D
+	// Returns the distance to another point in a 3 dimensions
+		public static float EDistanceTo3D (this Vector3 originVector, Vector3 destinationVector)
+		{ return (originVector - destinationVector).magnitude; }
+
+		//Type overloads
+		public static float EDistanceTo3D (this Vector3 originVector, Transform destinationTransform)
+		{ return originVector.EDistanceTo3D(destinationTransform.position); }
+		public static float EDistanceTo3D (this Transform originTransform, Vector3 destinationVector)
+		{ return originTransform.position.EDistanceTo3D(destinationVector); }
+		public static float EDistanceTo3D (this Transform originTransform, Transform destinationTransform)
+		{ return originTransform.position.EDistanceTo3D(destinationTransform.position); }
+	//ENDOF EDistanceTo3D
+
 	}
 }
