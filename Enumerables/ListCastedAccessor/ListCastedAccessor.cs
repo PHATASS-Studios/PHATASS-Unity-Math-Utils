@@ -25,7 +25,7 @@ namespace PHATASS.Utils.Enumerables
 		{ return this.GetEnumerator(); }
 
 		private IEnumerator<TOut> GetEnumerator()
-		{ return new ListCastedEnumerator<TIn, TOut>(this.list); }
+		{ return new TypeCastedEnumerator<TOut>(this.list.GetEnumerator()); }
 	//ENDOF IEnumerable<TOut>
 
 	//ICollection<TOut>
