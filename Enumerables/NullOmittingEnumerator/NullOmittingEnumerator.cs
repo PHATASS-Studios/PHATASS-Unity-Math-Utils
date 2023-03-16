@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using IEnumerator = System.Collections.IEnumerator;
 using IDisposable = System.IDisposable;
-using Object = System.Object;
+//using Object = System.Object;
 
 namespace PHATASS.Utils.Enumerables
 {
@@ -13,7 +13,7 @@ namespace PHATASS.Utils.Enumerables
 	//ENDOF IDisposable implementation		
 
 	//IEnumerator
-		object IEnumerator.Current { get { return this.TypelessCurrent; }}
+		System.Object IEnumerator.Current { get { return this.TypelessCurrent; }}
 		bool IEnumerator.MoveNext () { return this.MoveNext(); }
 		void IEnumerator.Reset () { this.enumerator.Reset(); }
 	//ENDOF IEnumerator
@@ -33,7 +33,7 @@ namespace PHATASS.Utils.Enumerables
 	//ENDOF private fields
 
 	//protected properties
-		protected virtual Object TypelessCurrent { get { return this.Current; }} 
+		protected virtual System.Object TypelessCurrent { get { return this.Current; }} 
 		protected virtual TOut Current { get { return this.enumerator.Current; }}
 	//ENDOF protected properties
 
