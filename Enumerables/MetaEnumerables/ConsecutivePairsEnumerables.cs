@@ -8,16 +8,24 @@ using Object = System.Object;
 
 namespace PHATASS.Utils.Enumerables
 {
+// Enumerables returning every pair of consecutive elements
+// For every input element returns a tuple containing that element and the next, in that order
+//	(TOut Item1, TOut Item2)
+//
+// Return enumerator contains input-1 outputs
+// If input enumerator has 1 or less elements returns a 0-length enumerator
+//
 	public static class ConsecutivePairsEnumerables
 	{
-		//Extension method returning a pair enumerator from origin enumerator
-		public static IEnumerable<(TOut,TOut)> EToConsecutivePairs <TOut> (this IEnumerable<TOut> enumerable)
+//extension methods
+		public static IEnumerable<(TOut, TOut)> EToConsecutivePairs <TOut> (this IEnumerable<TOut> enumerable)
 		{ return new ConsecutivePairsEnumerable<TOut>(enumerable); }
 
-	// This enumerator iterates over another subEnumerator returning every pair of consecutive elements
-		// For every input element returns a tuple containing that element and the next, in that order
-		//	(TOut Item1, TOut Item2)
-		// If input subEnumerator has less than 2 elements this returns nothing
+		public static IEnumerator<(TOut, TOut)> EToConsecutivePairs <TOut> (this IEnumerator<TOut> enumerator)
+		{ return new ConsecutivePairsEnumerator<TOut>(enumerator); }
+//ENDOF extension methods
+
+// Enumerators/Enumerables
 		private struct ConsecutivePairsEnumerator<TOut> : IEnumerator<(TOut, TOut)>
 		{
 		//IDisposable implementation
@@ -74,9 +82,7 @@ namespace PHATASS.Utils.Enumerables
 			}
 		//ENDOF private
 		}
-	//ENDOF Enumerator
 
-	// Enumerable
 		private struct ConsecutivePairsEnumerable <TOut> : IEnumerable<(TOut, TOut)>
 		{
 		//IEnumerator<(TOut, TOut)>
@@ -98,6 +104,6 @@ namespace PHATASS.Utils.Enumerables
 			private IEnumerator<TOut> enumerator;
 		//ENDOF fields
 		}
-	//ENDOF Enumerable
+//ENDOF Enumerators/Enumerables
 	}
 }
