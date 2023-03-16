@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace PHATASS.Utils.Enumerables
+namespace PHATASS.Utils.Types.Wrappers
 {
 	// variant implicitly linked to a list of UnityEngine.Objects
 	public class UnityObjectListCastedAccessor <TOut> :

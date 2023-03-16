@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 using Debug = UnityEngine.Debug;
 
-namespace PHATASS.Utils.Enumerables
+using PHATASS.Utils.Enumerables;
+
+namespace PHATASS.Utils.Types.Wrappers
 {
 	// This class links to any IList<TIn> and offers public access to it as an IList<TOut>
 	// miscasts between TIn and TOut are handled like so:
