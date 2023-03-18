@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 using Debug = UnityEngine.Debug;
 
-using PHATASS.Utils.Enumerables;
+
+using static PHATASS.Utils.Enumerables.TypeCastedEnumerables;
 
 namespace PHATASS.Utils.Types.Wrappers
 {
@@ -27,7 +28,7 @@ namespace PHATASS.Utils.Types.Wrappers
 		{ return this.GetEnumerator(); }
 
 		private IEnumerator<TOut> GetEnumerator()
-		{ return new TypeCastedEnumerator<TOut>(this.list.GetEnumerator()); }
+		{ return this.list.GetEnumerator().ETypeCast<TOut>(); }
 	//ENDOF IEnumerable<TOut>
 
 	//ICollection<TOut>
