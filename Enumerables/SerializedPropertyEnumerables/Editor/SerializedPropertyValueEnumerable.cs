@@ -42,21 +42,18 @@ namespace PHATASS.Utils.Extensions.Editor
 		//ENDOF IEnumerable<T>
 
 		//constructor
-			public SerializedPropertyValueEnumerable (SerializedProperty property)
+			public SerializedPropertyCastedValueEnumerable (SerializedProperty property)
 			{
 				this.property = property;
 			}
 		//ENDOF constructor
 
 		//private
-			private IEnumerator<T> GetEnumerator
+			private IEnumerator<T> GetEnumerator ()
 			{
-				get
-				{
-					return
-						new SerializedPropertyEnumeratorToValueEnumerator(this.property.GetEnumerator())
-						.EToCastedEnumerator<T>();
-				}
+				return
+					new SerializedPropertyEnumeratorToValueEnumerator(this.property.GetEnumerator())
+					.EToCastedEnumerator<T>();
 			}
 
 			private SerializedProperty property;

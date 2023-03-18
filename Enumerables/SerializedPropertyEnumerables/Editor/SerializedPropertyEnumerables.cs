@@ -5,8 +5,9 @@ using SerializedProperty = UnityEditor.SerializedProperty;
 
 namespace PHATASS.Utils.Extensions.Editor
 {
-	public static partial class SerializedPropertyExtensions
+	public static class SerializedPropertyEnumerables
 	{
+//extension methods
 	// Array/list conversion methods
 		// Transfers all elements from an array/list property to a new array/list
 		public static T[] EToValueArray<T> (this SerializedProperty property)
@@ -27,5 +28,7 @@ namespace PHATASS.Utils.Extensions.Editor
 
 		//public static
 	//ENDOF Enumerables
+//ENDOF extension methods
+
 	}
 }
