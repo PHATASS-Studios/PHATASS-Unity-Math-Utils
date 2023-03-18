@@ -12,10 +12,10 @@ namespace PHATASS.Utils.Enumerables
 	public static class TypeCastedEnumerables
 	{
 //extension methods
-		public static IEnumerator<TOut> EToCastedEnumerator <TOut> (this IEnumerator enumerator)
+		public static IEnumerator<TOut> ETypeCast <TOut> (this IEnumerator enumerator)
 		{ return new TypeCastedEnumerator<TOut>(enumerator); }
 
-		public static IEnumerable<TOut> EToCastedEnumerable <TOut> (this IEnumerable enumerable)
+		public static IEnumerable<TOut> ETypeCast <TOut> (this IEnumerable enumerable)
 		{ return new TypeCastedEnumerable<TOut>(enumerable); }
 //ENDOF extension methods	
 
@@ -51,17 +51,17 @@ namespace PHATASS.Utils.Enumerables
 		private struct TypeCastedEnumerable<TOut> : IEnumerable<TOut>
 		{
 			IEnumerator IEnumerable.GetEnumerator ()
-			{ return new TypeCastedEnumerator<TOut>((enumerable as IEnumerable).GetEnumerator()); }
+			{ return new TypeCastedEnumerator<TOut>(enumerable.GetEnumerator()); }
 
 			IEnumerator<TOut> IEnumerable<TOut>.GetEnumerator ()
 			{ return new TypeCastedEnumerator<TOut>(enumerable.GetEnumerator()); }
 
-			public TypeCastedEnumerable (IEnumerable<TOut> enumerable)
+			public TypeCastedEnumerable (IEnumerable enumerable)
 			{
 				this.enumerable = enumerable;
 			}
 
-			private IEnumerable<TOut> enumerable;
+			private IEnumerable enumerable;
 		}
 	}
 //ENDOF IEnumerables/IEnumerators
