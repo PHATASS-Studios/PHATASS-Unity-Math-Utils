@@ -36,7 +36,7 @@ namespace PHATASS.Utils.Types.Wrappers
 			EditorGUI.BeginProperty(position, label, property);
 			//Debug.Log("McArio");
 			//Debug.Log(position);
-			Debug.Log(property.type);
+			//Debug.Log(property.type);
 
 			SerializedProperty listProperty = property.FindPropertyRelative("_list");
 			
