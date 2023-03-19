@@ -23,7 +23,7 @@ namespace PHATASS.Utils.Editor.Enumerables
 
 	// Enumerables
 		public static IEnumerable EToValueEnumerable (this SerializedProperty property)
-		{ return new SerializedPropertyValueEnumerable(property); }
+		{ return new SerializedPropertyToValueEnumerable(property); }
 
 		public static IEnumerable<T> EToValueEnumerable<T> (this SerializedProperty property)
 		{ return property.EToValueEnumerable().ETypeCast<T>(); }
@@ -32,12 +32,12 @@ namespace PHATASS.Utils.Editor.Enumerables
 
 // IEnumerables/IEnumerators
 	// Enumerables
-		private struct SerializedPropertyValueEnumerable : IEnumerable
+		private struct SerializedPropertyToValueEnumerable : IEnumerable
 		{
 			IEnumerator IEnumerable.GetEnumerator ()
-			{ return new SerializedPropertyEnumeratorToValueEnumerator(this.property.GetEnumerator().ETypeCast<SerializedProperty>()); }
+			{ return new SerializedPropertyToValueEnumerator(this.property); }
 
-			public SerializedPropertyValueEnumerable (SerializedProperty property)
+			public SerializedPropertyToValueEnumerable (SerializedProperty property)
 			{ this.property = property;	}
 
 			private SerializedProperty property;
@@ -45,7 +45,7 @@ namespace PHATASS.Utils.Editor.Enumerables
 	//ENDOF Enumerables
 
 	// Enumerator
-		private struct SerializedPropertyEnumeratorToValueEnumerator : IEnumerator
+		private struct SerializedPropertyToValueEnumerator : IEnumerator
 		{
 		//IDisposable implementation
 		//	void IDisposable.Dispose () { this.propertyEnumerator.Dispose(); }
@@ -62,10 +62,9 @@ namespace PHATASS.Utils.Editor.Enumerables
 		//ENDOF IEnumerator<T>
 
 		//constructor
-			public SerializedPropertyEnumeratorToValueEnumerator (IEnumerator<SerializedProperty> propertyEnumerator)
+			public SerializedPropertyToValueEnumerator (SerializedProperty property)
 			{
-				this.propertyEnumerator = propertyEnumerator;
-				this.propertyEnumerator.Reset();
+				this.propertyEnumerator = property.GetEnumerator().ETypeCast<SerializedProperty>();
 			}
 		//ENDOF constructor
 
