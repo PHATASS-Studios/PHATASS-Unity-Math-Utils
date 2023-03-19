@@ -8,6 +8,9 @@ using static PHATASS.Utils.Enumerables.TypeCastedEnumerables;
 
 namespace PHATASS.Utils.Types.Wrappers
 {
+	//[TO-DO] hide this class as a private sub-class and expose only access extension methods
+	//MAYBE TOO remove where : class constraints, maybe make struct
+
 	// This class links to any IList<TIn> and offers public access to it as an IList<TOut>
 	// miscasts between TIn and TOut are handled like so:
 	//	> on read, objects not casting to TOut return null
