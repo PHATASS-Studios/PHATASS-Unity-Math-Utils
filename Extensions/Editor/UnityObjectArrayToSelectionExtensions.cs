@@ -13,5 +13,10 @@ namespace PHATASS.Utils.Extensions.Editor
 			objectList.CopyTo(objectArray, 0);
 			Selection.objects = objectArray;
 		}
+
+		public static void ESetObjectListAsSelected (this IList<UnityEngine.Transform> transformList)
+		{
+			((IList<UnityEngine.Object>) transformList).ESetObjectListAsSelected();
+		}
 	}
 }

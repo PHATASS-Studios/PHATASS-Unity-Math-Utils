@@ -3,6 +3,7 @@
 using UnityEditor;
 using UnityEngine;
 
+using static PHATASS.Utils.Editor.Enumerables.SerializedPropertyEnumerables;
 using static PHATASS.Utils.Extensions.Editor.UnityObjectArrayToSelectionExtensions;
 
 using VisualElement = UnityEngine.UIElements.VisualElement;
@@ -29,6 +30,7 @@ namespace PHATASS.Utils.Types.Wrappers
 		}
 		*/
 	//PropertyDrawer lifecycle
+		//[TO-DO] Move this to a base array editor extending class
 		public override void OnGUI (Rect position, SerializedProperty property, GUIContent label)
 		{
 			EditorGUI.BeginProperty(position, label, property);
@@ -51,10 +53,10 @@ namespace PHATASS.Utils.Types.Wrappers
 			//*
 			if (GUI.Button(position: ContainerToButtonRect(position), text: "Select transforms"))
 			{
-				//List list = new List<Transform>(listProperty);
+				IList<Transform> list = listProperty.EToValueList<Transform>();
 
-				//Debug.Log((list as IList<Transform>).Count);
-				//list.ESetObjectListAsSelected();
+				Debug.Log(list.Count);
+				list.ESetObjectListAsSelected();
 				Debug.Log("Press " + listProperty.type);
 			}
 			//*/
