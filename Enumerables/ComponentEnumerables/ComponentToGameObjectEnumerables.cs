@@ -3,23 +3,28 @@ using IEnumerator = System.Collections.IEnumerator;
 using IEnumerable = System.Collections.IEnumerable;
 using IDisposable = System.IDisposable;
 
-using Transform = UnityEngine.Transform;
+using static PHATASS.Utils.Enumerables.TypeCastedEnumerables;
+
+using Component = UnityEngine.Component;
 using GameObject = UnityEngine.GameObject;
 
 namespace PHATASS.Utils.Enumerables
 {
-	public static partial class TransformEnumerables
+	public static class ComponentToGameObjectEnumerables
 	{
-// TransformToGameObjectEnumerables
-//	Encapsulates an IEnumerator<Transform> as a IEnumerator<GameObject> returning each input transform's gameObject
+// ComponentToGameObjectEnumerables
+//	Encapsulates an IEnumerator<Component> as a IEnumerator<GameObject> returning each input Component's gameObject
 //
 //extension methods
-		public static IEnumerable<GameObject> EToGameObjects (this IEnumerable<Transform> enumerable)
-		{ return new TransformToGameObjectEnumerable(enumerable); }
+		public static IEnumerable<GameObject> EToGameObjects (this IEnumerable<Component> enumerable)
+		{ return new ComponentToGameObjectEnumerable(enumerable); }
+
+		public static IEnumerable<GameObject> EToGameObjects (this IEnumerable<UnityEngine.Transform> enumerable)
+		{ return enumerable.ETypeCast<Component>().EToGameObjects(); }
 //ENDOF extension methods	
 
 // IEnumerables/IEnumerators
-		private struct TransformToGameObjectEnumerator : IEnumerator<GameObject>
+		private struct ComponentToGameObjectEnumerator : IEnumerator<GameObject>
 		{
 		//IEnumerator
 			object IEnumerator.Current { get { return this.enumerator.Current; }}
@@ -36,29 +41,29 @@ namespace PHATASS.Utils.Enumerables
 		//ENDOF IDisposable
 
 		//Constructor
-			public TransformToGameObjectEnumerator (IEnumerator<Transform> enumerator)
+			public ComponentToGameObjectEnumerator (IEnumerator<Component> enumerator)
 			{ this.enumerator = enumerator; }
 		//ENDOF Constructor
 
 		//private
-			private IEnumerator<Transform> enumerator;
+			private IEnumerator<Component> enumerator;
 
 			private GameObject currentGameObject { get { return this.enumerator.Current?.gameObject; }}
 		//ENDOF private
 		}
 
-		private struct TransformToGameObjectEnumerable : IEnumerable<GameObject>
+		private struct ComponentToGameObjectEnumerable : IEnumerable<GameObject>
 		{
 			IEnumerator IEnumerable.GetEnumerator ()
-			{ return new TransformToGameObjectEnumerator(enumerable.GetEnumerator()); }
+			{ return new ComponentToGameObjectEnumerator(enumerable.GetEnumerator()); }
 
 			IEnumerator<GameObject> IEnumerable<GameObject>.GetEnumerator ()
-			{ return new TransformToGameObjectEnumerator(enumerable.GetEnumerator()); }
+			{ return new ComponentToGameObjectEnumerator(enumerable.GetEnumerator()); }
 
-			public TransformToGameObjectEnumerable (IEnumerable<Transform> enumerable)
+			public ComponentToGameObjectEnumerable (IEnumerable<Component> enumerable)
 			{ this.enumerable = enumerable; }
 
-			private IEnumerable<Transform> enumerable;
+			private IEnumerable<Component> enumerable;
 		}
 	}
 //ENDOF IEnumerables/IEnumerators
