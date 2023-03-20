@@ -2,6 +2,8 @@ using System.Collections.Generic;
 
 using Selection = UnityEditor.Selection;
 
+using Transform = UnityEngine.Transform;
+
 namespace PHATASS.Utils.Extensions.Editor
 {
 	public static class UnityObjectArrayToSelectionExtensions
@@ -14,9 +16,9 @@ namespace PHATASS.Utils.Extensions.Editor
 			Selection.objects = objectArray;
 		}
 
-		public static void ESetObjectListAsSelected (this IList<UnityEngine.Transform> transformList)
+		public static void ESetObjectListAsSelected (this IList<Transform> transformList)
 		{
-			((IList<UnityEngine.Object>) transformList).ESetObjectListAsSelected();
+			new PHATASS.Utils.Types.Wrappers.ListCastedAccessor<Transform, UnityEngine.Object>(transformList).ESetObjectListAsSelected();
 		}
 	}
 }
