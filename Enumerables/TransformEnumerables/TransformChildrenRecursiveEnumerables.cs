@@ -9,6 +9,7 @@ namespace PHATASS.Utils.Enumerables
 {
 	public static partial class TransformEnumerables
 	{
+// TransformChildrenRecursiveEnumerables
 // Enumerates every children and grandchildren of transform, recursively, depth-first
 //	If includeRootTransform = true, Transform root will be enumerated as the first element before every child
 //
