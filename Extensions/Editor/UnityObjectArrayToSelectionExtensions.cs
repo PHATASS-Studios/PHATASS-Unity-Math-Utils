@@ -1,24 +1,26 @@
 using System.Collections.Generic;
 
 using Selection = UnityEditor.Selection;
+using Component = UnityEngine.Component;
+using GameObject = UnityEngine.GameObject;
 
-using Transform = UnityEngine.Transform;
+using static PHATASS.Utils.Enumerables.ComponentToGameObjectEnumerables;
 
 namespace PHATASS.Utils.Extensions.Editor
 {
 	public static class UnityObjectArrayToSelectionExtensions
 	{
-	//	These methods take lists of unity objects and selects them in the editor
-		public static void ESetObjectListAsSelected (this IList<UnityEngine.Object> objectList)
+//	Takess an enumeration of unity objects and sets them as selected them in the editor
+		public static void ESetUnityObjectsAsSelected (this IEnumerable<UnityEngine.Object> objectEnumerable)
 		{
-			UnityEngine.Object[] objectArray = new UnityEngine.Object[objectList.Count];
-			objectList.CopyTo(objectArray, 0);
-			Selection.objects = objectArray;
+			Selection.objects = new List<UnityEngine.Object>(objectEnumerable).ToArray();
 		}
 
-		public static void ESetObjectListAsSelected (this IList<Transform> transformList)
-		{
-			new PHATASS.Utils.Types.Wrappers.ListCastedAccessor<Transform, UnityEngine.Object>(transformList).ESetObjectListAsSelected();
-		}
+// Selects the gameobjects received or the gameobjects containing given component list
+		public static void ESetGameObjectsAsSelected (this IEnumerable<Component> componentEnumerable)
+		{ componentEnumerable.EToGameObjects().ESetGameObjectsAsSelected(); }
+
+		public static void ESetGameObjectsAsSelected (this IEnumerable<GameObject> gameObjectEnumerable)
+		{ gameObjectEnumerable.ESetUnityObjectsAsSelected(); }
 	}
 }

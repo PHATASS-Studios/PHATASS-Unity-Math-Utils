@@ -56,7 +56,7 @@ namespace PHATASS.Utils.Types.Wrappers
 				IList<Transform> list = listProperty.EToValueList<Transform>();
 
 				Debug.Log(list.Count);
-				list.ESetObjectListAsSelected();
+				this.SetTransformListAsSelected(list);
 				Debug.Log("Press " + listProperty.type);
 			}
 			//*/
@@ -98,6 +98,11 @@ namespace PHATASS.Utils.Types.Wrappers
 				else { return property.arraySize + 3; }
 			}
 			else { return 2; }
+		}
+		
+		private void SetTransformListAsSelected (IList<Transform> transformList)
+		{
+			transformList.ESetGameObjectsAsSelected();
 		}
 	//ENDOF private
 	}
