@@ -15,7 +15,7 @@ namespace PHATASS.Utils.Enumerables
 //
 //extension methods
 		public static IEnumerable<GameObject> EToGameObjects (this IEnumerable<Transform> enumerable)
-		{ return new TransformToGameObjectEnumerable(enumerable)}
+		{ return new TransformToGameObjectEnumerable(enumerable); }
 //ENDOF extension methods	
 
 // IEnumerables/IEnumerators
@@ -27,9 +27,9 @@ namespace PHATASS.Utils.Enumerables
 			void IEnumerator.Reset () { this.enumerator.Reset(); }
 		//ENDOF IEnumerator
 
-		//IEnumerator<TOut>
-			TOut IEnumerator<TOut>.Current { get { return this.currentGameObject; }}
-		//ENDOF IEnumerator<TOut>
+		//IEnumerator<GameObject>
+			GameObject IEnumerator<GameObject>.Current { get { return this.currentGameObject; }}
+		//ENDOF IEnumerator<GameObject>
 
 		//IDisposable
 			void IDisposable.Dispose () { (this.enumerator as IDisposable)?.Dispose(); }
@@ -42,9 +42,8 @@ namespace PHATASS.Utils.Enumerables
 
 		//private
 			private IEnumerator<Transform> enumerator;
-			private bool skipMiscasts;
 
-			private GameObject currentGameObject { get { return this.enumerator.current?.gameObject; }}
+			private GameObject currentGameObject { get { return this.enumerator.Current?.gameObject; }}
 		//ENDOF private
 		}
 
