@@ -1,7 +1,8 @@
 namespace PHATASS.Utils.Types.Angles
 {
 	// Exposes properties and ways to manage a single angle
-	// Degrees/radians must always be wrapped around the 0-360 degrees range
+	// Degrees/radians returned must always be wrapped around the 0-360 degrees range
+	// Degrees/radians taken by constructor methods are not necessarily within 0-360º
 	public interface IAngle2D
 	{
 	// Value accessors
