@@ -1,6 +1,12 @@
 namespace PHATASS.Utils.Attributes
 {
-	//attribute defining a field as a type-restricted field (by base class or by interface)
+// Attribute defining a field as a type-restricted field (by base class or by interface)
+// It should be assigned to UnityEngine.Object fields.
+// When any object is assigned to it, the value is validated against typeRestriction type
+//	> if value is typeRestriction, value is valid
+//	> if value is a GameObject or Component, a picker appears offering to select any sibling component matching typeRestriction
+//	> otherwise, value is invalid
+
 	[System.AttributeUsage(
 		System.AttributeTargets.Field,
 		AllowMultiple = false,
