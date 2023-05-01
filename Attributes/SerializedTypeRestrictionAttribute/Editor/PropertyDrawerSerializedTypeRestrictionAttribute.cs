@@ -15,8 +15,8 @@ using GUIContent = UnityEngine.GUIContent;
 using Color = UnityEngine.Color;
 
 //PHATASS imports
-using static PHATASS.Utils.TypeExtensions;
-using static PHATASS.Utils.RectLayoutExtensions;
+using static PHATASS.Utils.Extensions.TypeExtensions;
+using static PHATASS.Utils.Extensions.RectLayoutExtensions;
 
 namespace PHATASS.Utils.Attributes
 {
@@ -87,7 +87,7 @@ namespace PHATASS.Utils.Attributes
 				if (this.GetPropertyStatus(property) == ERestrictedFieldState.ComponentPickerRequired)
 				{ rowCount = 2; }
 
-	 			return rect.EMGridSplitRect(
+	 			return rect.EGridSplitRect(
 	 				rows: ArrayFill<float>(-1f, rowCount),
 	 				rowMargin: EditorGUIUtility.standardVerticalSpacing
 	 			);
@@ -184,7 +184,7 @@ namespace PHATASS.Utils.Attributes
 
 		//returns SERIALIZED type (NOT type required)
 		private System.Type serializedType //fieldType
-		{ get { return this.fieldInfo.FieldType.EMGetSerializableCollectionElementType(returnSelfIfNotACollection: true); }}
+		{ get { return this.fieldInfo.FieldType.EGetSerializableCollectionElementType(returnSelfIfNotACollection: true); }}
 
 		//returns type that is required to fulfill
 		private System.Type typeRestriction
@@ -192,12 +192,12 @@ namespace PHATASS.Utils.Attributes
 
 		//determines if the field is a serializable collection of items
 		private bool fieldIsCollection
-		{ get { return this.fieldInfo.FieldType.EMIsSerializableCollection(); }}
+		{ get { return this.fieldInfo.FieldType.EIsSerializableCollection(); }}
 
 		//determines if field linked to the attribute is of a valid type
 		//it must either inher serializble
 		private bool fieldIsUnityObject
-		{ get { return this.serializedType.EMIsOrInherits(typeof(UnityEngine.Object)); }}
+		{ get { return this.serializedType.EIsOrInherits(typeof(UnityEngine.Object)); }}
 	//ENDOF private properties
 
 	//private enums
