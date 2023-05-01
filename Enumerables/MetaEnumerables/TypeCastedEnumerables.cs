@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Collections;
 
 using IDisposable = System.IDisposable;
-using System.Collections.Generic;
 
 namespace PHATASS.Utils.Enumerables
 {
