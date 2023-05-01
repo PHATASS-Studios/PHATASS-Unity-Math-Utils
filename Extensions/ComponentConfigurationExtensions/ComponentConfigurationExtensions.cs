@@ -19,11 +19,13 @@ namespace PHATASS.Utils.Extensions
 			BindingFlags.GetProperty |
 			BindingFlags.DeclaredOnly;
 
+		/*
 		private static readonly BindingFlags fieldBindingFlags =
 			BindingFlags.Instance |
 			BindingFlags.Public |
 			BindingFlags.NonPublic |
 			BindingFlags.DeclaredOnly;
+		//*/
 
 		private static readonly BindingFlags staticMethodBindingFlags =
 			BindingFlags.NonPublic |
