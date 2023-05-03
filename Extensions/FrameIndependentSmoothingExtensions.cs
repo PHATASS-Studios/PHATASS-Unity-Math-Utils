@@ -13,13 +13,13 @@ namespace PHATASS.Utils.Extensions
 		}
 
 	//smoothly lerps from value towards another, at a rate of rate per second, for a time of deltaTime. if deltaTime is not provided it will be acquired from current frame
-		public static float EFrameIndependentLerp (this float from, float to, float rate, float? deltaTime = null)
+		public static float EFrameIndependentLerp (this float from, float towards, float rate, float? deltaTime = null)
 		{
-			return to + ((from - to) * System.MathF.Pow(rate, ValidateDeltaTime(deltaTime)));
+			return towards + ((from - towards) * System.MathF.Pow(1 - rate, ValidateDeltaTime(deltaTime)));
 		}
-		public static double EFrameIndependentLerp (this double from, double to, float rate, float? deltaTime = null)
+		public static double EFrameIndependentLerp (this double from, double towards, float rate, float? deltaTime = null)
 		{
-			return to + ((from - to) * (double)System.MathF.Pow(rate, ValidateDeltaTime(deltaTime)));
+			return towards + ((from - towards) * (double)System.MathF.Pow(1 - rate, ValidateDeltaTime(deltaTime)));
 		}
 
 	//PRIVATE static
