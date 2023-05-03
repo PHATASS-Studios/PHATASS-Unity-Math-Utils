@@ -66,6 +66,15 @@ namespace PHATASS.Utils.Extensions
 			);
 			return (float) ((IEnumerable<IComparable<float>>) comparableArray).EMaximum();
 		}
+
+		//returns true if value is between a and b
+		public static bool EIsBetween (this float value, float a, float b)
+		{
+			if (a < b && a < value && value < b) { return true; }
+			if (a > b && a > value && value > b) { return true; }
+			return false;
+		}
+
 	//ENDOF comparison methods
 	}
 }
