@@ -5,10 +5,16 @@ namespace PHATASS.Utils.Extensions
 	//smoothly damps value by damping rate per second. Damps towards 0, and properly smooths by frame delta time
 		public static float EFrameIndependentDamp (this float value, float dampingRate, float? deltaTime = null)
 		{
-			return value * System.MathF.Pow((1 - dampingRate), ValidateDeltaTime(deltaTime));
+			//Debug.LogWarning("EFrameIndependentDamp float value: " + value + " dampingRate: " + dampingRate);
+			if (value == 0f) { return 0f; }
+			if (dampingRate >= 1f) { dampingRate = 1f; }
+			return value * System.MathF.Pow((1f - dampingRate), ValidateDeltaTime(deltaTime));
 		}
 		public static double EFrameIndependentDamp (this double value, float dampingRate, float? deltaTime = null)
 		{
+			//Debug.LogWarning("EFrameIndependentDamp double value: " + value + " dampingRate: " + dampingRate);
+			if (value == 0f) { return 0f; }
+			if (dampingRate >= 1f) { dampingRate = 1f; }
 			return value * (double) System.MathF.Pow((1 - dampingRate), ValidateDeltaTime(deltaTime));
 		}
 
