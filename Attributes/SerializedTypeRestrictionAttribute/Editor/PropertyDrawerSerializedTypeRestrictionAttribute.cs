@@ -293,7 +293,7 @@ namespace PHATASS.Utils.Attributes
 	  /*//METHOD UNUSED
 		//fetches a list of every component fitting TComponent that is a sibling of received unityObject
 		//if unityObject is a GameObject or Component, gets every sibling or child component
-		//if it is neither, returns a 1-length array containing received object
+		//if it is neither, returns a 1-length array containing received object, or empty array if unityObject is not a TComponent type
 		private TComponent[] FindSiblingsOfType <TComponent> (UnityEngine.Object unityObject)
 			where TComponent : UnityEngine.Object
 		{
