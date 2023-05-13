@@ -22,7 +22,7 @@ namespace PHATASS.Utils.Extensions
 			if (policy == RoundingPolicy.RoundToNearest_TiesToEven)
 			{ return System.MathF.Round(number, MidpointRounding.ToEven); }
 
-			if (policy == RoundingPolicy.RoundToNearest_TiesToInfinity);
+			if (policy == RoundingPolicy.RoundToNearest_TiesToInfinity)
 			{ return System.MathF.Round(number, MidpointRounding.AwayFromZero); }
 
 			throw new System.ComponentModel.InvalidEnumArgumentException("ERoundToInt() policy not a valid RoundingPolicy: " + policy);
@@ -39,7 +39,7 @@ namespace PHATASS.Utils.Extensions
 			if (policy == RoundingPolicy.RoundToNearest_TiesToEven)
 			{ return System.Math.Round(number, MidpointRounding.ToEven); }
 
-			if (policy == RoundingPolicy.RoundToNearest_TiesToInfinity);
+			if (policy == RoundingPolicy.RoundToNearest_TiesToInfinity)
 			{ return System.Math.Round(number, MidpointRounding.AwayFromZero); }
 
 			throw new System.ComponentModel.InvalidEnumArgumentException("ERoundToInt() policy not a valid RoundingPolicy: " + policy);
