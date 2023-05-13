@@ -12,8 +12,8 @@ namespace PHATASS.Utils.Types
 	//ENDOF Serialized fields
 
 	//IAccumulator<int>
-		void PHATASS.Utils.Types.IAccumulator<int>.Add (int addendum)
-		{ this.Add(addendum); }
+		void PHATASS.Utils.Events.ISimpleEventReceiver<int>.Event (int param0)
+		{ this.Add(param0); }
 	//ENDOF IAccumulator<int>
 
 	//IValue<int>
