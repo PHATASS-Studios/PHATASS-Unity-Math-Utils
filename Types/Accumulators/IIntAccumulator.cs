@@ -1,5 +1,7 @@
 namespace PHATASS.Utils.Types
 {
-	public interface IIntAccumulator : IAccumulator <int>
+	public interface IIntAccumulator :
+		IAccumulator <int>,
+		IIntValue
 	{}
 }
