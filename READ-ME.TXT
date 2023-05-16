@@ -1,6 +1,8 @@
 Set of C# utility classes, interfaces, and extension methods for UnityEngine
 Created and used by PHATASS Studios
 
+https://github.com/PHATASS-Studios/PHATASS-Unity-Utils
+
 Authored by Héctor Colás Valtueña, PHATASS Studios.
 
 Released under CC-BY-SA
