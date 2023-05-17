@@ -27,6 +27,8 @@ namespace PHATASS.Utils.Types.Angles
 
 		IAngle2D ShortestDistance (IAngle2D other); //returns the shortest angular distance between both angles from either direction, always with positive sign
 
+		int ShortestDirectionSign (IAngle2D other); //returns the sign of the shortest distance from this angle to other angle. Will always be 1 or -1
+
 		IAngle2D RotateTowardsByShortestDirection (IAngle2D destination, IAngle2D maxDelta); //rotates towards desired angle at a maximum step of maxDelta, in the direction (sign) that is shortest
 
 	// Operator overrides

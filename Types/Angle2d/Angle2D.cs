@@ -26,6 +26,8 @@ namespace PHATASS.Utils.Types.Angles
 
 		IAngle2D IAngle2D.ShortestDistance (IAngle2D other) { return this.ShortestDistance(other); }
 
+		int IAngle2D.ShortestDirectionSign (IAngle2D other) { return this.ShortestDirectionSign(other); }
+
 		IAngle2D IAngle2D.RotateTowardsByShortestDirection (IAngle2D destination, IAngle2D maxDelta)
 		{ return this.RotateTowardsByShortestDirection(destination, maxDelta); }
 	//ENDOF IAngle2D
@@ -110,6 +112,14 @@ namespace PHATASS.Utils.Types.Angles
 			IAngle2D difference = this.Subtract(other);
 			if (difference.degrees > 180) { difference = difference - Angle2D.FromDegrees(180); }
 			return difference;
+		}
+
+		 //returns the sign of the shortest distance from this angle to other angle. Will always be 1 or -1
+		private int ShortestDirectionSign (IAngle2D other)
+		{
+			IAngle2D difference = this.Subtract(other);
+			if (difference.degrees > 180) { return -1; }
+			return 1;
 		}
 
 		//Other manipulation methods
