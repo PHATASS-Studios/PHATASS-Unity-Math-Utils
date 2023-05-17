@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
+using IAngle2D = PHATASS.Utils.Types.Angles.IAngle2D;
+using static PHATASS.Utils.Types.Angles.IAngle2DFactory;
+
 namespace PHATASS.Utils.MathUtils
 {
 	public static class Averages
@@ -68,6 +71,21 @@ namespace PHATASS.Utils.MathUtils
 
 			if (entries <= 0) { return Vector3.zero; }
 			else { return totalValue / entries; }
+		}
+
+		public static IAngle2D Angle2DArithmeticAverage (IEnumerable<IAngle2D> valuesEnumerable)
+		{
+			float totalValue = 0f;
+			int entries = 0;
+
+			foreach (IAngle2D value in valuesEnumerable)
+			{
+				totalValue += value.degrees;
+				entries++;
+			}
+
+			if (entries <= 0) { return 0f.EDegreesToAngle2D(); }
+			else { return (totalValue / entries).EDegreesToAngle2D(); }
 		}
 	//ENDOF Arithmetic averages
 
