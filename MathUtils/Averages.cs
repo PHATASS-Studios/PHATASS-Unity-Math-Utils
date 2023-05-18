@@ -75,17 +75,21 @@ namespace PHATASS.Utils.MathUtils
 
 		public static IAngle2D Angle2DArithmeticAverage (IEnumerable<IAngle2D> valuesEnumerable)
 		{
-			float totalValue = 0f;
+			float totalX = 0f;
+			float totalY = 0f;
 			int entries = 0;
 
 			foreach (IAngle2D value in valuesEnumerable)
 			{
-				totalValue += value.degrees;
+				totalX = System.MathF.Cos(value.radians);
+				totalY = System.MathF.Sin(value.radians);
 				entries++;
 			}
 
 			if (entries <= 0) { return 0f.EDegreesToAngle2D(); }
-			else { return (totalValue / entries).EDegreesToAngle2D(); }
+			return (System.MathF.Atan2(totalY, totalX)).ERadiansToAngle2D();
+			//else { return (totalValue.EDegreesToAngle2D() / entries); }
+			//bad code is bad: else { return (totalValue / entries).EDegreesToAngle2D(); }
 		}
 	//ENDOF Arithmetic averages
 
