@@ -34,5 +34,9 @@ namespace PHATASS.Utils.Types.Ranges
 		protected override TInt Clamp (TInt value)
 		{ return UnityEngine.Mathf.Clamp(value: value, min: this.minimum, max: this.maximum);	}
 	//ENDOF method overrides
+
+	//operator overrides
+		public static implicit operator RandomIntRange(TInt value) { return new RandomIntRange(value, value); }
+	//ENDOF operator overrides
 	}
 }

@@ -32,7 +32,11 @@ namespace PHATASS.Utils.Types.Ranges
 
 		//clamps a value between minimum and maximum, inclusive
 		protected override TFloat Clamp (TFloat value)
-		{ return UnityEngine.Mathf.Clamp(value: value, min: this.minimum, max: this.maximum);	}
+		{ return UnityEngine.Mathf.Clamp(value: value, min: this.minimum, max: this.maximum); }
 	//ENDOF method overrides
+
+	//operator overrides
+		public static implicit operator RandomFloatRange(TFloat value) { return new RandomFloatRange(value, value); }
+	//ENDOF operator overrides
 	}
 }
