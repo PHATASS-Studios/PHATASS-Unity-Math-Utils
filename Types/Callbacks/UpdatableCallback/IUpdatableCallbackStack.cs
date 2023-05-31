@@ -1,4 +1,4 @@
-using PHATASS.Interfaces.Mergeables;
+using PHATASS.Utils.Types.Mergeables;
 
 namespace PHATASS.Utils.Callbacks
 {

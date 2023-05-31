@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using static PHATASS.Utils.Extensions.IListExtensions;
 
-using PHATASS.Interfaces.Mergeables;	//IMergeable<TMergeable>
+using PHATASS.Utils.Types.Mergeables;	//IMergeable<TMergeable>
 using PHATASS.Utils.Types.Priorizables;	//IPriorizable<TPriorizable>
 using static PHATASS.Utils.Types.Priorizables.PriorizableExtensions;
 
