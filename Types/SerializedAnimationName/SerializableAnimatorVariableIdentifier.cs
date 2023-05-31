@@ -16,6 +16,7 @@ namespace PHATASS.Utils.Types
 
 	//IAnimatorVariableIdentifier
 		int IAnimatorVariableIdentifier.variableID { get { return this.variableID; }}
+		string IAnimatorVariableIdentifier.variableName { get { return this.variableName; }}
 	//ENDOF IAnimatorVariableIdentifier
 
 	//ISerializationCallbackReceiver
@@ -24,11 +25,6 @@ namespace PHATASS.Utils.Types
 		//cache variable name's hash on deserialization
 		void ISerializationCallbackReceiver.OnAfterDeserialize () { this.Init(this.variableName); }
 	//ENDOF ISerializationCallbackReceiver
-
-	//Operators
-		public static implicit operator SerializableAnimatorVariableIdentifier(string name)
-		{ return new SerializableAnimatorVariableIdentifier(name: name); }
-	//ENDOF Operators
 
 	//Constructor 
 		public SerializableAnimatorVariableIdentifier (string name)
@@ -44,5 +40,14 @@ namespace PHATASS.Utils.Types
 	//private fields
 		private int variableID;
 	//ENDOF fields
+
+	//operator overrides
+		//conversion to int used to expose the cached hash value
+		public static implicit operator int (SerializableAnimatorVariableIdentifier identifierObject)
+		{ return identifierObject.variableID; }
+
+		public static implicit operator SerializableAnimatorVariableIdentifier (string name)
+		{ return new SerializableAnimatorVariableIdentifier(name: name); }
+	//ENDOF operator overrides
 	}
 }

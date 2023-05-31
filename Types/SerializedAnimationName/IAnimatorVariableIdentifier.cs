@@ -5,5 +5,6 @@ namespace PHATASS.Utils.Types
 	public interface IAnimatorVariableIdentifier
 	{
 		int variableID { get; }
+		string variableName { get; }
 	}
 }
