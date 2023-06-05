@@ -10,7 +10,7 @@ namespace PHATASS.Utils.Extensions.Editor
 {
 	public static class UnityObjectArrayToSelectionExtensions
 	{
-//	Takess an enumeration of unity objects and sets them as selected them in the editor
+//	Takes an enumeration of unity objects and sets them as selected in the editor
 		public static void ESetUnityObjectsAsSelected (this IEnumerable<UnityEngine.Object> objectEnumerable)
 		{
 			Selection.objects = new List<UnityEngine.Object>(objectEnumerable).ToArray();
