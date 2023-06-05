@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using PHATASS.Utils.Events;
 
-namespace PHATASS.Utils.Extensions
+namespace PHATASS.Utils.Events
 {
 	public static class IEventReceiverEnumerableExtensions
 	{
