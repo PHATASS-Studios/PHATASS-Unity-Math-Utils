@@ -6,13 +6,13 @@ using static PHATASS.Utils.Extensions.Vector2Extensions;
 
 namespace PHATASS.Utils.Types.Angles
 {
-	//provides simple extensions to work with angles and operations with angles
+//	Provides simple extensions to work with angles and operations with angles
+//
+//	Conversions
 	public static partial class IAngle2DExtensions
 	{
-	//Conversion functions
-		//Creates a Vector2 of length 1 representing given angle
+	//Creates a Vector2 of length 1 representing given angle
 		public static Vector2 EAngle2DToVector2 (this IAngle2D angle)
 		{ return angle.degrees.EDegreesToVector2(); }
-	//ENDOF Conversion functions
 	}
 }

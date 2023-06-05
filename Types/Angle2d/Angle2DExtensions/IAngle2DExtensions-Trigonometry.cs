@@ -5,25 +5,25 @@ using static PHATASS.Utils.Types.Angles.IAngle2DFactory;
 
 namespace PHATASS.Utils.Types.Angles
 {
-	//provides simple extensions to work with angles and operations with angles
+//	Provides simple extensions to work with angles and operations with angles
+//
+//	Trigonometric functions
 	public static partial class IAngle2DExtensions
 	{
-	//Trigonometric functions
-		//Cosine
+	//Cosine
 		public static float ECosine (this IAngle2D angle) { return MathF.Cos(angle.radians); }
 		public static double ECosineDouble (this IAngle2D angle) { return Math.Cos(angle.radians); }
 
-		//Sine
+	//Sine
 		public static float ESine (this IAngle2D angle) { return MathF.Sin(angle.radians); }
 		public static double ESineDouble (this IAngle2D angle) { return Math.Sin(angle.radians); }
 
-		//ArcCosine
+	//ArcCosine
 		public static IAngle2D EArcCosine (this float cosine) { return MathF.Acos(cosine).ERadiansToAngle2D(); }
 		public static IAngle2D EArcCosine (this double cosine) { return Math.Acos(cosine).ERadiansToAngle2D(); }
 
-		//ArcSine
+	//ArcSine
 		public static IAngle2D EArcSine (this float cosine) { return MathF.Asin(cosine).ERadiansToAngle2D(); }
 		public static IAngle2D EArcSine (this double cosine) { return Math.Asin(cosine).ERadiansToAngle2D(); }
-	//ENDOF Trigonometric functions
 	}
 }
