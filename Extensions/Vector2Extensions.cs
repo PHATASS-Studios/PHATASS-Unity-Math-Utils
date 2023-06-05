@@ -8,9 +8,6 @@ namespace PHATASS.Utils.Extensions
 	public static class Vector2Extensions
 	{
 	//Vector2 creation methods
-		//Creates a Vector2 of length 1 representing given angle
-		public static Vector2 EAngle2DToVector2 (this IAngle2D angle)
-		{ return angle.degrees.EDegreesToVector2(); }
 		//Creates a Vector2 of length 1 from given angle in degrees
 		public static Vector2 EDegreesToVector2 (this float degrees)
 		{
