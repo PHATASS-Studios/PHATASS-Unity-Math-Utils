@@ -6,7 +6,7 @@ using static PHATASS.Utils.Types.Angles.IAngle2DFactory;
 namespace PHATASS.Utils.Types.Angles
 {
 	//provides simple extensions to work with angles and operations with angles
-	public static class IAngle2DExtensions
+	public static partial class IAngle2DExtensions
 	{
 	//Trigonometric functions
 		//Cosine
