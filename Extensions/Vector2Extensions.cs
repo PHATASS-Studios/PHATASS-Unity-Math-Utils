@@ -87,5 +87,13 @@ namespace PHATASS.Utils.Extensions
 		public static float ESignedAngle (this Vector2 fromVector, Vector2 toVector)
 		{ return Vector2.SignedAngle(fromVector, toVector); }
 	//ENDOF ESignedAngle
+
+	//Vector2 maximum/minimum dimensions
+	// Returns the largest or smallest of the X/Y dimensions of given vector
+		public static float EMaximumDimension (this Vector2 vector)
+		{ return System.MathF.Max(vector.x, vector.y); }
+		public static float EMinimumDimension (this Vector2 vector)
+		{ return System.MathF.Min(vector.x, vector.y); }
+	//ENDOF Vector2 maximum/minimum dimensions
 	}
 }
