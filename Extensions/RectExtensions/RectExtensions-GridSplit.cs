@@ -4,16 +4,20 @@ using Debug = UnityEngine.Debug;
 
 namespace PHATASS.Utils.Extensions
 {
-	//extension methods for UnityEngine.Rect
-	public static class RectLayoutExtensions
+//Extension methods for UnityEngine.Rect
+//	Grid splitting method
+	public static partial class RectExtensions
 	{
-	//public static space
-		//splits a Rect into a grid. returns an array of rows, each entry being an array of columns
-			//returns Rect[row,column]
-			//takes two float arrays defining each column's width and each row's height
-			//will contain as many columns and rows as values contained in columns and rows arrays
-			//sizes of negative value will automatically split proportionally to their negative value
-		public static Rect[,] EGridSplitRect (
+//public static space
+	//splits a Rect into a grid. returns an array of rows, each entry being an array of columns
+		//returns Rect[row,column]
+		//takes two float arrays defining each column's width and each row's height
+		//will contain as many columns and rows as values contained in columns and rows arrays
+		//
+		//positive column/row size requirements will be allocated as requested, even if it exceeds initial rect
+		//negative column/row sizes will automatically split proportionally to their negative value
+		//warning: behaviour is undefined if positive (fixed) sizes exceed initial rect while including negative (auto) size requirements in the list
+	public static Rect[,] EGridSplitRect (
 			this Rect self,
 			float[] columns = null,
 			float[] rows = null,
@@ -57,12 +61,12 @@ namespace PHATASS.Utils.Extensions
 			//return results
 			return returnGrid;
 		}
-	//ENDOF public static space
+//ENDOF public static space
 
-	//private static space
-		//returns an array of floats according to splitRequirements
-			//splitRequirements >= 0 will equal received value
-			//splitRequirements < 0 will proportionally split free space
+//private static space
+	//returns an array of floats according to splitRequirements
+		//splitRequirements >= 0 will equal received value
+		//splitRequirements < 0 will proportionally split free space
 		private static float[] SplitSizes (float baseSize, float[] splitRequirements, float margin)
 		{
 			float requiredSizeSum = GetSumPredefinedRequirements(splitRequirements, margin);
@@ -123,6 +127,6 @@ namespace PHATASS.Utils.Extensions
 
 			return sum;
 		}
-	//ENDOF private static space
+//ENDOF private static space
 	}
 }
