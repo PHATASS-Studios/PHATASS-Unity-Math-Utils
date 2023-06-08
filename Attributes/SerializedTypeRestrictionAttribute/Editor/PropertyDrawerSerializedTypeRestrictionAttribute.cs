@@ -16,7 +16,7 @@ using Color = UnityEngine.Color;
 
 //PHATASS imports
 using static PHATASS.Utils.Extensions.TypeExtensions;
-using static PHATASS.Utils.Extensions.RectLayoutExtensions;
+using static PHATASS.Utils.Extensions.RectExtensions;
 
 namespace PHATASS.Utils.Attributes
 {
