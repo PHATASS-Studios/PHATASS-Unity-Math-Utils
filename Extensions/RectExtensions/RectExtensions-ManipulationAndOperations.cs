@@ -28,5 +28,20 @@ namespace PHATASS.Utils.Extensions
 		}
 	//ENDOF Rect interpolation
 
+
+	//Rect scaling
+		//Scales a rect. Pivot is the point of the rectangle that will remain stationary, in local space, while the rest grows/shrinks.
+		public static Rect EScale (this Rect rect, float scale, Vector2 pivot = default (Vector2))
+		{
+			Vector2 offset = (rect.size * (scale - 1f)) * pivot;
+			return new Rect(
+				x: rect.x - offset.x,
+				y: rect.y - offset.y,
+				width: rect.width * scale,
+				height:	rect.height * scale
+			);
+
+		}		
+	//ENDOF Rect scaling
 	}
 }
