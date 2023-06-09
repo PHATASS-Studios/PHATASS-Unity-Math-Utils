@@ -2,6 +2,8 @@
 
 using static PHATASS.Utils.Extensions.IComparableExtensions;
 
+using static PHATASS.Utils.Extensions.Vector2Extensions;
+
 namespace PHATASS.Utils.Extensions
 {
 	//methods for Rect manipulation
@@ -27,7 +29,6 @@ namespace PHATASS.Utils.Extensions
 			);
 		}
 	//ENDOF Rect interpolation
-
 
 	//Rect scaling
 		//Scales a rect. Pivot is the point of the rectangle that will remain stationary, in local space, while the rest grows/shrinks.
@@ -58,5 +59,15 @@ namespace PHATASS.Utils.Extensions
 			return self.EScale(boundsToSelfScale.EMinimumDimension());	//scale initial rect by the largest dimension of the bounds-by-size ratio to fit outside desired rect
 		}
 	//ENDOF Rect scaling
+
+	//Rect point calculation
+		//returns the absolute position of a normalized point within rect, as an extension method
+		public static Vector2 ENormalizedToVector2 (this Rect self, Vector2 normalizedPoint)
+		{ return Rect.NormalizedToPoint(rectangle: self, normalizedRectCoordinates: normalizedPoint); }
+
+		//returns the absolute position of a normalized point within rect, as an extension method, as a Vector3 with the assigned default Z position
+		public static Vector3 ENormalizedToVector3 (this Rect self, Vector2 normalizedPoint, float zPosition = 0f)
+		{ return self.ENormalizedToVector2(normalizedPoint).EToVector3(zPosition); }
+	//ENDOF Rect point calculation
 	}
 }
