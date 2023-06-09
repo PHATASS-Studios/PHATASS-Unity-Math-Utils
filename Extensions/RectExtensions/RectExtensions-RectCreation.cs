@@ -9,7 +9,7 @@ namespace PHATASS.Utils.Extensions
 	{
 	//Rect creation methods
 		//Creates a Rect with desired aspect ratio. unless set, height is 1f and position is Vector2(0,0)
-		public static Rect ERectFromAspectRatio (float aspect, float height = 1f, Vector2 position = default(Vector2))
+		public static Rect ERectFromAspectRatio (this float aspect, float height = 1f, Vector2 position = default(Vector2))
 		{
 			return new Rect(
 				x: position.x,

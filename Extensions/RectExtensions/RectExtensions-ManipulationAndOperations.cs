@@ -40,7 +40,6 @@ namespace PHATASS.Utils.Extensions
 				width: rect.width * scale,
 				height:	rect.height * scale
 			);
-
 		}		
 
 		//Scales a rect to make it snugly fit OUTSIDE given rect
@@ -55,7 +54,7 @@ namespace PHATASS.Utils.Extensions
 		//Scaling respects rect aspect ratio and position. At least one dimension will be equal to outerBound's, with the other dimension scaled to fit at or inside outerBound 
 		public static Rect EScaleToFitInside (this Rect self, Rect outerBound)
 		{
-			Vector2 boundsToSelfScale = innerBound.size / self.size;	//calculate the bounds-by-size ratio to get necessary scale
+			Vector2 boundsToSelfScale = outerBound.size / self.size;	//calculate the bounds-by-size ratio to get necessary scale
 			return self.EScale(boundsToSelfScale.EMinimumDimension());	//scale initial rect by the largest dimension of the bounds-by-size ratio to fit outside desired rect
 		}
 	//ENDOF Rect scaling
