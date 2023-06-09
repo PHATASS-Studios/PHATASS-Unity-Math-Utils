@@ -95,5 +95,17 @@ namespace PHATASS.Utils.Extensions
 		public static float EMinimumDimension (this Vector2 vector)
 		{ return System.MathF.Min(vector.x, vector.y); }
 	//ENDOF Vector2 maximum/minimum dimensions
+
+	//Vector2 conversion methods
+		//returns a Vector3 with the same x/y as given Vector2, with desired Z position
+		public static Vector3 EToVector3 (this Vector2 vector2, float zPosition = 0f)
+		{
+			return new Vector3(
+				x: vector2.x,
+				y: vector2.y,
+				z: zPosition
+			);
+		}
+	//ENDOF Vector2 conversion methods
 	}
 }
