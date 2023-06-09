@@ -29,7 +29,7 @@ namespace PHATASS.Utils.Extensions
 
 		//ensures innerRect bounds stay within outerRect by moving innerRect if protruding.
 		//if innerRect dimensions exceed outerRect, they will be centered
-		public static Rect ECenterWithinRect (this Rect innerRect, Rect outerRect)
+		public static Rect EMoveToFitWithinRect (this Rect innerRect, Rect outerRect)
 		{
 			return new Rect (
 				x: (innerRect.width <= outerRect.width)
@@ -72,7 +72,7 @@ namespace PHATASS.Utils.Extensions
 		//fits a rect within another, trimming its size 
 		public static Rect ETrimAndCenterRectWithinRect (this Rect innerRect, Rect outerRect)
 		{
-			return RectExtensions.ECenterWithinRect(
+			return RectExtensions.EMoveToFitWithinRect(
 				innerRect: innerRect.ETrimRectSizeToRect(outerRect),
 				outerRect: outerRect
 			);
