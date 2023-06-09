@@ -55,6 +55,13 @@ namespace PHATASS.Utils.Extensions
 			);
 		}
 
+		//moves self rect to make its center the same as referenceRect
+		public static Rect EMakeConcentric (this Rect self, Rect referenceRect)
+		{
+			self.center = referenceRect.center;
+			return self;
+		}
+
 		//truncates innerRect dimensions to fit outerRect. may return the same rect if already small enough.
 		//only alters size, returned rect's position will be the same as innerRect's
 		public static Rect ETrimRectSizeToRect (this Rect innerRect, Rect outerRect)
