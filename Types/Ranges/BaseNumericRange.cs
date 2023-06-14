@@ -59,6 +59,11 @@ namespace PHATASS.Utils.Types.Ranges
 
 		//clamps a value between minimum and maximum, inclusive
 		TRangeType ILimitedRange<TRangeType>.Clamp (TRangeType value) { return this.Clamp(value); }
+
+		// Returns the distance between given value and the closest point of the range.
+		//	If given value falls inside the range, returned value is 0.
+		//	If keepSign = true, return sign is negative for values below minimum. Otherwise Sign is always positive.
+		TRangeType ILimitedRange<TRangeType>.DistanceFromRange (TRangeType value, bool keepSign) { return this.DistanceFromRange(value, keepSign); }
 	//ENDOF ILimitedRange
 
 	/*
@@ -104,6 +109,11 @@ namespace PHATASS.Utils.Types.Ranges
 
 		//clamps a value between minimum and maximum, inclusive
 		protected abstract TRangeType Clamp (TRangeType value);
+
+		// Returns the distance between given value and the closest point of the range.
+		//	If given value falls inside the range, returned value is 0.
+		//	If keepSign = true, return sign is negative for values below minimum. Otherwise Sign is always positive.
+		protected abstract TRangeType DistanceFromRange (TRangeType value, bool keepSign);
 	//ENDOF overridable methods
 	}
 }
