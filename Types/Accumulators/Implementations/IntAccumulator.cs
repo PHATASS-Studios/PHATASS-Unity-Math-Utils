@@ -17,7 +17,7 @@ namespace PHATASS.Utils.Types
 	//ENDOF IAccumulator<int>
 
 	//IValue<int>
-		int PHATASS.Utils.Types.IValue<int>.value { get { return this.value; }}
+		int PHATASS.Utils.Types.Values.IValue<int>.value { get { return this.value; }}
 	//ENDOF IValue<int>
 
 	//IResettable

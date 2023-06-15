@@ -18,7 +18,7 @@ namespace PHATASS.Utils.Types.Ranges
 
 	//IValue<TRangeType>
 		//value currently represented by this range
-		TRangeType IValue<TRangeType>.value { get { return this.GetValue(); }}
+		TRangeType PHATASS.Utils.Types.Values.IValue<TRangeType>.value { get { return this.GetValue(); }}
 	//ENDOF IValue<TRangeType>
 
 	//IConstraint<TRangeType>

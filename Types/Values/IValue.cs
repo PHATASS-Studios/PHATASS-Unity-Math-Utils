@@ -1,4 +1,4 @@
-namespace PHATASS.Utils.Types
+namespace PHATASS.Utils.Types.Values
 {
 	public interface IValue <TValueType>
 	{

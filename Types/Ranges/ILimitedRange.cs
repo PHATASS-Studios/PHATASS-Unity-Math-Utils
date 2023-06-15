@@ -3,7 +3,7 @@ namespace PHATASS.Utils.Types.Ranges
 	//Interface defining a limited range of values of any abstract type
 	//has a minimum, maximum, and interpolated values
 	public interface ILimitedRange <TRangeType> :
-		PHATASS.Utils.Types.IValue <TRangeType>,
+		PHATASS.Utils.Types.Values.IValue <TRangeType>,
 		PHATASS.Utils.Types.Constraints.IConstraint<TRangeType>
 
 	{
@@ -37,7 +37,7 @@ namespace PHATASS.Utils.Types.Ranges
 	//Mutable variation of ILimitedRange interface
 	public interface ILimitedRangeMutable <TRangeType> :
 		ILimitedRange <TRangeType>,
-		PHATASS.Utils.Types.IValueMutable <TRangeType>
+		PHATASS.Utils.Types.Values.IValueMutable <TRangeType>
 	{
 		//setters for min and max values of the range
 		new TRangeType minimum { set; }
