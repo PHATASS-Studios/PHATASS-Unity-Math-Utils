@@ -16,10 +16,13 @@ namespace PHATASS.Utils.Types.Ranges
 		protected TRangeType maximum;
 	//ENDOF serialized fields
 
+/* deprecated implementation of method no longer implemented
 	//IValue<TRangeType>
 		//value currently represented by this range
 		TRangeType PHATASS.Utils.Types.Values.IValue<TRangeType>.value { get { return this.GetValue(); }}
+		protected virtual TRangeType GetValue () { return this.random; }
 	//ENDOF IValue<TRangeType>
+*/
 
 	//IConstraint<TRangeType>
 		//clamps a value between minimum and maximum, inclusive
@@ -103,9 +106,6 @@ namespace PHATASS.Utils.Types.Ranges
 	//ENDOF overridable properties
 
 	//overridable methods
-		//gets value within defined range currently represented by this object
-		protected abstract TRangeType GetValue ();
-
 		// Returns value within the range from a 0 to 1 value
 		//needs not have any consideration for value clamping, this is handled by base class
 		protected abstract TRangeType FromNormal (float normal); //return minimum + (difference * normalized);

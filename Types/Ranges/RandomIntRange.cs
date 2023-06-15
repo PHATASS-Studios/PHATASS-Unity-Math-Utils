@@ -16,9 +16,6 @@ namespace PHATASS.Utils.Types.Ranges
 	//ENDOF property overrides
 
 	//method overrides
-		protected override TInt GetValue ()
-		{ return this.random; }
-
 		protected override TInt FromNormal (float normal)
 		{
 			return this.minimum + (TInt) (this.difference * normal);
