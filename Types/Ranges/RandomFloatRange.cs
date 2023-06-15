@@ -34,6 +34,10 @@ namespace PHATASS.Utils.Types.Ranges
 		protected override TFloat Clamp (TFloat value)
 		{ return UnityEngine.Mathf.Clamp(value: value, min: this.minimum, max: this.maximum); }
 
+		// Returns true if value is in or on the constraint's limits defined
+		protected override bool Contains (TFloat value)
+		{ return value >= this.minimum && value <= this.maximum; }
+
 		// Returns the distance between given value and the closest point of the range.
 		//	If given value falls inside the range, returned value is 0.
 		//	If keepSign = true, return sign is negative for values below minimum. Otherwise Sign is always positive.
