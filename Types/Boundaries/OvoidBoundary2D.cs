@@ -4,7 +4,7 @@ using UnityEngine;
 
 using Vector2 = UnityEngine.Vector2;
 
-using Constraints = PHATASS.Utils.Constraints;
+using Constraints = PHATASS.Utils.Types.Constraints;
 
 using static PHATASS.Utils.Types.Boundaries.Boundary2DEnumerators;
 
@@ -46,6 +46,10 @@ namespace PHATASS.Utils.Types.Boundaries
 		//returns the closest point to target that is in or on bounds
 		Vector2 Constraints.IConstraint<Vector2>.Clamp (Vector2 point) { return this.PublicClamp(point); }
 		protected virtual Vector2 PublicClamp (Vector2 point) { return this.Clamp(point); }
+
+		//returns true if point is in or on the boundaries defined
+		bool Constraints.IConstraint<Vector2>.Contains (Vector2 point) { return this.PublicContains(point); }
+		protected virtual bool PublicContains (Vector2 point) { return this.Contains(point); }
 	//ENDOF IConstraint<Vector2>
 
 	//IBoundary2D
@@ -56,11 +60,6 @@ namespace PHATASS.Utils.Types.Boundaries
 		//rotation of the  boundaries
 		IAngle2D IBoundary2D.rotation { get { return this.publicRotation; }}
 		protected virtual IAngle2D publicRotation { get { return 0f.EDegreesToAngle2D(); }}
-
-		//returns true if point is in or on the boundaries defined
-		bool IBoundary2D.Contains (Vector2 point) { return this.PublicContains(point); }
-		protected virtual bool PublicContains (Vector2 point) { return this.Contains(point); }
-
 
 		//returns a point between the center (distance 0) and boundaries (distance 1)
 		//point is projected in angle direction from bounds center

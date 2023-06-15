@@ -4,7 +4,7 @@ using Vector2 = UnityEngine.Vector2;
 
 using IAngle2D = PHATASS.Utils.Types.Angles.IAngle2D;
 
-using IVector2Constraint = PHATASS.Utils.Constraints.IVector2Constraint;
+using IVector2Constraint = PHATASS.Utils.Types.Constraints.IVector2Constraint;
 
 namespace PHATASS.Utils.Types.Boundaries
 {
@@ -12,13 +12,6 @@ namespace PHATASS.Utils.Types.Boundaries
 	{
 		Vector2 center { get; }	//position of the center of the boundaries
 		IAngle2D rotation { get; }	//boundary rotation
-
-		//returns true if point is in or on the boundaries defined
-		bool Contains (Vector2 point);
-
-		//returns the closest point to target that is in or on bounds
-		//actually implemented in IConstraint<Vector2>
-		//Vector2 Clamp (Vector2 value);
 
 		//returns a point between the center (distance 0) and boundaries (distance 1)
 		//point is projected in angle direction from bounds center
@@ -33,5 +26,13 @@ namespace PHATASS.Utils.Types.Boundaries
 
 		//Iterates over points of the boundary. gives exactly totalPoints points, which are meant to be equidistant around the shape
 		IEnumerable<Vector2> EnumerateBoundaryPoints (ushort totalPoints);
+
+	//Inherited members
+		//returns true if point is in or on the boundaries defined
+		//bool IConstraint<Vector2>.Contains (Vector2 point);
+
+		//returns the closest point to target that is in or on bounds
+		//Vector2 IConstraint<Vector2>.Clamp (Vector2 value);
+	//ENDOF Inherited
 	}
 }
