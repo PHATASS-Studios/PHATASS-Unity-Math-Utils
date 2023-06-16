@@ -40,17 +40,17 @@ namespace PHATASS.Utils.Types.Ranges
 		//	If keepSign = true, return sign is negative for values below minimum. Otherwise Sign is always positive.
 		protected override TInt DistanceFromRange (TInt value, bool keepSign)
 		{
-			if (value >= minimum)
+			if (value >= this.minimum)
 			{
 				//if value is above minimum and below maximum, it is inside the range and we return 0
-				if (value <= maximum) { return 0; }
-				else { return value - maximum; } //if value is above maximum return difference
+				if (value <= this.maximum) { return 0; }
+				else { return value - this.maximum; } //if value is above maximum return difference
 			}
 			else
 			{
 				//if value is below minimum return difference
-				if (keepSign) { return value - minimum; }	//if keepSign == true, return value is meant to be negative
-				else { return minimum - value; }
+				if (keepSign) { return value - this.minimum; }	//if keepSign == true, sign is meant to represent direction
+				else { return this.minimum - value; }
 			}
 		}
 	//ENDOF method overrides
