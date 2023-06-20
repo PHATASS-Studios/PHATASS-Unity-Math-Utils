@@ -1,4 +1,4 @@
-namespace PHATASS.Utils.Types.Physics1D
+namespace PHATASS.Utils.Physics.Physics1D
 {
 //Represents a body with a specific physical momentum
 	public interface IMomentumBody1D

@@ -1,4 +1,4 @@
-namespace PHATASS.Utils.Types.Physics1D
+namespace PHATASS.Utils.Physics.Physics1D
 {
 	public interface IForceReceiver1D
 	{
