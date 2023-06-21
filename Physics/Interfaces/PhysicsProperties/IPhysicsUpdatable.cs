@@ -6,6 +6,6 @@ namespace PHATASS.Utils.Physics
 	// Calculates one physics update for given timeStep
 	// This should be used to update a physics element every frame or physics update.
 	// If timeStep is omitted, implementor should by default use UnityEngine.Time.deltaTime, as it represents current frame or physics frame time.
-		void Update (float? timeStep);
+		void Update (float? timeStep = null);
 	}
 }
