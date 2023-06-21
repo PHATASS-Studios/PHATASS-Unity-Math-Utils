@@ -3,7 +3,7 @@ using UnityEngine;
 using Physics = PHATASS.Utils.Physics;
 using Values = PHATASS.Utils.Types.Values;
 
-using static PHATASS.Utils.Extensions.FloatExtensions;
+using static PHATASS.Utils.Extensions.DoubleExtensions;
 using static PHATASS.Utils.Extensions.FrameIndependentSmoothingExtensions;
 
 namespace PHATASS.Utils.Physics.Physics1D
@@ -51,7 +51,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 		}
 
 		//Adds a 1D momentum to the body, with a force & direction depending on momentum value and sign.
-		void IForceReceiver1D.AddMomentum (double momentum)
+		void Physics.IForceReceiverNDimensional<double>.AddMomentum (double momentum)
 		{ this.AddMomentum(momentum); }
 
 		// While asleep = true, the following is true:
@@ -67,10 +67,10 @@ namespace PHATASS.Utils.Physics.Physics1D
 	//ENDOF IUpdatablePhysicsBody1D
 
 	//IFloatValueMutable
-		float Values.IValue<float>.value { get { return this.value; }}
+		float Values.IValue<float>.value { get { return (float) this.value; }}
 		float Values.IValueMutable<float>.value {
-			get { return this.value; }
-			set { this.value = value; }
+			get { return (float) this.value; }
+			set { this.value = (double) value; }
 		}
 	//ENDOF IFloatValueMutable
 
@@ -97,7 +97,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 		private bool asleep { get { return this.momentum.EAbs() < this.sleepThreshold; }}
 
 		//adds momentum to the kinetic body in the direction of given sign
-		private void AddMomentum (float momentum)
+		private void AddMomentum (double momentum)
 		{ this.momentum += momentum; }
 
 		//sets the body as sleeping
