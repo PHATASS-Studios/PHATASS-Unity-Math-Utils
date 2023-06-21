@@ -8,6 +8,6 @@ namespace PHATASS.Utils.Types.Values
 	public interface IValueMutable <TValueType> :
 		IValue <TValueType>
 	{
-		new TValueType value { set; }
+		new TValueType value { get; set; }
 	}
 }
