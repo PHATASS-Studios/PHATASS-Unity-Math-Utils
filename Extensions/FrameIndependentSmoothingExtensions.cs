@@ -10,12 +10,12 @@ namespace PHATASS.Utils.Extensions
 			if (dampingRate >= 1f) { dampingRate = 1f; }
 			return value * System.MathF.Pow((1f - dampingRate), ValidateDeltaTime(deltaTime));
 		}
-		public static double EFrameIndependentDamp (this double value, float dampingRate, float? deltaTime = null)
+		public static double EFrameIndependentDamp (this double value, double dampingRate, float? deltaTime = null)
 		{
 			//Debug.LogWarning("EFrameIndependentDamp double value: " + value + " dampingRate: " + dampingRate);
 			if (value == 0f) { return 0f; }
 			if (dampingRate >= 1f) { dampingRate = 1f; }
-			return value * (double) System.MathF.Pow((1 - dampingRate), ValidateDeltaTime(deltaTime));
+			return value * (double) System.Math.Pow((1d - dampingRate), (double) ValidateDeltaTime(deltaTime));
 		}
 
 	//smoothly lerps from value towards another, at a rate of rate per second, for a time of deltaTime. if deltaTime is not provided it will be acquired from current frame
