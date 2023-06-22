@@ -7,5 +7,8 @@ namespace PHATASS.Utils.Physics
 		// Unsigned floating value representing total kinetic energy in the body, in Joules
 		// n-dimensional bodies must return the total energy magnitude across all its dimensions
 		double totalEnergyMagnitude { get; }
+
+		// Inertial mass of this body. Velocity = (momentum / mass) = (√(2 * KineticEnergy / mass))
+		double mass { get; set; }
 	}
 }

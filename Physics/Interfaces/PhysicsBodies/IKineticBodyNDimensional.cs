@@ -9,7 +9,7 @@ namespace PHATASS.Utils.Physics
 		// Value representing n-dimensional momentum present in the body (mass * velocity)
 		TDimensionalVector momentum { get; set; }
 
-		// Inertial mass of this body. Velocity = momentum / mass
-		double mass { get; set; }
+		// Value representing current position/value of this kinetic body
+		TDimensionalVector position { get; set; }
 	}
 }
