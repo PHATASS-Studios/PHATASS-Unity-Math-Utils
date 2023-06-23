@@ -5,6 +5,9 @@ using static PHATASS.Utils.Extensions.TimeExtensions;
 using Physics = PHATASS.Utils.Physics;
 
 using IDoubleRange = PHATASS.Utils.Types.Ranges.IDoubleRange;
+using DoubleRange = PHATASS.Utils.Types.Ranges.DoubleRange;
+
+using IDoubleValue = PHATASS.Utils.Types.Values.IDoubleValue;
 
 using SerializedTypeRestrictionAttribute = PHATASS.Utils.Attributes.SerializedTypeRestrictionAttribute;
 
@@ -18,15 +21,15 @@ namespace PHATASS.Utils.Physics.Physics1D
 	//serialized fields
 		[Tooltip("Spring force. Spring will pull back towards the center as long as the parameter's value is outside from the dead zone. Formula: springForce = distanceFromDeadZone * springForce")]
 		[SerializeField]
-		private double springForce = 1d;
+		private double springForce;// = 1d;
 
 		[Tooltip("Offset of the dead zone from the central position, which is usually 0 unless centerValue is set through code.")]
 		[SerializeField]
-		private double centerOffset = 0d;
+		private double centerOffset;// = 0d;
 
 		[Tooltip("Spring dead zone. Parameter values between the upper and lower dead zone will not activate the restitution spring. Default: 0d-0d.")]
 		[SerializeField]
-		private PHATASS.Utils.Types.Ranges.DoubleRange _springDeadZone = 0d;
+		private PHATASS.Utils.Types.Ranges.DoubleRange _springDeadZone;// = 0d;
 		private IDoubleRange springDeadZone { get { return this._springDeadZone; }}
 	//ENDOF serialized
 
@@ -47,8 +50,13 @@ namespace PHATASS.Utils.Physics.Physics1D
 	//ENDOF IPhysicsUpdatable
 
 	//constructor
-		public FixedSpringJoint1D (IPhysicsBody1D targetBody, double force, double offset, DoubleRange deadZone = 0d, IDoubleValue referenceCenterValue = null)
-		{
+		public FixedSpringJoint1D (
+			IPhysicsBody1D targetBody,
+			double force,
+			double offset,
+			DoubleRange deadZone, // = (DoubleRange) 0d,
+			IDoubleValue referenceCenterValue = null
+		) {
 			primarySubject = targetBody;
 			springForce = force;
 			centerOffset = offset;
@@ -68,7 +76,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 
 	//private properties
 		// Force of the restitution spring
-		protected double force
+		private double force
 		{ get { return this.distanceFromDeadZone * this.springForce * -1d; }}
 
 		private double distanceFromDeadZone

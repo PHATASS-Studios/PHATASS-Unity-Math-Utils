@@ -52,6 +52,13 @@ namespace PHATASS.Utils.Physics.Physics1D
 			set { this.momentum = value; }
 		}
 
+		// Value representing current position/value of this kinetic body
+		double Physics.IKineticBodyNDimensional<double>.position
+		{
+			get { return this.value; }
+			set { this.value = value; }
+		}
+
 		//Adds a 1D momentum to the body, with a force & direction depending on momentum value and sign.
 		void Physics.IForceReceiverNDimensional<double>.AddMomentum (double momentum)
 		{ this.AddMomentum(momentum); }

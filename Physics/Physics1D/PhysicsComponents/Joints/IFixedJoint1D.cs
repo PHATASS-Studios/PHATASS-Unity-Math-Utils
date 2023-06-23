@@ -1,3 +1,5 @@
+using IDoubleValue = PHATASS.Utils.Types.Values.IDoubleValue;
+
 namespace PHATASS.Utils.Physics.Physics1D
 {
 // Interface representing a component that acts exclusively upon desired primarySubject, around a value that is left unaltered.
