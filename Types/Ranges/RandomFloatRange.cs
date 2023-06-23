@@ -5,6 +5,7 @@ namespace PHATASS.Utils.Types.Ranges
 	//floating point numeric range subclass
 	[System.Serializable]
 	public class RandomFloatRange : BaseNumericRange<TFloat>
+	//[TO-DO]: Rename without the Random prefix (IntRange)
 	{
 	//constructor
 		public RandomFloatRange (TFloat minimum, TFloat maximum) : base(minimum, maximum){}
@@ -29,7 +30,7 @@ namespace PHATASS.Utils.Types.Ranges
 
 		//clamps a value between minimum and maximum, inclusive
 		protected override TFloat Clamp (TFloat value)
-		{ return UnityEngine.Mathf.Clamp(value: value, min: this.minimum, max: this.maximum); }
+		{ return System.Math.Clamp(value: value, min: this.minimum, max: this.maximum); }
 
 		// Returns true if value is in or on the constraint's limits defined
 		protected override bool Contains (TFloat value)

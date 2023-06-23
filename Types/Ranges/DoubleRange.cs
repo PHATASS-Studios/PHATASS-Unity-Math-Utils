@@ -18,7 +18,7 @@ namespace PHATASS.Utils.Types.Ranges
 	//method overrides
 		protected override TDouble FromNormal (float normal)
 		{
-			return this.minimum + (this.difference * normal);
+			return this.minimum + (this.difference * (double) normal);
 		}
 
 		//returns a normalized (0 to 1) from a value within the range, without any consideration for value clamping
@@ -29,7 +29,7 @@ namespace PHATASS.Utils.Types.Ranges
 
 		//clamps a value between minimum and maximum, inclusive
 		protected override TDouble Clamp (TDouble value)
-		{ return UnityEngine.Mathf.Clamp(value: value, min: this.minimum, max: this.maximum); }
+		{ return System.Math.Clamp(value: value, min: this.minimum, max: this.maximum); }
 
 		// Returns true if value is in or on the constraint's limits defined
 		protected override bool Contains (TDouble value)
