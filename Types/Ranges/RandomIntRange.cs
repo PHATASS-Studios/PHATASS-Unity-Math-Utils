@@ -4,7 +4,7 @@ namespace PHATASS.Utils.Types.Ranges
 {
 	//floating point numeric range subclass
 	[System.Serializable]
-	public class RandomIntRange : BaseNumericRange<TInt>
+	public class RandomIntRange : BaseNumericRange<TInt>, IIntRange
 	//[TO-DO]: Rename without the Random prefix (IntRange)
 	{
 	//constructor

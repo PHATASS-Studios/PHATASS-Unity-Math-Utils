@@ -4,7 +4,7 @@ namespace PHATASS.Utils.Types.Ranges
 {
 	//floating point numeric range subclass
 	[System.Serializable]
-	public class DoubleRange : BaseNumericRange<TDouble>
+	public class DoubleRange : BaseNumericRange<TDouble>, IDoubleRange
 	{
 	//constructor
 		public DoubleRange (TDouble minimum, TDouble maximum) : base(minimum, maximum){}
@@ -24,7 +24,7 @@ namespace PHATASS.Utils.Types.Ranges
 		//returns a normalized (0 to 1) from a value within the range, without any consideration for value clamping
 		protected override float ToNormal (TDouble value)
 		{
-			return (value - this.minimum) / this.difference;
+			return (float) ((value - this.minimum) / this.difference);
 		}
 
 		//clamps a value between minimum and maximum, inclusive
