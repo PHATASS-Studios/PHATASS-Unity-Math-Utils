@@ -98,7 +98,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 		{
 			if (this.primarySubject == null)
 			{
-				//Debug.Log("Joint lacks primary subject.");
+				Debug.Log("FixedSpringJoint1D lacks primary subject.");
 				return;
 			}
 
