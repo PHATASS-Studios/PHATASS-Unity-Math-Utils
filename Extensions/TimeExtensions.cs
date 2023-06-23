@@ -4,7 +4,7 @@ namespace PHATASS.Utils.Extensions
 	public static class TimeExtensions
 	{
 	//takes a nullable time (float) value, if it's null substitutes with UnityEngine's deltaTime, and returns it as a non-nullable float value
-		public float EValidateDeltaTime (this float? timeStep)
+		public static float EValidateDeltaTime (this float? timeStep)
 		{
 			if (timeStep == null) { return UnityEngine.Time.deltaTime; }
 			else { return (float) timeStep; }
