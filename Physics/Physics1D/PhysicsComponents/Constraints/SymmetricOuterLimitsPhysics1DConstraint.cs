@@ -13,6 +13,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 	//IPhysicsUpdatable
 		void Physics.IPhysicsUpdatable.Update (float? timeStep)
 		{ this.Update(timeStep); }
+	}
 	//ENDOF IPhysicsUpdatable
 
 	//constructor

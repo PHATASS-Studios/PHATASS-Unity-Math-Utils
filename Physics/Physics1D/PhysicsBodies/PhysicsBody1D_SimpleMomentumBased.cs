@@ -4,6 +4,7 @@ using Physics = PHATASS.Utils.Physics;
 using Values = PHATASS.Utils.Types.Values;
 
 using static PHATASS.Utils.Extensions.DoubleExtensions;
+using static PHATASS.Utils.Extensions.TimeExtensions;
 using static PHATASS.Utils.Extensions.FrameIndependentSmoothingExtensions;
 
 namespace PHATASS.Utils.Physics.Physics1D
@@ -127,7 +128,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 			}
 
 			//validate time step value so it is not null
-			float validatedTime = this.ValidateTimeStep(timeStep);
+			float validatedTime = timeStep.EValidateDeltaTime();
 			
 			//move the object's value by accumulated force
 			this.ApplyMomentum(validatedTime);

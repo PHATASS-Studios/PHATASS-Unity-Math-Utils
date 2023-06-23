@@ -60,7 +60,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 			primarySubject = targetBody;
 			springForce = force;
 			centerOffset = offset;
-			springDeadZone = deadZone;
+			_springDeadZone = deadZone;
 			centerValue = referenceCenterValue;
 		}
 	//ENDOF constructor
@@ -80,8 +80,10 @@ namespace PHATASS.Utils.Physics.Physics1D
 		{ get { return this.distanceFromDeadZone * this.springForce * -1d; }}
 
 		private double distanceFromDeadZone
-		{ get { return this.springDeadZone.DistanceFromRange(this.absoluteValue - this.offset, true); }}
+		{ get { return this.springDeadZone.DistanceFromRange(this.subjectPosition - this.offset, true); }}
 
+		private double subjectPosition
+		{ get { return this.primarySubject.position; }}
 
 		//calculated total offset of the center point
 		private double offset
