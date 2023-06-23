@@ -35,19 +35,21 @@ namespace PHATASS.Utils.Physics.Physics1D
 	//ENDOF serialized
 
 	//IUpdatablePhysicsBody1D
+		// scalar (unsigned) value representing total kinetic energy in the body, in Joules
 		double Physics.IKineticBody.totalEnergyMagnitude { get { return this.kineticEnergy; }}
+
+		// Inertial mass of this body. Velocity = (momentum / mass) = (√(2 * KineticEnergy / mass))
+		double Physics.IKineticBody.mass
+		{
+			get { return this.mass; }
+			set { this.mass = value; }
+		}
 
 		// momentum present in the body (m*v)
 		double Physics.IKineticBodyNDimensional<double>.momentum
 		{
 			get { return this.momentum; }
 			set { this.momentum = value; }
-		}
-
-		double Physics.IKineticBodyNDimensional<double>.mass
-		{
-			get { return this.mass; }
-			set { this.mass = value; }
 		}
 
 		//Adds a 1D momentum to the body, with a force & direction depending on momentum value and sign.
@@ -138,14 +140,5 @@ namespace PHATASS.Utils.Physics.Physics1D
 			this.momentum = this.momentum.EFrameIndependentDamp(dampingRate: this.dampingRate, deltaTime: timeStep);
 		}
 	//ENDOF Physics update
-
-	//[TO-DO] Export these somewhere
-		//takes a nullable time (float) value, if it's null substitutes with UnityEngine's deltaTime, and returns it as a non-nullable float value
-		private float ValidateTimeStep (float? timeStep)
-		{
-			if (timeStep == null) { return UnityEngine.Time.deltaTime; }
-			else { return (float) timeStep; }
-		}
-	//ENDOF export these
 	}
 }
