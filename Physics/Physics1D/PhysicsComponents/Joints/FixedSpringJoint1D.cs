@@ -15,7 +15,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 {
 //Represents a 1D Physics spring that pulls primary subject body towards given value
 	[System.Serializable]
-	public struct FixedSpringJoint1D :
+	public class FixedSpringJoint1D :
 		IFixedJoint1D
 	{
 	//serialized fields

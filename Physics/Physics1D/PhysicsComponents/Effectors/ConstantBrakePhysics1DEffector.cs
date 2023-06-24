@@ -6,7 +6,7 @@ using static PHATASS.Utils.Extensions.DoubleExtensions;
 namespace PHATASS.Utils.Physics.Physics1D
 {
 // Interface representing a component that constantly brakes an object's current momentum by a flat amount each second
-	public struct ConstantBrakePhysics1DEffector: IPhysics1DEffector
+	public class ConstantBrakePhysics1DEffector: IPhysics1DEffector
 	{
 	//serialized fields
 		[Tooltip("Flat amount of momentum mitigated by the constant brake each second, in newton/seconds")]

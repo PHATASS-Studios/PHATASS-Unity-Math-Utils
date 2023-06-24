@@ -10,7 +10,7 @@ using IDoubleRange = PHATASS.Utils.Types.Ranges.IDoubleRange;
 namespace PHATASS.Utils.Physics.Physics1D
 {
 // Interface representing a component that acts upon an object's position, constraining it to a delimited range
-	public struct OuterLimitPhysics1DConstraint: IPhysics1DLimitConstraint
+	public class OuterLimitPhysics1DConstraint: IPhysics1DLimitConstraint
 	{
 	//serialized fields
 		/*[Tooltip("Outer limits. When position goes outside the outer limits, it is clamped back inside and bounce is applied if necessary.")]
