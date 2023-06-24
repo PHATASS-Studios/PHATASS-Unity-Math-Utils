@@ -32,7 +32,11 @@ namespace PHATASS.Utils.Physics.Physics1D
 
 		[Tooltip("Value of this body's 1D position.")]
 		[SerializeField]
-		private double value = 0f;
+		private double position = 0f;
+
+		[Tooltip("Currently accumulated momentum in the body.")]
+		[SerializeField]
+		private double momentum = 0f;
 	//ENDOF serialized
 
 	//IUpdatablePhysicsBody1D
@@ -56,8 +60,8 @@ namespace PHATASS.Utils.Physics.Physics1D
 		// Value representing current position/value of this kinetic body
 		double Physics.IKineticBodyNDimensional<double>.position
 		{
-			get { return this.value; }
-			set { this.value = value; }
+			get { return this.position; }
+			set { this.position = value; }
 		}
 
 		//Adds a 1D momentum to the body, with a force & direction depending on momentum value and sign.
@@ -77,25 +81,22 @@ namespace PHATASS.Utils.Physics.Physics1D
 	//ENDOF IUpdatablePhysicsBody1D
 
 	//IFloatValueMutable
-		float Values.IValue<float>.value { get { return (float) this.value; }}
+		float Values.IValue<float>.value { get { return (float) this.position; }}
 		float Values.IValueMutable<float>.value {
-			get { return (float) this.value; }
-			set { this.value = (double) value; }
+			get { return (float) this.position; }
+			set { this.position = (double) value; }
 		}
 	//ENDOF IFloatValueMutable
 
 	//IDoubleValueMutable
-		double Values.IValue<double>.value { get { return this.value; }}
+		double Values.IValue<double>.value { get { return this.position; }}
 		double Values.IValueMutable<double>.value {
-			get { return this.value; }
-			set { this.value = value; }
+			get { return this.position; }
+			set { this.position = value; }
 		}
 	//ENDOF IDoubleValueMutable
 
 	//private members
-		//currently accumulated momentum in the body
-		private double momentum = 0f;
-
 		private double kineticEnergy
 		{ get { return (this.mass/2) * (this.velocity * this.velocity); }}
 
@@ -120,6 +121,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 	//Physics Update exclusive methods
 		private void PhysicsUpdate (float? timeStep)
 		{
+			Debug.Log("PhysicsBody1D_SimpleMomentumBased.PhysicsUpdate()");
 			//check for sleeping conditions. If body is asleep, abort the rest of the physics update
 			if (this.asleep)
 			{
@@ -139,7 +141,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 
 		private void ApplyMomentum (float timeStep)
 		{
-			this.value += (this.velocity * timeStep);
+			this.position += (this.velocity * timeStep);
 		}
 
 		//partially dampen current momentum, at a rate of a fraction of current momentum per second
