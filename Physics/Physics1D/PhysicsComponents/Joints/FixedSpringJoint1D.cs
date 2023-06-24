@@ -88,7 +88,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 		//calculated total offset of the center point
 		private double offset
 		{ get {
-			return (((this.centerValue == null) ? this.centerValue.value : 0d)
+			return (((this.centerValue == null) ? 0d : this.centerValue.value)
 				+ this.centerOffset);
 		}}
 	//ENDOF private properties
@@ -96,6 +96,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 	//private methods
 		private void Update (float? timeStep)
 		{
+			Debug.Log("FixedSpringJoint1D.Update()");
 			if (this.primarySubject == null)
 			{
 				Debug.Log("FixedSpringJoint1D lacks primary subject.");
