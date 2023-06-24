@@ -6,6 +6,7 @@ using static PHATASS.Utils.Extensions.DoubleExtensions;
 namespace PHATASS.Utils.Physics.Physics1D
 {
 // Interface representing a component that constantly brakes an object's current momentum by a flat amount each second
+	[System.Serializable]
 	public class ConstantBrakePhysics1DEffector: IPhysics1DEffector
 	{
 	//serialized fields
@@ -32,6 +33,8 @@ namespace PHATASS.Utils.Physics.Physics1D
 	//private methods
 		private void Update (float? timeStep)
 		{
+			Debug.Log("ConstantBrakePhysics1DEffector.Update()");
+
 			if (this.primarySubject == null)
 			{
 				Debug.Log("ConstantBrakePhysics1DEffector lacks primary subject.");

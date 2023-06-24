@@ -10,6 +10,7 @@ using IDoubleRange = PHATASS.Utils.Types.Ranges.IDoubleRange;
 namespace PHATASS.Utils.Physics.Physics1D
 {
 // Interface representing a component that acts upon an object's position, constraining it to a delimited range
+	[System.Serializable]
 	public class OuterLimitPhysics1DConstraint: IPhysics1DLimitConstraint
 	{
 	//serialized fields
@@ -25,7 +26,14 @@ namespace PHATASS.Utils.Physics.Physics1D
 
 	//IPhysics1DComponent
 		IPhysicsBody1D IPhysics1DComponent.primarySubject
-		{ get { return this.primarySubject; } set { this.primarySubject = value; } }
+		{
+			get { return this.primarySubject; }
+			set {
+				Debug.Log(value);
+				this.primarySubject = value;
+				Debug.Log(this.primarySubject);
+				}
+		}
 	//ENDOF IPhysics1DComponent
 
 	//IPhysics1DLimitConstraint
@@ -53,9 +61,10 @@ namespace PHATASS.Utils.Physics.Physics1D
 	//private methods
 		private void Update (float? timeStep)
 		{
+			Debug.Log("OuterLimitPhysics1DConstraint.Update()");
 			if (this.primarySubject == null)
 			{
-				Debug.Log("SymmetricOuterLimitsPhysics1DConstraint lacks primary subject.");
+				Debug.Log("OuterLimitPhysics1DConstraint lacks primary subject.");
 				return;
 			}
 
