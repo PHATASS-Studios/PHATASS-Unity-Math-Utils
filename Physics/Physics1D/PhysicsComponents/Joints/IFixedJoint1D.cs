@@ -4,7 +4,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 {
 // Interface representing a component that acts exclusively upon desired primarySubject, around a value that is left unaltered.
 	public interface IFixedJoint1D :
-		IPhysics1DComponent
+		IPhysics1DJoint
 	{
 		// central value towards which this joint pulls primary subject
 		IDoubleValue centerValue { get; set; }
