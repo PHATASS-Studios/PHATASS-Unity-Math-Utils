@@ -9,8 +9,6 @@ using DoubleRange = PHATASS.Utils.Types.Ranges.DoubleRange;
 
 using IDoubleValue = PHATASS.Utils.Types.Values.IDoubleValue;
 
-using SerializedTypeRestrictionAttribute = PHATASS.Utils.Attributes.SerializedTypeRestrictionAttribute;
-
 namespace PHATASS.Utils.Physics.Physics1D
 {
 //Represents a 1D Physics spring that pulls primary subject body towards given value
