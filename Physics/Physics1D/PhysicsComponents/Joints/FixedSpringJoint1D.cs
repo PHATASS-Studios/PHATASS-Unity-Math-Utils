@@ -63,6 +63,31 @@ namespace PHATASS.Utils.Physics.Physics1D
 			_springDeadZone = deadZone;
 			centerValue = referenceCenterValue;
 		}
+
+		//constructor overload that copies the joints values from another FixedSpringJoint1D
+		// Additionally specific values can be provided to be used instead of the sample's
+		public FixedSpringJoint1D (
+			FixedSpringJoint1D sample,
+			IPhysicsBody1D? targetBody = null,
+			double? force = null,
+			double? offset = null,
+			DoubleRange? deadZone = null,
+			IDoubleValue? referenceCenterValue = null
+		) {
+			//copy values from sample
+			primarySubject = sample.primarySubject;
+			springForce = sample.springForce;
+			centerOffset = sample.centerOffset;
+			_springDeadZone = sample._springDeadZone;
+			centerValue = sample.centerValue;
+
+			//then set value overrides received
+			if (targetBody != null) { primarySubject = (IPhysicsBody1D) targetBody; }
+			if (force != null) { springForce = (double) force; }
+			if (offset != null) { centerOffset = (double) offset; }
+			if (deadZone != null) { _springDeadZone = (DoubleRange) deadZone; }
+			if (referenceCenterValue != null) { centerValue = (IDoubleValue) referenceCenterValue; }
+		}
 	//ENDOF constructor
 
 	//private fields
