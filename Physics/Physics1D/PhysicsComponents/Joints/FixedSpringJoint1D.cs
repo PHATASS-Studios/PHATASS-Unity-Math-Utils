@@ -105,13 +105,13 @@ namespace PHATASS.Utils.Physics.Physics1D
 		{ get { return this.distanceFromDeadZone * this.springForce * -1d; }}
 
 		private double distanceFromDeadZone
-		{ get { return this.springDeadZone.DistanceFromRange(this.subjectPosition - this.offset, true); }}
+		{ get { return this.springDeadZone.DistanceFromRange(this.subjectPosition - this.centerPoint, true); }}
 
 		private double subjectPosition
 		{ get { return this.primarySubject.position; }}
 
-		//calculated total offset of the center point
-		private double offset
+		//calculated final center point of the joint
+		private double centerPoint
 		{ get {
 			return (((this.centerValue == null) ? 0d : this.centerValue.value)
 				+ this.centerOffset);
