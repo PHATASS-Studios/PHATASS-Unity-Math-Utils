@@ -15,10 +15,12 @@ namespace PHATASS.Utils.Types.PointTransformers
 		[Tooltip("Rect representing secondary (\"reference\") space. Calling TransformPoint takes a point in primary space and returns a corresponding point in the secondary space.")]
 		[SerializeField]
 		private Rect secondarySpaceRect;
-
+		
+		/*
 		[Tooltip("If true space transformations will clamp to space limits.")]
 		[SerializeField]
 		private bool clampToSpaceOnTransform = true;
+		*/
 	//ENDOF serialized fields
 
 	//IVector2PointTransformer
