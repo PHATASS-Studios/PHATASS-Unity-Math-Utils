@@ -10,11 +10,11 @@ namespace PHATASS.Utils.Types.PointTransformers
 	//serialized fields
 		[Tooltip("Rect representing primary (\"world\") space. Calling TransformPoint takes a point in primary space and returns a corresponding point in the secondary space.")]
 		[SerializeField]
-		private Rect primarySpaceRect;
+		protected Rect primarySpaceRect;
 
 		[Tooltip("Rect representing secondary (\"reference\") space. Calling TransformPoint takes a point in primary space and returns a corresponding point in the secondary space.")]
 		[SerializeField]
-		private Rect secondarySpaceRect;
+		protected Rect secondarySpaceRect;
 		
 		/*
 		[Tooltip("If true space transformations will clamp to space limits.")]
@@ -33,16 +33,19 @@ namespace PHATASS.Utils.Types.PointTransformers
 		{ return this.InverseTransformPoint(point); }
 	//ENDOF IVector2PointTransformer
 
+	//Constructor
+	//ENDOF Constructor
+
 	//private methods
 		// Transforms a point from primary space ("world") into secondary ("reference") space
-		private Vector2 TransformPoint (Vector2 point)
+		protected Vector2 TransformPoint (Vector2 point)
 		{
 			Vector2 normalizedPoint = Rect.PointToNormalized(rectangle: this.primarySpaceRect, point: point);
 			return Rect.NormalizedToPoint(rectangle: this.secondarySpaceRect, normalizedRectCoordinates: normalizedPoint);
 		}
 
 		// Transforms a point from secondary space into primary space ("world")
-		private Vector2 InverseTransformPoint (Vector2 point)
+		protected Vector2 InverseTransformPoint (Vector2 point)
 		{
 			Vector2 normalizedPoint = Rect.PointToNormalized(rectangle: this.secondarySpaceRect, point: point);
 			return Rect.NormalizedToPoint(rectangle: this.primarySpaceRect, normalizedRectCoordinates: normalizedPoint);
