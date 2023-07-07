@@ -67,12 +67,14 @@ namespace PHATASS.Utils.Types.PointTransformers
 
 
 	//Editor gizmos
-	/*#if UNITY_EDITOR
-		public void DrawWorldSpaceRectGizmo ()
+	//*
+	#if UNITY_EDITOR
+		public void DrawWorldSpaceRectGizmo (Color color)
 		{
-			this.primarySpaceRect.EDrawGizmo(Color.Black);
+			this.pointTransformer.DrawPrimarySpaceRectGizmo(color);
 		}
-	#endif*/
+	#endif
+	//*/
 	//ENDOF Editor gizmos
 	}
 }
