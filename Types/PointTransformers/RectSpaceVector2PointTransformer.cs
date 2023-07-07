@@ -47,12 +47,20 @@ namespace PHATASS.Utils.Types.PointTransformers
 		//construct from copy overload.
 		//takes a sample object and creates a shallow copy. Optionally takes any of the base parameters, which will override the sample's values when given.
 		public RectSpaceVector2PointTransformer (
-			RectSpaceToRectSpaceVector2PointTransformer sample,
+			RectSpaceVector2PointTransformer sample,
 			Rect? primaryRect,
 			Rect? secondaryRect
 		) {
-			primarySpaceRect = primaryRect;
-			secondarySpaceRect = secondaryRect;
+
+			if (primaryRect == null)
+			{ primarySpaceRect = sample.primarySpaceRect; }
+			else
+			{ primarySpaceRect = (Rect) primaryRect; }
+
+			if (secondaryRect == null)
+			{ secondarySpaceRect = sample.secondarySpaceRect; }
+			else
+			{ secondarySpaceRect = (Rect) secondaryRect; }
 		}
 	//ENDOF Constructor
 
@@ -72,7 +80,7 @@ namespace PHATASS.Utils.Types.PointTransformers
 		}
 	//ENDOF private methods
 
-		//Editor gizmos
+	//Editor gizmos
 	#if UNITY_EDITOR
 		public void DrawPrimarySpaceRectGizmo (Color? color = null)
 		{
