@@ -1,5 +1,9 @@
 using UnityEngine;
 
+#if UNITY_EDITOR
+	using static PHATASS.Utils.Extensions.RectEditorExtensions;
+#endif 
+	
 namespace PHATASS.Utils.Types.PointTransformers
 {
 //PointTransformer that transforms between one rect's space and another
@@ -51,5 +55,19 @@ namespace PHATASS.Utils.Types.PointTransformers
 			return Rect.NormalizedToPoint(rectangle: this.primarySpaceRect, normalizedRectCoordinates: normalizedPoint);
 		}
 	//ENDOF private methods
+
+		//Editor gizmos
+	#if UNITY_EDITOR
+		public void DrawPrimarySpaceRectGizmo (Color? color = null)
+		{
+			this.primarySpaceRect.EDrawGizmo(color);
+		}
+
+		public void DrawSecondarySpaceRectGizmo (Color? color = null)
+		{
+			this.primarySpaceRect.EDrawGizmo(color);
+		}
+	#endif
+	//ENDOF Editor gizmos
 	}
 }
