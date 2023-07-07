@@ -38,6 +38,11 @@ namespace PHATASS.Utils.Types.PointTransformers
 	//ENDOF IVector2PointTransformer
 
 	//Constructor
+		public RectSpaceToRectSpaceVector2PointTransformer (Rect primaryRect, Rect secondaryRect)
+		{
+			primarySpaceRect = primaryRect;
+			secondarySpaceRect = secondaryRect;
+		}
 	//ENDOF Constructor
 
 	//private methods
