@@ -50,8 +50,8 @@ namespace PHATASS.Utils.Types.PointTransformers
 		//takes a sample object and creates a shallow copy. Optionally takes any of the base parameters, which will override the sample's values when given.
 		public TransformPositionToTransformedVector2Value (
 			TransformPositionToTransformedVector2Value sample,
-			Transform? transform,
-			RectSpaceVector2PointTransformer? transformer)
+			Transform? transform = null,
+			RectSpaceVector2PointTransformer? transformer = null)
 		{
 			if (transform == null)
 			{ originTransform = sample.originTransform; }
