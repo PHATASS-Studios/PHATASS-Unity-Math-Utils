@@ -20,6 +20,7 @@ namespace PHATASS.Utils.Types
 
 	// Transitions current state to desiredState, and triggers finishingCallback when transition finished
 	//	returns false if transition fails because initial state == desiredState, true otherwise
+	//	finishingCallback can be null, in which case it won't get invoked
 		bool TransitionStateWithCallback (bool desiredState, DParameterlessDelegate finishingCallback);
 
 	// Immediately force set given state
