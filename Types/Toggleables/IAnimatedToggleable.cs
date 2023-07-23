@@ -3,7 +3,7 @@ namespace PHATASS.Utils.Types.Toggleables
 	// Interface representing an element that can be toggled on/off (true/false)
 	// with the specification that the change between on/off states happens over a certain ammount of time
 	//
-	//	base.toggleState { get; set; }
+	//	base.state { get; set; }
 	//		set() performs an animated state change over time
 	//		get() returns currently DESIRED state
 	//

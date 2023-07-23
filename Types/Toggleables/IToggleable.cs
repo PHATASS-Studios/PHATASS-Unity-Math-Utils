@@ -4,6 +4,6 @@ namespace PHATASS.Utils.Types.Toggleables
 	public interface IToggleable
 	{
 		// Toggles this element on or off, or returns the currently DESIRED state
-		bool toggleState { get; set; }
+		bool state { get; set; }
 	}
 }
