@@ -1,4 +1,4 @@
-namespace PHATASS.Utils.Types
+namespace PHATASS.Utils.Types.Toggleables
 {
 	// Interface representing an element that can be toggled on/off (true/false)
 	public interface IToggleable
