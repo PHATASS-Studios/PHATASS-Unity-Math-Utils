@@ -14,7 +14,7 @@ namespace PHATASS.Utils.Types.Toggleables
 //	> ForceSetState() is achieved by setting a ForcedStateChange trigger on the animator alongside the state change bool. How is it handled depends entirely on the animators/animations related.
 //	> TransitionStateWithCallback() enqueues an additional callback delegate to trigger after current transition is completed
 //
-	public class BaseAnimatorToggleableBehaviour :
+	public abstract class BaseAnimatorToggleableBehaviour :
 		MonoBehaviour,
 		IAnimatedToggleable
 	{
