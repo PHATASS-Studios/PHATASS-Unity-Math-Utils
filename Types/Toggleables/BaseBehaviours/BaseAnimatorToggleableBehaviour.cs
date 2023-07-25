@@ -150,20 +150,26 @@ namespace PHATASS.Utils.Types.Toggleables
 			if (this.queuedOnEnableCallback != null)
 			{
 				if (desiredState == true && this.transitionProgress >= 1f)
-				{
-					this.queuedOnEnableCallback.Invoke();
-					this.queuedOnEnableCallback = null;
-				}
+				{ this.TriggerOnEnableCallbacks(); }
 			}
 
 			if (this.queuedOnDisableCallback != null)
 			{
 				if (desiredState == false && this.transitionProgress <= 0f)
-				{
-					this.queuedOnDisableCallback.Invoke();
-					this.queuedOnDisableCallback = null;
-				}
+				{ this.TriggerOnDisableCallbacks(); }
 			}
+		}
+
+		protected virtual void TriggerOnEnableCallbacks ()
+		{
+			this.queuedOnEnableCallback.Invoke();
+			this.queuedOnEnableCallback = null;			
+		}
+
+		protected virtual void TriggerOnDisableCallbacks ()
+		{
+			this.queuedOnDisableCallback.Invoke();
+			this.queuedOnDisableCallback = null;
 		}
 	//ENDOF private
 	}	
