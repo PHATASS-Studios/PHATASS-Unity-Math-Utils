@@ -135,6 +135,7 @@ namespace PHATASS.Utils.Types.Toggleables
 			else { this.queuedOnDisableCallback = finishingCallback; }
 
 			this.state = desiredState;
+			return true;
 		}
 	//ENDOF protected
 
