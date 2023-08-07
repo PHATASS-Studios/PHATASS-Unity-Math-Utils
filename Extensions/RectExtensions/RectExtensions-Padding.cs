@@ -76,6 +76,89 @@ namespace PHATASS.Utils.Extensions
 			
 			return newRect;
 		}
+
+		//EInverseInnerPad performs the opposite of EInnerPad
+		// NOTE: behaviour is undefined if fractional padding adds up to 1f on each or any axis.
+		public static Rect EInverseInnerPad (
+			this Rect rect,
+			Padding upperPadding = default(Padding),
+			Padding lowerPadding = default(Padding),
+			Padding leftPadding = default(Padding),
+			Padding rightPadding = default(Padding)
+		) {
+		 //first we need to determine the rect's original dimensions
+			float originalAbsoluteHeight = rect.height;
+			float originalHeightFractionalPart = 0f;
+
+			if (upperPadding.absoluteUnits == true)
+			{ originalAbsoluteHeight += upperPadding.paddingValue; }
+			else
+			{ originalHeightFractionalPart += upperPadding.paddingValue; }
+
+			if (lowerPadding.absoluteUnits == true)
+			{ originalAbsoluteHeight += lowerPadding.paddingValue; }
+			else
+			{ originalHeightFractionalPart += lowerPadding.paddingValue; }
+
+			if (originalHeightFractionalPart != 1f)
+			{ originalAbsoluteHeight = originalAbsoluteHeight / (1f - originalHeightFractionalPart); }
+
+
+			float originalAbsoluteWidth = rect.width;
+			float originalWidthFractionalPart = 0f;
+
+			if (leftPadding.absoluteUnits == true)
+			{ originalAbsoluteWidth += leftPadding.paddingValue; }
+			else
+			{ originalWidthFractionalPart += leftPadding.paddingValue; }
+
+			if (rightPadding.absoluteUnits == true)
+			{ originalAbsoluteWidth += rightPadding.paddingValue; }
+			else
+			{ originalWidthFractionalPart += rightPadding.paddingValue; }
+
+			if (originalWidthFractionalPart != 1f)
+			{ originalAbsoluteWidth = originalAbsoluteWidth / (1f - originalWidthFractionalPart); }
+
+		//knowing the rects original, final, and fractional dimensions, we reconstruct each of its sides before padding was applied.
+
+			float padding;
+			Rect newRect = rect;
+
+		//Upper padding
+			if (upperPadding.absoluteUnits == true)
+			{ padding = upperPadding.paddingValue; }
+			else
+			{ padding = originalAbsoluteHeight * upperPadding.paddingValue; }
+
+			newRect.yMax += padding;
+
+		//Lower padding
+			if (lowerPadding.absoluteUnits == true)
+			{ padding = lowerPadding.paddingValue; }
+			else
+			{ padding = originalAbsoluteHeight * lowerPadding.paddingValue; }
+
+			newRect.yMin -= padding;
+
+		//Left padding
+			if (leftPadding.absoluteUnits == true)
+			{ padding = leftPadding.paddingValue; }
+			else
+			{ padding = originalAbsoluteWidth * leftPadding.paddingValue; }
+
+			newRect.xMin -= padding;
+
+		//Right padding
+			if (rightPadding.absoluteUnits == true)
+			{ padding = rightPadding.paddingValue; }
+			else
+			{ padding = originalAbsoluteWidth * rightPadding.paddingValue; }
+
+			newRect.xMax += padding;
+			
+			return newRect;
+		}
 //ENDOF Extension methods
 	}
 }
