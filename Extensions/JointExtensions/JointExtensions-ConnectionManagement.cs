@@ -4,7 +4,9 @@ using Component = UnityEngine.Component;
 
 namespace PHATASS.Utils.Extensions
 {
-	public static class JointExtensions
+// Extensions for UnityEngine.Joint objects
+//		sub-class dealing with a joint's connection to another object
+	public static partial class JointExtensions //ConnectionManagement
 	{
 	//returns a joint's connected Component (Rigidbody or ArticulationBody). Prioritizes RigidBody over ArticulationBody
 		public static Component EMJointToConnectedComponent (this Joint joint)
