@@ -5,6 +5,28 @@ namespace PHATASS.Utils.Extensions
 	//methods for Rect manipulation
 	public static class Vector3Extensions
 	{
+	//Vector3 arithmetic operations
+		//multiplies two Vector3 component-wise
+		public static Vector3 EMultiplyBy (this Vector3 dividend, Vector3 divisor)
+		{
+			return new Vector3(
+				x: dividend.x * divisor.x,
+				y: dividend.y * divisor.y,
+				z: dividend.z * divisor.z
+			);
+		}
+
+		//divides two Vector3 component-wise
+		public static Vector3 EDivideBy (this Vector3 dividend, Vector3 divisor)
+		{
+			return new Vector3(
+				x: dividend.x / divisor.x,
+				y: dividend.y / divisor.y,
+				z: dividend.z / divisor.z
+			);
+		}
+	//ENDOF Vector3 arithmetic operations
+
 	//Vector3 creation methods
 		public static Vector3 EAngleToVector3 (this float angle)
 		{
