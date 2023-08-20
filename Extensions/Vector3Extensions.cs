@@ -7,12 +7,12 @@ namespace PHATASS.Utils.Extensions
 	{
 	//Vector3 arithmetic operations
 		//multiplies two Vector3 component-wise
-		public static Vector3 EMultiplyBy (this Vector3 dividend, Vector3 divisor)
+		public static Vector3 EMultiplyBy (this Vector3 a, Vector3 b)
 		{
 			return new Vector3(
-				x: dividend.x * divisor.x,
-				y: dividend.y * divisor.y,
-				z: dividend.z * divisor.z
+				x: a.x * b.x,
+				y: a.y * b.y,
+				z: a.z * b.z
 			);
 		}
 
