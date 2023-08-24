@@ -13,6 +13,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 // It must be constantly updated by calling IPhysicsUpdatable.Update(timeStep) every frame/fixedUpdate
 	[System.Serializable]
 	public class PhysicsBody1D_SimpleMomentumBased :
+		BasePhysicsUpdatable,	//BasePhysicsUpdatable provides an implementation of the basic enabled/disabled states
 		IUpdatablePhysicsBody1D,
 		Values.IFloatValueMutable,
 		Values.IDoubleValueMutable
@@ -76,8 +77,8 @@ namespace PHATASS.Utils.Physics.Physics1D
 		{ get { return this.asleep; } }
 
 
-		void Physics.IPhysicsUpdatable.Update (float? timeStep)
-		{ this.PhysicsUpdate(timeStep); }
+		//void Physics.IPhysicsUpdatable.Update (float? timeStep)
+		//removed, implementation now offered by BasePhysicsUpdatable
 	//ENDOF IUpdatablePhysicsBody1D
 
 	//IFloatValueMutable
@@ -95,6 +96,12 @@ namespace PHATASS.Utils.Physics.Physics1D
 			set { this.position = value; }
 		}
 	//ENDOF IDoubleValueMutable
+
+	//inherited member overrides
+		//Update called by BasePhysicsUpdatable when update is valid and enabled is true
+		protected override void Update (float? timeStep)
+		{ this.PhysicsUpdate(timeStep); }
+	//ENDOF overrides
 
 	//private members
 		private double kineticEnergy

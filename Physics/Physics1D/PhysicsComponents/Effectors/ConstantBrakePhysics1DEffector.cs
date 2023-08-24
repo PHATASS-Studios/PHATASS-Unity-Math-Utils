@@ -7,7 +7,9 @@ namespace PHATASS.Utils.Physics.Physics1D
 {
 // Interface representing a component that constantly brakes an object's current momentum by a flat amount each second
 	[System.Serializable]
-	public class ConstantBrakePhysics1DEffector: IPhysics1DEffector
+	public class ConstantBrakePhysics1DEffector :
+		BasePhysics1DComponent,
+		IPhysics1DEffector
 	{
 	//serialized fields
 		[Tooltip("Flat amount of momentum mitigated by the constant brake each second, in newton/seconds")]
@@ -15,29 +17,14 @@ namespace PHATASS.Utils.Physics.Physics1D
 		private double constantBrake;
 	//ENDOF serialized
 
-	//IPhysics1DComponent
-		IPhysicsBody1D IPhysics1DComponent.primarySubject
-		{ get { return this.primarySubject; } set { this.primarySubject = value; } }
-	//ENDOF IPhysics1DComponent
-
-	//IPhysicsUpdatable
-		void Physics.IPhysicsUpdatable.Update (float? timeStep)
-		{ this.Update(timeStep); }
-	//ENDOF IPhysicsUpdatable
-
-	//private fields
-		//Physics body constrained
-		private IPhysicsBody1D primarySubject;
-	//ENDOF private fields
-
-	//private methods
-		private void Update (float? timeStep)
+	//overrides
+		protected override void Update (float? timeStep)
 		{
-			Debug.Log("ConstantBrakePhysics1DEffector.Update()");
+			//Debug.Log("ConstantBrakePhysics1DEffector.Update()");
 
 			if (this.primarySubject == null)
 			{
-				Debug.Log("ConstantBrakePhysics1DEffector lacks primary subject.");
+			//	Debug.Log("ConstantBrakePhysics1DEffector lacks primary subject.");
 				return;
 			}
 

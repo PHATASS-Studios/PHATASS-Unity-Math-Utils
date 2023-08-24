@@ -14,6 +14,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 //Represents a 1D Physics spring that pulls primary subject body towards given value
 	[System.Serializable]
 	public class FixedSpringJoint1D :
+		BasePhysics1DComponent,
 		IFixedJoint1D
 	{
 	//serialized fields
@@ -36,16 +37,6 @@ namespace PHATASS.Utils.Physics.Physics1D
 		IDoubleValue IFixedJoint1D.centerValue
 		{ get { return this.centerValue; } set { this.centerValue = value; } }
 	//ENDOF IFixedJoint1D
-
-	//IPhysics1DComponent
-		IPhysicsBody1D IPhysics1DComponent.primarySubject
-		{ get { return this.primarySubject; } set { this.primarySubject = value; } }
-	//ENDOF IPhysics1DComponent
-
-	//IPhysicsUpdatable
-		void Physics.IPhysicsUpdatable.Update (float? timeStep)
-		{ this.Update(timeStep); }
-	//ENDOF IPhysicsUpdatable
 
 	//constructor
 		public FixedSpringJoint1D (
@@ -89,10 +80,6 @@ namespace PHATASS.Utils.Physics.Physics1D
 	//ENDOF constructor
 
 	//private fields
-		//Physics body moved by this joint"
-		private IPhysicsBody1D primarySubject;
-		//private IPhysicsBody1D primarySubject { get { return this._primarySubject; } set { this._primarySubject = value; } }
-
 		//Value relay used as joint's centerpoint. It can fluctuate. If this is null, center will be considered 0
 		private IDoubleValue centerValue;
 	//ENDOF private fields
@@ -116,10 +103,10 @@ namespace PHATASS.Utils.Physics.Physics1D
 		}}
 	//ENDOF private properties
 
-	//private methods
-		private void Update (float? timeStep)
+	//overrides
+		protected override void Update (float? timeStep)
 		{
-			Debug.Log("FixedSpringJoint1D.Update()");
+			//Debug.Log("FixedSpringJoint1D.Update()");
 			if (this.primarySubject == null)
 			{
 				Debug.Log("FixedSpringJoint1D lacks primary subject.");
@@ -130,6 +117,6 @@ namespace PHATASS.Utils.Physics.Physics1D
 
 			this.primarySubject.AddMomentum(this.force * timeStep.EValidateDeltaTime()); //time);
 		}
-	//ENDOF private methods
+	//ENDOF overrides
 	}
 }
