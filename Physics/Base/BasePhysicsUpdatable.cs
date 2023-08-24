@@ -3,7 +3,7 @@ using UnityEngine;
 using Physics = PHATASS.Utils.Physics;
 using static PHATASS.Utils.Extensions.TimeExtensions;
 
-namespace PHATASS.Utils.Physics.Physics1D
+namespace PHATASS.Utils.Physics
 {
 // Base for any updatable physics1D component, like springs or contraints.
 	[System.Serializable]

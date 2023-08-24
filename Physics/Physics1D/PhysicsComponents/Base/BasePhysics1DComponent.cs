@@ -3,7 +3,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 // Base for any updatable physics1D component, like springs or contraints.
 	[System.Serializable]
 	public abstract class BasePhysics1DComponent :
-		BasePhysicsUpdatable,
+		PHATASS.Utils.Physics.BasePhysicsUpdatable,
 		IPhysics1DComponent
 	{
 	//serialized fields
