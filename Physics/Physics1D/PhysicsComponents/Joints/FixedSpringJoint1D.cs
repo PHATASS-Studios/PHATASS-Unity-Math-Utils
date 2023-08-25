@@ -44,13 +44,15 @@ namespace PHATASS.Utils.Physics.Physics1D
 			double force,
 			double offset,
 			DoubleRange deadZone, // = (DoubleRange) 0d,
-			IDoubleValue referenceCenterValue = null
+			IDoubleValue referenceCenterValue = null,
+			bool startEnabled = true
 		) {
 			primarySubject = targetBody;
 			springForce = force;
 			centerOffset = offset;
 			_springDeadZone = deadZone;
 			centerValue = referenceCenterValue;
+			enabled = startEnabled;
 		}
 
 		//constructor overload that copies the joints values from another FixedSpringJoint1D
@@ -61,7 +63,8 @@ namespace PHATASS.Utils.Physics.Physics1D
 			double? force = null,
 			double? offset = null,
 			DoubleRange? deadZone = null,
-			IDoubleValue? referenceCenterValue = null
+			IDoubleValue? referenceCenterValue = null,
+			bool? startEnabled = null
 		) {
 			//copy values from sample
 			primarySubject = sample.primarySubject;
@@ -69,6 +72,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 			centerOffset = sample.centerOffset;
 			_springDeadZone = sample._springDeadZone;
 			centerValue = sample.centerValue;
+			enabled = sample.enabled;
 
 			//then set value overrides received
 			if (targetBody != null) { primarySubject = (IPhysicsBody1D) targetBody; }
@@ -76,6 +80,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 			if (offset != null) { centerOffset = (double) offset; }
 			if (deadZone != null) { _springDeadZone = (DoubleRange) deadZone; }
 			if (referenceCenterValue != null) { centerValue = (IDoubleValue) referenceCenterValue; }
+			if (startEnabled != null) { enabled = (bool) startEnabled; }
 		}
 	//ENDOF constructor
 
