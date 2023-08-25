@@ -17,7 +17,7 @@ namespace PHATASS.Utils.Physics
 		protected bool enabled
 		{
 			get { return this._enabled; }
-			private set { this._enabled = value; }
+			set { this._enabled = value; }
 		}
 	//ENDOF serialized fields
 
