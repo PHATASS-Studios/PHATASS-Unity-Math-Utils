@@ -15,6 +15,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 		BasePhysics1DComponent,
 		IPhysics1DLimitConstraint
 	{
+	//[TO-DO]: I Don't know but maybe make an inherited class extending this that serializes outer limit range by default?
 	//serialized fields
 		/*[Tooltip("Outer limits. When position goes outside the outer limits, it is clamped back inside and bounce is applied if necessary.")]
 		[SerializeField]
