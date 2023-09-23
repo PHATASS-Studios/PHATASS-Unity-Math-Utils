@@ -128,7 +128,7 @@ namespace PHATASS.Utils.Physics.Physics1D
 	//Physics Update exclusive methods
 		private void PhysicsUpdate (float? timeStep)
 		{
-			Debug.Log("PhysicsBody1D_SimpleMomentumBased.PhysicsUpdate()");
+			//Debug.Log("PhysicsBody1D_SimpleMomentumBased.PhysicsUpdate()");
 			//check for sleeping conditions. If body is asleep, abort the rest of the physics update
 			if (this.asleep)
 			{
