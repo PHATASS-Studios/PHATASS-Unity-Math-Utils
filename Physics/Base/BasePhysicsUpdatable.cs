@@ -12,7 +12,7 @@ namespace PHATASS.Utils.Physics
 	{
 	//serialized fields
 		[SerializeField]
-		[Tooltip("If enabled == true, Update() calls will be ignored, effectively disabling the component. Get/set through IToggleable.state.")]
+		[Tooltip("If enabled == false, Update() calls will be ignored, effectively disabling the component. Get/set through IToggleable.state.")]
 		private bool _enabled = true;
 		protected bool enabled
 		{
