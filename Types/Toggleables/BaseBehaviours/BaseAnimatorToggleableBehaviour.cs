@@ -171,6 +171,10 @@ namespace PHATASS.Utils.Types.Toggleables
 		{
 			this.queuedOnDisableCallback.Invoke();
 			this.queuedOnDisableCallback = null;
+
+			//check if we must disable gameobject after triggering disable callbacks
+			if (this.disableGameObject)
+			{ this.animator.gameObject.SetActive(false); }
 		}
 	//ENDOF private
 	}	
