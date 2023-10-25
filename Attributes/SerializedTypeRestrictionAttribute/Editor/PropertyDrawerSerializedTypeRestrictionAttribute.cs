@@ -42,10 +42,10 @@ namespace PHATASS.Utils.Attributes
  		{
  			//validate serialized property is a reference type
  			if (property.propertyType != SerializedPropertyType.ObjectReference)
- 			{ throw new System.InvalidOperationException(string.Format("Attribute \"TypeRestriction(Type)\" can ONLY be used with OBJECT REFERENCE field types. Field: {0} Wrong type: {1}", property.name, property.propertyType.ToString())); }
+ 			{ throw new System.InvalidOperationException(string.Format("Attribute \"SerializedTypeRestrictionAttribute(Type)\" can ONLY be used with OBJECT REFERENCE field types. Field: {0} Wrong type: {1}", property.name, property.propertyType.ToString())); }
  			//validate serialized field is a serializable reference type
  			if (!this.fieldIsUnityObject)
- 			{ throw new System.InvalidOperationException(string.Format("Attribute \"TypeRestriction(Type)\" field type MUST inherit from UnityEngine.Object. Field: {0}", property.name)); }
+ 			{ throw new System.InvalidOperationException(string.Format("Attribute \"SerializedTypeRestrictionAttribute(Type)\" field type MUST inherit from UnityEngine.Object. Field: {0}", property.name)); }
 
  			//begin drawing property
  			label = EditorGUI.BeginProperty(position, label, property);
