@@ -27,6 +27,12 @@ namespace PHATASS.Utils.Extensions
 		}
 
 		//Simply creates a new component of type TComponent on target transform using the most adequate implementation
+		public static TComponent ECreateComponent <TComponent> (this GameObject gameObject, TComponent sample)
+			where TComponent: Component
+		{
+			if (sample == null) { return gameObject.ECreateComponent<TComponent>(); }
+			return gameObject.ECreateComponent<TComponent>().EApplySettingsGeneric<TComponent>(sample);
+		}
 		public static TComponent ECreateComponent <TComponent> (this GameObject gameObject)
 			where TComponent: Component
 		{
