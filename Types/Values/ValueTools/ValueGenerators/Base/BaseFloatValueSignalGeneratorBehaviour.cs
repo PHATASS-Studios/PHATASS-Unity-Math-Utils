@@ -45,10 +45,6 @@ namespace PHATASS.Utils.Types.Values.ValueTools
 	//ENDOF serialized
 
 	//MonoBehaviour lifecycle
-		private void Update ()
-		{
-
-		}
 	//ENDOF MonoBehaviour
 
 	//properties
