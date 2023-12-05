@@ -40,7 +40,7 @@ namespace PHATASS.Utils.Types.Values.ValueTools
 	//ENDOF overrides
 
 	//properties
-		private IAngle2D currentStep { get { return (360f.EDegreesToAngle2D()) * (this.frequency * Time.deltaTime); }}
+		private IAngle2D currentStep { get { return (360f * this.frequency * Time.deltaTime).EDegreesToAngle2D(); }}
 	//ENDOF properties
 	}
 }
