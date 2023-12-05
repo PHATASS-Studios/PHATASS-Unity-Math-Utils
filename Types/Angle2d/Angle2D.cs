@@ -6,7 +6,8 @@ namespace PHATASS.Utils.Types.Angles
 {
 	// Represents an angle, both accessible as degrees or radians
 	// value is automatically clamped to 0-360 degrees (0 - 2pi rads)
-	public readonly struct Angle2D : IAngle2D
+	[System.Serializable]
+	public struct Angle2D : IAngle2D
 	{
 	//IAngle2D Implementation
 		float IAngle2D.degrees { get { return this.degrees; }}
@@ -61,7 +62,9 @@ namespace PHATASS.Utils.Types.Angles
 		private float degrees { get { return this._degrees; }}
 		private float radians {	get { return this.degrees * Mathf.Deg2Rad; }}
 
-		private readonly float _degrees;
+		[UnityEngine.Tooltip("Angle, as expressed in degrees.")]
+		[UnityEngine.SerializeField]
+		private float _degrees;
 	//ENDOF public properties
 
 	//private fields
