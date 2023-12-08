@@ -30,13 +30,16 @@ namespace PHATASS.Utils.Types.Values.ValueTools
 	//MonoBehaviour lifecycle
 		private void Update ()
 		{
+			//Debug.Log("currentStep: " + this.currentStep);
 			this.signalPhase += this.currentStep;
+			//Debug.Log("signalPhase: " + this.signalPhase);
+			//Debug.Log("value: " + this.value);
 		}
 	//ENDOF MonoBehaviour
 
 	//overrides
 		protected override float value
-		{ get { return this.signalPhase.ESine(); }}
+		{ get { return this.signalPhase.ESine() * this.amplitude; }}
 	//ENDOF overrides
 
 	//properties
