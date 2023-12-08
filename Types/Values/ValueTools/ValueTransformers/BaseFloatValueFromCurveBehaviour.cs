@@ -29,12 +29,16 @@ namespace PHATASS.Utils.Types.Values.ValueTools
 		[Tooltip("Curve defining output value. Output value is equal to the curve's point T, given by inputValue.")]
 		[SerializeField]
 		private AnimationCurve valueCurve;
+
+		[Tooltip("Multiplies curve output by this value. Default 1f.")]
+		[SerializeField]
+		private float valueScale = 1f;
 	//ENDOF serialized fields
 
 	//properties
 		private float value
 		{ get {
-			if (this.inputValue != null) { return this.valueCurve.Evaluate(this.inputValue.value); }
+			if (this.inputValue != null) { return this.valueCurve.Evaluate(this.inputValue.value) * this.valueScale; }
 			else { return 0f; }
 		}}
 	//ENDOF properties
