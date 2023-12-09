@@ -8,7 +8,7 @@ namespace PHATASS.Utils.Extensions
 	public static partial class RectEditorExtensions
 	{
 		//Draws a Rect as an outline with given color
-		public static void EDrawGizmo (this Rect rect, Color? color = null, float zPosition = 0f)
+		public static void EDrawGizmo (this Rect rect, Color? color = null, string label = null, float zPosition = 0f)
 		{
 			//store original color and set desired color
 			Color previousColor = Gizmos.color;
@@ -38,6 +38,19 @@ namespace PHATASS.Utils.Extensions
 			
 			//restore original gizmos color
 			if (color != null) { Gizmos.color = previousColor; }
+
+			//Handle label
+			if (label != null)
+			{
+				Vector3 labelPosition = new Vector3 (x: rect.xMin, y: rect.yMax, z: zPosition - 0.1f);
+
+				previousColor = UnityEditor.Handles.color;
+				if (color != null) { UnityEditor.Handles.color = (Color) color; }
+
+				UnityEditor.Handles.Label(labelPosition, label);
+				if (color != null) { UnityEditor.Handles.color = previousColor; }
+
+			}
 		}
 	//ENDOF Rect scaling
 	}
