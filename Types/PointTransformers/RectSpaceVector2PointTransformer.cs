@@ -84,12 +84,12 @@ namespace PHATASS.Utils.Types.PointTransformers
 	#if UNITY_EDITOR
 		public void DrawPrimarySpaceRectGizmo (Color? color = null)
 		{
-			this.primarySpaceRect.EDrawGizmo(color);
+			this.primarySpaceRect.EDrawGizmo(color: color, label: "Primary space rect");
 		}
 
 		public void DrawSecondarySpaceRectGizmo (Color? color = null)
 		{
-			this.primarySpaceRect.EDrawGizmo(color);
+			this.primarySpaceRect.EDrawGizmo(color: color, label: "Secondary space rect");
 		}
 	#endif
 	//ENDOF Editor gizmos
