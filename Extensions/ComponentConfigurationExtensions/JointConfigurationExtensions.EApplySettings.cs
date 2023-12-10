@@ -58,7 +58,10 @@ namespace PHATASS.Utils.Extensions
 			_this.massScale = sample.massScale;
 
 			if (copyConnectedBody)
-			{ _this.connectedBody = sample.connectedBody; }
+			{
+				_this.connectedBody = sample.connectedBody;
+				_this.connectedArticulationBody = sample.connectedArticulationBody;
+			}
 
 			return _this;
 		}
