@@ -14,14 +14,18 @@ namespace PHATASS.Utils.Types.Toggleables
 //	> ForceSetState() is achieved by setting a ForcedStateChange trigger on the animator alongside the state change bool. How is it handled depends entirely on the animators/animations related.
 //	> TransitionStateWithCallback() enqueues an additional callback delegate to trigger after current transition is completed
 //
-	public abstract class BaseAnimatorToggleableBehaviour :
+	public abstract class  BaseAnimatorToggleableBehaviour :
 		MonoBehaviour,
 		IAnimatedToggleable
 	{
 	//Serialized fields
-		[Tooltip("Animator component used to handle state transitions")]
+		[Tooltip("Primary Animator component used to handle state transitions")]
 		[SerializeField]
-		private Animator animator;
+		private Animator primaryAnimator;
+
+		[Tooltip("Additional animators. Their states will be set like primaryAnimator but their state is not considered.")]
+		[SerializeField]
+		private Animator[] secondaryAnimators;
 
 		[Tooltip("State animator bool variable. Will be set to true/false to request state change.")]
 		[SerializeField]
@@ -73,10 +77,10 @@ namespace PHATASS.Utils.Types.Toggleables
 	//ENDOF IAnimatedToggleable
 
 	//MonoBehaviour lifecycle
-		protected virtual void Awake ()
+		/*protected virtual void Awake ()
 		{
-			if (this.animator == null) { this.animator = this.GetComponent<Animator>(); }
-		}
+			if (this.primaryAnimator == null) { this.primaryAnimator = this.GetComponent<Animator>(); }
+		}*/
 
 		protected virtual void Update ()
 		{
@@ -85,19 +89,21 @@ namespace PHATASS.Utils.Types.Toggleables
 	//ENDOF MonoBehaviour
 
 	//protected members
-		//sets or gets current desired state from the animator
+		//sets or gets current desired state from the primaryAnimator
 		protected bool state 
 		{
 			get
 			{
-				if (!this.animator.gameObject.activeInHierarchy) { return false; }
-				return this.animator.GetBool(this.desiredStateBoolId);
+				if (!this.primaryAnimator.gameObject.activeInHierarchy) { return false; }
+				return this.primaryAnimator.GetBool(this.desiredStateBoolId);
 			}
 			set {
-				if (value == true && !this.animator.gameObject.activeSelf)
-				{ this.animator.gameObject.SetActive(true); }
+				if (value == true && !this.primaryAnimator.gameObject.activeSelf)
+				{ this.primaryAnimator.gameObject.SetActive(true); }
 				if (this.state == value) { return; }
-				this.animator.SetBool(this.desiredStateBoolId, value);
+				this.primaryAnimator.SetBool(this.desiredStateBoolId, value);
+				foreach (Animator animator in this.secondaryAnimators)
+				{ animator.SetBool(this.desiredStateBoolId, value); }
 			}
 		}
 
@@ -123,7 +129,10 @@ namespace PHATASS.Utils.Types.Toggleables
 
 		protected void ForceSetState (bool desiredState)
 		{
-			this.animator.SetTrigger(this.forcedStateChangeTriggerId);
+			this.primaryAnimator.SetTrigger(this.forcedStateChangeTriggerId);
+			foreach (Animator animator in this.secondaryAnimators)
+			{ animator.SetTrigger(this.forcedStateChangeTriggerId); }
+			
 			this.state = desiredState;
 		}
 
@@ -174,7 +183,7 @@ namespace PHATASS.Utils.Types.Toggleables
 
 			//check if we must disable gameobject after triggering disable callbacks
 			if (this.disableGameObject)
-			{ this.animator.gameObject.SetActive(false); }
+			{ this.primaryAnimator.gameObject.SetActive(false); }
 		}
 	//ENDOF private
 	}	
