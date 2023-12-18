@@ -1,21 +1,37 @@
 using UnityEngine;
 using System.Collections.Generic;	//IComparer<T>
+using IComparer = System.Collections.IComparer;
 
 namespace PHATASS.Utils.Comparers
 {
 	//IComparer used to sort a list of items by its distance from a Vector3 worldspace position
-	public class ComparerSortComponentsByDistanceToPosition : IComparer<Component>
+	public class ComparerSortComponentsByDistanceToPosition :
+		IComparer<Component>,
+		IComparer
 	{
 		private Vector3 center;
 
+		private bool nullsFirst = false;
+
 		//Constructor: Takes position to use as center for upcoming comparison
-		public ComparerSortComponentsByDistanceToPosition (Vector3 originPosition)
+		public ComparerSortComponentsByDistanceToPosition (Vector3 originPosition, bool nullsFirst = false)
 		{
 			center = originPosition;
+			this.nullsFirst = nullsFirst;
 		}
 
 		int IComparer<Component>.Compare (Component componentA, Component componentB)
+		{ return this.Compare(componentA, componentB); }
+
+		int IComparer.Compare (System.Object componentA, System.Object componentB)
+		{ return this.Compare(componentA as Component, componentB as Component); }
+
+		private int Compare (Component componentA, Component componentB)
 		{
+			if (componentA == null && componentB == null) { return 0; }
+			if (componentA == null) { return 1; }
+			if (componentB == null) { return -1; }
+
 			//if A is closer to origin, Difference sign is negative
 			float distanceDifference =
 				  Vector3.Distance(center, componentA.transform.position)
