@@ -11,31 +11,31 @@ namespace PHATASS.Utils.Extensions
 	public static class AnimatorListExtensions
 	{
 	// Animator variable setting methods - sets animator vars values on every animator on a list
-		public static void SetBool (this IList<Animator> animators, SerializableAnimatorVariableIdentifier varName, bool value)
+		public static void ESetBool (this IList<Animator> animators, SerializableAnimatorVariableIdentifier varName, bool value)
 		{
 			foreach (Animator animator in animators)
 			{ animator.SetBool(id: varName, value: value); }
 		}
 
-		public static void SetFloat (this IList<Animator> animators, SerializableAnimatorVariableIdentifier varName, float value)
+		public static void ESetFloat (this IList<Animator> animators, SerializableAnimatorVariableIdentifier varName, float value)
 		{
 			foreach (Animator animator in animators)
 			{ animator.SetFloat(id: varName, value: value); }
 		}
 
-		public static void SetInteger (this IList<Animator> animators, SerializableAnimatorVariableIdentifier varName, int value)
+		public static void ESetInteger (this IList<Animator> animators, SerializableAnimatorVariableIdentifier varName, int value)
 		{
 			foreach (Animator animator in animators)
 			{ animator.SetInteger(id: varName, value: value); }
 		}
 
-		public static void SetTrigger (this IList<Animator> animators, SerializableAnimatorVariableIdentifier varName)
+		public static void ESetTrigger (this IList<Animator> animators, SerializableAnimatorVariableIdentifier varName)
 		{
 			foreach (Animator animator in animators)
 			{ animator.SetTrigger(id: varName); }
 		}
 
-		public static void ResetTrigger (this IList<Animator> animators, SerializableAnimatorVariableIdentifier varName)
+		public static void EResetTrigger (this IList<Animator> animators, SerializableAnimatorVariableIdentifier varName)
 		{
 			foreach (Animator animator in animators)
 			{ animator.ResetTrigger(id: varName); }
