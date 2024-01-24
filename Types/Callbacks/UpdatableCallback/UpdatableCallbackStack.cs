@@ -15,7 +15,6 @@ using Debug = UnityEngine.Debug;
 using SerializedTypeRestrictionAttribute = PHATASS.Utils.Attributes.SerializedTypeRestrictionAttribute;
 
 using GameObject = UnityEngine.GameObject;
-using IAction = PHATASS.ActionSystem.IAction;
 
 namespace PHATASS.Utils.Callbacks
 {

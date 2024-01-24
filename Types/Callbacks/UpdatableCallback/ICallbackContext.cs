@@ -1,5 +1,4 @@
 using GameObject = UnityEngine.GameObject;
-using IAction = PHATASS.ActionSystem.IAction;
 
 namespace PHATASS.Utils.Callbacks
 {
